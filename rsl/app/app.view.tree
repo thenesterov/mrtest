@@ -1,0 +1,9 @@
+$mrtest_rsl_app $mol_page
+	title \RSL — Response Schema Language
+	body /
+		<= Row $mol_row sub /
+			<= Rsl_input $mol_textarea
+				value? <=> input? \
+			<= Json_output $mol_textarea
+				value? <=> output? \
+				enabled false

@@ -1,0 +1,39 @@
+[mrtest_output_page],
+[mrtest_source_page] {
+	flex-grow: 0;
+	flex-basis: 800px;
+	margin: 0 auto;
+}
+
+[mrtest_menu] {
+	flex-grow: 0;
+	flex-basis: 320px;
+}
+
+[mrtest_validator] {
+	margin-bottom: var(--mol_gap_block);
+}
+
+[mrtest_validator_title_row] {
+	padding: 3px 0;
+	gap: 3px;
+}
+
+:root {
+	--mol_theme_hue: 195deg;
+	--mol_theme_hue_spread: 90deg;
+}
+
+:root, [mol_theme="$mol_theme_dark"] {
+	--mol_theme_luma: 2;
+}
+
+[mol_book2] > *:not(:first-of-type):before,
+[mol_book2] > *:not(:last-of-type)::after {
+	background: none;
+}
+
+
+[mol_view_error] {
+	color: black !important;
+}
