@@ -10,9 +10,9 @@ namespace $.$$ {
 					"type": "string"
 				}
 
-				if ($tql_get("", tree)) {
-					if ($tql_get("", tree)!.type == "*") {
-						result = {...result, ...$.$$.$mol_tree2_to_json($tql_get("", tree)!) as object}
+				if ($mrtest_tql_get("", tree)) {
+					if ($mrtest_tql_get("", tree)!.type == "*") {
+						result = {...result, ...$.$$.$mol_tree2_to_json($mrtest_tql_get("", tree)!) as object}
 					}
 				}
 
@@ -23,9 +23,9 @@ namespace $.$$ {
 					"type": "number"
 				}
 
-				if ($tql_get("", tree)) {
-					if ($tql_get("", tree)!.type == "*") {
-						result = {...result, ...$.$$.$mol_tree2_to_json($tql_get("", tree)!) as object}
+				if ($mrtest_tql_get("", tree)) {
+					if ($mrtest_tql_get("", tree)!.type == "*") {
+						result = {...result, ...$.$$.$mol_tree2_to_json($mrtest_tql_get("", tree)!) as object}
 					}
 				}
 
@@ -36,9 +36,9 @@ namespace $.$$ {
 					"type": "integer"
 				}
 
-				if ($tql_get("", tree)) {
-					if ($tql_get("", tree)!.type == "*") {
-						result = {...result, ...$.$$.$mol_tree2_to_json($tql_get("", tree)!) as object}
+				if ($mrtest_tql_get("", tree)) {
+					if ($mrtest_tql_get("", tree)!.type == "*") {
+						result = {...result, ...$.$$.$mol_tree2_to_json($mrtest_tql_get("", tree)!) as object}
 					}
 				}
 
@@ -49,9 +49,9 @@ namespace $.$$ {
 					"type": "boolean"
 				}
 
-				if ($tql_get("", tree)) {
-					if ($tql_get("", tree)!.type == "*") {
-						result = {...result, ...$.$$.$mol_tree2_to_json($tql_get("", tree)!) as object}
+				if ($mrtest_tql_get("", tree)) {
+					if ($mrtest_tql_get("", tree)!.type == "*") {
+						result = {...result, ...$.$$.$mol_tree2_to_json($mrtest_tql_get("", tree)!) as object}
 					}
 				}
 
@@ -62,9 +62,9 @@ namespace $.$$ {
 					"type": "null"
 				}
 
-				if ($tql_get("", tree)) {
-					if ($tql_get("", tree)!.type == "*") {
-						result = {...result, ...$.$$.$mol_tree2_to_json($tql_get("", tree)!) as object}
+				if ($mrtest_tql_get("", tree)) {
+					if ($mrtest_tql_get("", tree)!.type == "*") {
+						result = {...result, ...$.$$.$mol_tree2_to_json($mrtest_tql_get("", tree)!) as object}
 					}
 				}
 
@@ -72,7 +72,7 @@ namespace $.$$ {
 			}
 
 			if (tree.type == "object") {
-				let nested_node = $tql_get("", tree);
+				let nested_node = $mrtest_tql_get("", tree);
 				let result: Record<string, any> = {
 					"type": "object"
 				}
@@ -95,7 +95,7 @@ namespace $.$$ {
 						else {
 							properties = {...properties, ...($.$$.$mol_tree2_to_json(this.transform(nested_node, false)) as object)}
 						}
-						nested_node = $tql_get("+".repeat(pluses_count), tree)
+						nested_node = $mrtest_tql_get("+".repeat(pluses_count), tree)
 						pluses_count++;
 					}
 					properties = {...properties, ...meta_properties}
@@ -107,7 +107,7 @@ namespace $.$$ {
 				return $mol_tree2_from_json(result);
 			}
 			else if (tree.type == "array") {
-				let nested_node = $tql_get("", tree);
+				let nested_node = $mrtest_tql_get("", tree);
 				let result: Record<string, any> = {
 					"type": "array"
 				}
@@ -130,7 +130,7 @@ namespace $.$$ {
 						else {
 							items.push($.$$.$mol_tree2_to_json(this.transform(nested_node, false)) as object)
 						}
-						nested_node = $tql_get("+".repeat(pluses_count), tree)
+						nested_node = $mrtest_tql_get("+".repeat(pluses_count), tree)
 						pluses_count++;
 					
 					}
@@ -143,11 +143,11 @@ namespace $.$$ {
 				return $mol_tree2_from_json(result);
 			}
 			else {
-				let nested_node = $tql_get(">", tree);
+				let nested_node = $mrtest_tql_get(">", tree);
 				let result: Record<string, any> = {}
 
 				let property = tree.type;
-				let type: string | string[] = $tql_get("", tree)?.type ?? "string"
+				let type: string | string[] = $mrtest_tql_get("", tree)?.type ?? "string"
 
 				if (type.slice(-1) == "?") {
 					type = type.slice(0, -1) + ",null"
@@ -158,8 +158,8 @@ namespace $.$$ {
 
 				let meta: Record<string, any> = {}
 
-				if ($tql_get(">", tree)?.type == "*") {
-					meta = {...($.$$.$mol_tree2_to_json($tql_get(">", tree)!) as object)}
+				if ($mrtest_tql_get(">", tree)?.type == "*") {
+					meta = {...($.$$.$mol_tree2_to_json($mrtest_tql_get(">", tree)!) as object)}
 				}
 
 				result[property] = {
@@ -187,7 +187,7 @@ namespace $.$$ {
 							else {
 								properties = {...properties, ...($.$$.$mol_tree2_to_json(this.transform(nested_node, false)) as object)}
 							}
-							nested_node = $tql_get(">" + "+".repeat(pluses_count), tree)
+							nested_node = $mrtest_tql_get(">" + "+".repeat(pluses_count), tree)
 							pluses_count++;
 						}
 
@@ -213,7 +213,7 @@ namespace $.$$ {
 							else {
 								items.push($.$$.$mol_tree2_to_json(this.transform(nested_node, false)) as object)
 							}
-							nested_node = $tql_get(">" + "+".repeat(pluses_count), tree)
+							nested_node = $mrtest_tql_get(">" + "+".repeat(pluses_count), tree)
 							pluses_count++;
 						
 						}
