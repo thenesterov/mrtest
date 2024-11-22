@@ -1,2 +1,3 @@
 include \/mol/offline/install
 deploy \/mrtest/mrtest.svg
+pack tql git \https://github.com/thenesterov/tql.git
