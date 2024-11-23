@@ -18,7 +18,7 @@ namespace $.$$ {
 
 		@ $mol_mem
 		source_code(next?: string): string {
-			return this.$.$mol_state_local.value('source_code', next) ?? '';
+			return this.current_test().Source(null)!.text(next) ?? ""
 		}
 
 		@ $mol_mem
@@ -117,6 +117,82 @@ namespace $.$$ {
 
 			this.$.$$.$mol_state_local.value(key, validator)
 			return validator.code ?? ''
+		}
+
+		@ $mol_mem
+		person() {
+			return this.$.$hyoo_crus_glob.home( $mrtest_person )
+		}
+
+		@ $mol_mem
+		person_id() {
+			return this.person().ref().description!
+		}
+
+		@ $mol_mem_key
+		workspace(id: string) {
+			return this.$.$hyoo_crus_glob.Node($hyoo_crus_ref(id), $mrtest_workspace)
+		}
+
+		@ $mol_mem
+		current_workspace() {
+			const workspace_id = this.$.$mol_state_arg.value("")
+			if (!workspace_id) {
+				throw Error("Рабочее пространство отсутствует");
+			}
+			return this.workspace(workspace_id)
+		}
+
+		workspace_make() {
+			const workspace = this.person().workspace_make()
+			this.$.$mol_state_arg.go({ "": workspace.ref().description! })
+		}
+
+		@ $mol_mem_key
+		test(id: string) {
+			return this.$.$hyoo_crus_glob.Node($hyoo_crus_ref(id), $mrtest_test)
+		}
+
+		@ $mol_mem
+		current_test() {
+			const test_id = this.$.$mol_state_arg.value("test")
+			if (!test_id) {
+				throw Error("Тест не выбран");
+			}
+			return this.test(test_id)
+		}
+
+		test_make() {
+			const test = this.current_workspace().test_make()
+			this.$.$mol_state_arg.go({ "test": test.ref().description! })
+		}
+
+		test_title( next?: string | undefined ): string {
+			return this.current_test().Title(null)!.val(next) ?? ""
+		}
+
+		@ $mol_mem_key
+		test_item_title( id : string,) {
+			return this.test(id).Title(null)!.val() || `${ id }`;
+		}
+
+		@ $mol_mem
+		tests_ids(): readonly string[] {
+			return this.current_workspace().test_list().map(test => test.ref().description!).reverse()
+		}
+
+		override tests_list(): readonly any[] {
+			return this.tests_ids().map( id => {
+				return this.Test_item( id )
+			} )
+		}
+
+		test_delete( id: any, next?: any ) {
+			this.current_workspace().test_delete(id);
+		}
+
+		test_selected( id: any, next?: any ) {
+			this.$.$mol_state_arg.go({ "test": id })
 		}
 	}
 }

@@ -1,0 +1,5 @@
+[mrtest_ui_button] {
+	display: flex;
+	justify-content: center;
+	border: 1px solid var(--mol_theme_line);
+}

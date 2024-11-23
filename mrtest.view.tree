@@ -1,4 +1,4 @@
-$mrtest $mol_book2
+$mrtest $mol_book2_catalog
 	title \Mr. Test Playground
 	plugins /
 		<= Theme $mol_theme_auto
@@ -6,17 +6,37 @@ $mrtest $mol_book2
 		<= Menu $mol_page
 			Logo <= LogoMenu $mol_icon_mustache
 			title \Мистер Тест
-			foot /
-				<= Lighter $mol_lights_toggle
 			tools /
 				<= Search $mol_button_minor
 					sub / <= Search_icon $mol_icon_magnify
 				<= Add $mol_button_minor
+					hint \Создать рабочее пространство
+					click? <=> workspace_make? null
 					sub / <= Add_icon $mol_icon_plus
+			body /
+				<= Create_test $mrtest_ui_button
+					click? <=> test_make? null
+					sub /
+						<= AddButtonIcon $mol_icon_plus
+						\Создать тест
+				<= Workspaces $mol_list
+					rows <= tests_list /
+			foot /
+				<= Profile_link $mol_link
+					hint \Профиль
+					arg *
+						profile <= person_id \
+						workspace null
+					sub /
+						<= Profile_icon $mol_icon_account
+				<= Status $hyoo_crus_status
+				<= Lighter $mol_lights_toggle
 		<= Source_page $mol_page
 			Logo <= LogoSource $mol_icon_xml
-			title \Исходный код
+			title \
 			tools /
+				<= Test_title $mol_string_button
+					value? <=> test_title? \
 				<= Selected_language $mol_select
 					filter_hint \Выберите язык...
 					value? <=> selected_langauge? \mrtest
@@ -72,3 +92,20 @@ $mrtest $mol_book2
 			<= Validator_source* $mol_textarea
 				hint \Введите код валидатора по аналогии с другими...
 				value? <=> validator_source*? \
+	-
+	Test_item* $mol_row
+		sub /
+			<= Test_link* $mol_button_minor
+				title? <=> test_item_title*? \Новый тест
+				click? <= test_selected*? null
+			<= Test_options* $mol_pick
+				hint \Параметры теста
+				trigger_content /
+					<= Test_options_trigger_icon* $mol_icon_dots_vertical
+				bubble_content /
+					<= Test_options_content* $mol_list rows /
+						<= Test_delete* $mol_button_minor
+							click? <=> test_delete*? null
+							sub /
+								<= Delete_icon* $mol_icon_delete_outline
+								\Удалить
