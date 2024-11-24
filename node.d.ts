@@ -5947,6 +5947,15 @@ declare namespace $ {
 
 //# sourceMappingURL=status.view.tree.d.ts.map
 declare namespace $ {
+
+	export class $mol_icon_brightness_4 extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=4.view.tree.d.ts.map
+declare namespace $ {
 }
 
 declare namespace $ {
@@ -9549,316 +9558,321 @@ declare namespace $ {
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_page__Logo_mrtest_4 = $mol_type_enforce<
+	type $mol_lights_toggle__Icon_mrtest_4 = $mol_type_enforce<
+		ReturnType< $mrtest['Lights_icon'] >
+		,
+		ReturnType< $mol_lights_toggle['Icon'] >
+	>
+	type $mol_page__Logo_mrtest_5 = $mol_type_enforce<
 		ReturnType< $mrtest['LogoMenu'] >
 		,
 		ReturnType< $mol_page['Logo'] >
 	>
-	type $mol_page__title_mrtest_5 = $mol_type_enforce<
+	type $mol_page__title_mrtest_6 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_page['title'] >
 	>
-	type $mol_page__tools_mrtest_6 = $mol_type_enforce<
+	type $mol_page__tools_mrtest_7 = $mol_type_enforce<
 		ReturnType< $mrtest['menu_tools'] >
 		,
 		ReturnType< $mol_page['tools'] >
 	>
-	type $mol_page__body_mrtest_7 = $mol_type_enforce<
+	type $mol_page__body_mrtest_8 = $mol_type_enforce<
 		ReturnType< $mrtest['menu_body'] >
 		,
 		ReturnType< $mol_page['body'] >
 	>
-	type $mol_page__foot_mrtest_8 = $mol_type_enforce<
+	type $mol_page__foot_mrtest_9 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['foot'] >
 	>
-	type $mol_string_button__value_mrtest_9 = $mol_type_enforce<
+	type $mol_string_button__value_mrtest_10 = $mol_type_enforce<
 		ReturnType< $mrtest['test_title'] >
 		,
 		ReturnType< $mol_string_button['value'] >
 	>
-	type $mol_string_button__enabled_mrtest_10 = $mol_type_enforce<
+	type $mol_string_button__enabled_mrtest_11 = $mol_type_enforce<
 		ReturnType< $mrtest['test_editable'] >
 		,
 		ReturnType< $mol_string_button['enabled'] >
 	>
-	type $mol_select__filter_hint_mrtest_11 = $mol_type_enforce<
+	type $mol_select__filter_hint_mrtest_12 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_select['filter_hint'] >
 	>
-	type $mol_select__value_mrtest_12 = $mol_type_enforce<
+	type $mol_select__value_mrtest_13 = $mol_type_enforce<
 		ReturnType< $mrtest['selected_langauge'] >
 		,
 		ReturnType< $mol_select['value'] >
 	>
-	type $mol_select__dictionary_mrtest_13 = $mol_type_enforce<
+	type $mol_select__dictionary_mrtest_14 = $mol_type_enforce<
 		ReturnType< $mrtest['available_languages'] >
 		,
 		ReturnType< $mol_select['dictionary'] >
 	>
-	type $mol_page__Logo_mrtest_14 = $mol_type_enforce<
+	type $mol_page__Logo_mrtest_15 = $mol_type_enforce<
 		ReturnType< $mrtest['LogoSource'] >
 		,
 		ReturnType< $mol_page['Logo'] >
 	>
-	type $mol_page__title_mrtest_15 = $mol_type_enforce<
+	type $mol_page__title_mrtest_16 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_page['title'] >
 	>
-	type $mol_page__tools_mrtest_16 = $mol_type_enforce<
+	type $mol_page__tools_mrtest_17 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['tools'] >
 	>
-	type $mol_page__body_mrtest_17 = $mol_type_enforce<
+	type $mol_page__body_mrtest_18 = $mol_type_enforce<
 		ReturnType< $mrtest['source_page_body'] >
 		,
 		ReturnType< $mol_page['body'] >
 	>
-	type $mol_check_box__title_mrtest_18 = $mol_type_enforce<
+	type $mol_check_box__title_mrtest_19 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_check_box['title'] >
 	>
-	type $mol_check_box__checked_mrtest_19 = $mol_type_enforce<
+	type $mol_check_box__checked_mrtest_20 = $mol_type_enforce<
 		ReturnType< $mrtest['need_print_source'] >
 		,
 		ReturnType< $mol_check_box['checked'] >
 	>
-	type $mol_list__rows_mrtest_20 = $mol_type_enforce<
+	type $mol_list__rows_mrtest_21 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_pick__hint_mrtest_21 = $mol_type_enforce<
+	type $mol_pick__hint_mrtest_22 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_pick['hint'] >
 	>
-	type $mol_pick__trigger_content_mrtest_22 = $mol_type_enforce<
+	type $mol_pick__trigger_content_mrtest_23 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_pick['trigger_content'] >
 	>
-	type $mol_pick__bubble_content_mrtest_23 = $mol_type_enforce<
+	type $mol_pick__bubble_content_mrtest_24 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_pick['bubble_content'] >
 	>
-	type $mol_button_copy__text_mrtest_24 = $mol_type_enforce<
+	type $mol_button_copy__text_mrtest_25 = $mol_type_enforce<
 		ReturnType< $mrtest['result_to_copy'] >
 		,
 		ReturnType< $mol_button_copy['text'] >
 	>
-	type $mol_textarea__enabled_mrtest_25 = $mol_type_enforce<
+	type $mol_textarea__enabled_mrtest_26 = $mol_type_enforce<
 		boolean
 		,
 		ReturnType< $mol_textarea['enabled'] >
 	>
-	type $mol_textarea__value_mrtest_26 = $mol_type_enforce<
+	type $mol_textarea__value_mrtest_27 = $mol_type_enforce<
 		ReturnType< $mrtest['output_code'] >
 		,
 		ReturnType< $mol_textarea['value'] >
 	>
-	type $mol_page__Logo_mrtest_27 = $mol_type_enforce<
+	type $mol_page__Logo_mrtest_28 = $mol_type_enforce<
 		ReturnType< $mrtest['LogoOutput'] >
 		,
 		ReturnType< $mol_page['Logo'] >
 	>
-	type $mol_page__title_mrtest_28 = $mol_type_enforce<
+	type $mol_page__title_mrtest_29 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_page['title'] >
 	>
-	type $mol_page__tools_mrtest_29 = $mol_type_enforce<
+	type $mol_page__tools_mrtest_30 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['tools'] >
 	>
-	type $mol_page__body_mrtest_30 = $mol_type_enforce<
+	type $mol_page__body_mrtest_31 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['body'] >
 	>
-	type $mol_text__text_mrtest_31 = $mol_type_enforce<
+	type $mol_text__text_mrtest_32 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_list__sub_mrtest_32 = $mol_type_enforce<
+	type $mol_list__sub_mrtest_33 = $mol_type_enforce<
 		ReturnType< $mrtest['validators_list'] >
 		,
 		ReturnType< $mol_list['sub'] >
 	>
-	type $mol_button_minor__click_mrtest_33 = $mol_type_enforce<
+	type $mol_button_minor__click_mrtest_34 = $mol_type_enforce<
 		ReturnType< $mrtest['add_validator'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub_mrtest_34 = $mol_type_enforce<
+	type $mol_button_minor__sub_mrtest_35 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
 	>
-	type $mol_string_button__hint_mrtest_35 = $mol_type_enforce<
+	type $mol_string_button__hint_mrtest_36 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_string_button['hint'] >
 	>
-	type $mol_string_button__value_mrtest_36 = $mol_type_enforce<
+	type $mol_string_button__value_mrtest_37 = $mol_type_enforce<
 		ReturnType< $mrtest['validator_title'] >
 		,
 		ReturnType< $mol_string_button['value'] >
 	>
-	type $mol_button_minor__click_mrtest_37 = $mol_type_enforce<
+	type $mol_button_minor__click_mrtest_38 = $mol_type_enforce<
 		ReturnType< $mrtest['validator_delete'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub_mrtest_38 = $mol_type_enforce<
+	type $mol_button_minor__sub_mrtest_39 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
 	>
-	type $mol_row__sub_mrtest_39 = $mol_type_enforce<
+	type $mol_row__sub_mrtest_40 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_row['sub'] >
 	>
-	type $mol_textarea__hint_mrtest_40 = $mol_type_enforce<
+	type $mol_textarea__hint_mrtest_41 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_textarea['hint'] >
 	>
-	type $mol_textarea__value_mrtest_41 = $mol_type_enforce<
+	type $mol_textarea__value_mrtest_42 = $mol_type_enforce<
 		ReturnType< $mrtest['validator_source'] >
 		,
 		ReturnType< $mol_textarea['value'] >
 	>
-	type $mol_button_minor__click_mrtest_42 = $mol_type_enforce<
+	type $mol_button_minor__click_mrtest_43 = $mol_type_enforce<
 		ReturnType< $mrtest['test_delete'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub_mrtest_43 = $mol_type_enforce<
+	type $mol_button_minor__sub_mrtest_44 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
 	>
-	type $mol_list__rows_mrtest_44 = $mol_type_enforce<
+	type $mol_list__rows_mrtest_45 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_textarea__hint_mrtest_45 = $mol_type_enforce<
+	type $mol_textarea__hint_mrtest_46 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_textarea['hint'] >
 	>
-	type $mol_textarea__value_mrtest_46 = $mol_type_enforce<
+	type $mol_textarea__value_mrtest_47 = $mol_type_enforce<
 		ReturnType< $mrtest['source_code'] >
 		,
 		ReturnType< $mol_textarea['value'] >
 	>
-	type $mol_textarea__enabled_mrtest_47 = $mol_type_enforce<
+	type $mol_textarea__enabled_mrtest_48 = $mol_type_enforce<
 		ReturnType< $mrtest['test_editable'] >
 		,
 		ReturnType< $mol_textarea['enabled'] >
 	>
-	type $mol_list__rows_mrtest_48 = $mol_type_enforce<
+	type $mol_list__rows_mrtest_49 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_list__sub_mrtest_49 = $mol_type_enforce<
+	type $mol_list__sub_mrtest_50 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_list['sub'] >
 	>
-	type $mol_row__sub_mrtest_50 = $mol_type_enforce<
+	type $mol_row__sub_mrtest_51 = $mol_type_enforce<
 		ReturnType< $mrtest['test_item_sub'] >
 		,
 		ReturnType< $mol_row['sub'] >
 	>
-	type $mol_button_minor__title_mrtest_51 = $mol_type_enforce<
+	type $mol_button_minor__title_mrtest_52 = $mol_type_enforce<
 		ReturnType< $mrtest['test_item_title'] >
 		,
 		ReturnType< $mol_button_minor['title'] >
 	>
-	type $mol_button_minor__click_mrtest_52 = $mol_type_enforce<
+	type $mol_button_minor__click_mrtest_53 = $mol_type_enforce<
 		ReturnType< $mrtest['test_selected'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_pick__hint_mrtest_53 = $mol_type_enforce<
+	type $mol_pick__hint_mrtest_54 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_pick['hint'] >
 	>
-	type $mol_pick__trigger_content_mrtest_54 = $mol_type_enforce<
+	type $mol_pick__trigger_content_mrtest_55 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_pick['trigger_content'] >
 	>
-	type $mol_pick__bubble_content_mrtest_55 = $mol_type_enforce<
+	type $mol_pick__bubble_content_mrtest_56 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_pick['bubble_content'] >
 	>
-	type $mrtest_person_page__close_arg_mrtest_56 = $mol_type_enforce<
+	type $mrtest_person_page__close_arg_mrtest_57 = $mol_type_enforce<
 		({ 
 			'profile': any,
 		}) 
 		,
 		ReturnType< $mrtest_person_page['close_arg'] >
 	>
-	type $mrtest_person_page__person_mrtest_57 = $mol_type_enforce<
+	type $mrtest_person_page__person_mrtest_58 = $mol_type_enforce<
 		ReturnType< $mrtest['profile'] >
 		,
 		ReturnType< $mrtest_person_page['person'] >
 	>
-	type $mrtest_workspace_access__workspace_mrtest_58 = $mol_type_enforce<
+	type $mrtest_workspace_access__workspace_mrtest_59 = $mol_type_enforce<
 		ReturnType< $mrtest['current_workspace'] >
 		,
 		ReturnType< $mrtest_workspace_access['workspace'] >
 	>
-	type $mrtest_workspace_access__close_arg_mrtest_59 = $mol_type_enforce<
+	type $mrtest_workspace_access__close_arg_mrtest_60 = $mol_type_enforce<
 		({ 
 			'access': any,
 		}) 
 		,
 		ReturnType< $mrtest_workspace_access['close_arg'] >
 	>
-	type $mrtest_ui_button__click_mrtest_60 = $mol_type_enforce<
+	type $mrtest_ui_button__click_mrtest_61 = $mol_type_enforce<
 		ReturnType< $mrtest['test_make'] >
 		,
 		ReturnType< $mrtest_ui_button['click'] >
 	>
-	type $mrtest_ui_button__sub_mrtest_61 = $mol_type_enforce<
+	type $mrtest_ui_button__sub_mrtest_62 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mrtest_ui_button['sub'] >
 	>
-	type $mol_list__rows_mrtest_62 = $mol_type_enforce<
+	type $mol_list__rows_mrtest_63 = $mol_type_enforce<
 		ReturnType< $mrtest['tests_list'] >
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_button_minor__sub_mrtest_63 = $mol_type_enforce<
+	type $mol_button_minor__sub_mrtest_64 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
 	>
-	type $mol_link__hint_mrtest_64 = $mol_type_enforce<
+	type $mol_link__hint_mrtest_65 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link['hint'] >
 	>
-	type $mol_link__arg_mrtest_65 = $mol_type_enforce<
+	type $mol_link__arg_mrtest_66 = $mol_type_enforce<
 		({ 
 			'access': string,
 			'workspace': any,
@@ -9866,22 +9880,22 @@ declare namespace $ {
 		,
 		ReturnType< $mol_link['arg'] >
 	>
-	type $mol_link__sub_mrtest_66 = $mol_type_enforce<
+	type $mol_link__sub_mrtest_67 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_button_minor__hint_mrtest_67 = $mol_type_enforce<
+	type $mol_button_minor__hint_mrtest_68 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_minor['hint'] >
 	>
-	type $mol_button_minor__click_mrtest_68 = $mol_type_enforce<
+	type $mol_button_minor__click_mrtest_69 = $mol_type_enforce<
 		ReturnType< $mrtest['workspace_make'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub_mrtest_69 = $mol_type_enforce<
+	type $mol_button_minor__sub_mrtest_70 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
@@ -9895,6 +9909,7 @@ declare namespace $ {
 		Profile_icon( ): $mol_icon_account
 		Profile_link( ): $mol_link
 		Status( ): $hyoo_crus_status
+		Lights_icon( ): $mol_icon_brightness_4
 		Lighter( ): $mol_lights_toggle
 		Menu( ): $mol_page
 		LogoSource( ): $mol_icon_xml

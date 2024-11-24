@@ -13198,6 +13198,17 @@ var $;
 "use strict";
 
 ;
+	($.$mol_icon_brightness_4) = class $mol_icon_brightness_4 extends ($.$mol_icon) {
+		path(){
+			return "M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
 	($.$mol_check_icon) = class $mol_check_icon extends ($.$mol_check) {};
 
 
@@ -17159,8 +17170,13 @@ var $;
 			const obj = new this.$.$hyoo_crus_status();
 			return obj;
 		}
+		Lights_icon(){
+			const obj = new this.$.$mol_icon_brightness_4();
+			return obj;
+		}
 		Lighter(){
 			const obj = new this.$.$mol_lights_toggle();
+			(obj.Icon) = () => ((this.Lights_icon()));
 			return obj;
 		}
 		Menu(){
@@ -17507,6 +17523,7 @@ var $;
 	($mol_mem(($.$mrtest.prototype), "Profile_icon"));
 	($mol_mem(($.$mrtest.prototype), "Profile_link"));
 	($mol_mem(($.$mrtest.prototype), "Status"));
+	($mol_mem(($.$mrtest.prototype), "Lights_icon"));
 	($mol_mem(($.$mrtest.prototype), "Lighter"));
 	($mol_mem(($.$mrtest.prototype), "Menu"));
 	($mol_mem(($.$mrtest.prototype), "LogoSource"));
