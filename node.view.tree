@@ -330,12 +330,6 @@ $mol_theme_auto $mol_plugin
 
 $mol_icon_mustache $mol_icon path \M21 12C19 12 18 9 15 9S12 11 12 11 12 9 9 9 5 12 3 12C2 12 1 11 1 11S2 16 6 16C11 16 12 13 12 13S13 16 18 16C22 16 23 11 23 11S22 12 21 12Z
 
-$mol_icon_magnify $mol_icon path \M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z
-
-$mol_icon_plus $mol_icon path \M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z
-
-$mrtest_ui_button $mol_button_minor
-
 $mol_icon_account $mol_icon path \M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z
 
 $mol_check $mol_button_minor
@@ -879,11 +873,119 @@ $mol_text_span $mol_paragraph
 		^
 		mol_text_type <= type \
 
+$mol_icon_plus $mol_icon path \M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z
+
 $mol_icon_delete $mol_icon path \M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z
 
 $mol_row $mol_view
 
 $mol_icon_delete_outline $mol_icon path \M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z
+
+$mol_icon_magnify $mol_icon path \M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z
+
+$mol_icon_security $mol_icon path \M12,12H19C18.47,16.11 15.72,19.78 12,20.92V12H5V6.3L12,3.19M12,1L3,5V11C3,16.55 6.84,21.73 12,23C17.16,21.73 21,16.55 21,11V5L12,1Z
+
+$mol_chip $mol_view
+	sub /
+		<= title
+
+$mol_labeler $mol_list
+	rows /
+		<= Label $mol_view
+			minimal_height 32
+			sub <= label /$mol_view_content
+				<= title
+		<= Content $mol_view
+			minimal_height 24
+			sub <= content /
+
+$mol_form_field $mol_labeler
+	bids /string
+	label /
+		<= name \
+		<= Bid $mol_view
+			sub / <= bid \
+	content / <= control null
+
+$mol_form $mol_list
+	submit_allowed true
+	submit_blocked false
+	event *
+		^
+		keydown?event <=> keydown?event null
+	submit?event null
+	rows /
+		<= Body $mol_list
+			sub <= body <= form_fields /$mol_form_field
+		<= Foot $mol_row
+			sub <= foot <= buttons /$mol_view
+
+$mrtest_person_page $mol_page
+	person $mrtest_person
+		title? => title?
+	Title $mol_string_button
+		hint \Имя
+		value? <=> title?
+	tools /
+		<= Close $mol_link
+			hint \Закрыть
+			arg <= close_arg *
+			sub /
+				<= Close_icon $mol_icon_close
+	body /
+		<= Id_block $mol_form_field
+			name \Идентификатор
+			Content <= Id $mol_chip
+				title <= id \
+		<= Key_block $mol_form_field
+			name \Публичный ключ
+			Content <= Key $mol_text_code
+				sidebar_showed true
+				text <= key \
+
+$hyoo_crus_land_rights $mol_list
+	land $hyoo_crus_land
+	rows /
+		<= Add $mol_view sub /
+			<= Add_key $mol_string
+				hint @ \public key
+				value? <=> add_key? \
+				commit? <=> add_commit? null
+			<= Add_commit $mol_button_minor
+				click? <=> add_commit? null
+				sub /
+					<= Add_commit_icon $mol_icon_plus
+		^ gifts /
+			<= Gift*0 $mol_view sub /
+				<= Gift_peer* $mol_view sub /
+					<= Gift_avatar* $mol_avatar
+						id <= peer_id* \
+					<= Gift_name* $mol_paragraph
+						title <= peer_name* \
+				<= Gift_rank* $mol_select
+					value? <=> gift_rank*? \nil
+					dictionary *
+						nil @ \🛑 Deny
+						get @ \👀 Read
+						reg @ \📢 Auth
+						mod @ \✍ Post
+						law @ \👑 Rule
+
+$mrtest_workspace_access $mol_page
+	title @ \Права доступа
+	workspace $mrtest_workspace
+		land => land
+	tools /
+		<= Close $mol_link
+			hint @ \Закрыть
+			arg <= close_arg *
+			sub /
+				<= Close_icon $mol_icon_close
+	body /
+		<= Rights $hyoo_crus_land_rights
+			land <= land
+
+$mrtest_ui_button $mol_button_minor
 
 $mol_text_list $mol_text
 	auto_scroll null
@@ -907,21 +1009,8 @@ $mrtest $mol_book2_catalog
 		<= Menu $mol_page
 			Logo <= LogoMenu $mol_icon_mustache
 			title \Мистер Тест
-			tools /
-				<= Search $mol_button_minor
-					sub / <= Search_icon $mol_icon_magnify
-				<= Add $mol_button_minor
-					hint \Создать рабочее пространство
-					click? <=> workspace_make? null
-					sub / <= Add_icon $mol_icon_plus
-			body /
-				<= Create_test $mrtest_ui_button
-					click? <=> test_make? null
-					sub /
-						<= AddButtonIcon $mol_icon_plus
-						\Создать тест
-				<= Workspaces $mol_list
-					rows <= tests_list /
+			tools <= menu_tools /
+			body <= menu_body /
 			foot /
 				<= Profile_link $mol_link
 					hint \Профиль
@@ -938,6 +1027,7 @@ $mrtest $mol_book2_catalog
 			tools /
 				<= Test_title $mol_string_button
 					value? <=> test_title? \
+					enabled <= test_editable
 				<= Selected_language $mol_select
 					filter_hint \Выберите язык...
 					value? <=> selected_langauge? \mrtest
@@ -968,6 +1058,7 @@ $mrtest $mol_book2_catalog
 	Source $mol_textarea
 		hint \Введите описание теста на языке MrTest
 		value? <=> source_code? \
+		enabled <= test_editable
 	Source_postman $mol_list
 		rows /
 			<= Validator_header $mol_text
@@ -995,18 +1086,54 @@ $mrtest $mol_book2_catalog
 				value? <=> validator_source*? \
 	-
 	Test_item* $mol_row
+		sub <=> test_item_sub* /
+	-
+	Test_item_link* $mol_button_minor
+		title? <=> test_item_title*? \Новый тест
+		click? <= test_selected*? null
+	-
+	Test_item_options* $mol_pick
+		hint \Параметры теста
+		trigger_content /
+			<= Test_options_trigger_icon* $mol_icon_dots_vertical
+		bubble_content /
+			<= Test_options_content* $mol_list rows /
+				<= Test_delete* $mol_button_minor
+					click? <=> test_delete*? null
+					sub /
+						<= Delete_icon* $mol_icon_delete_outline
+						\Удалить
+	-
+	Profile_page* $mrtest_person_page
+		close_arg *
+			profile null
+		person <= profile* $mrtest_person
+	-
+	Access_page $mrtest_workspace_access
+		workspace <= current_workspace
+		close_arg * access null
+	-
+	Create_test_button $mrtest_ui_button
+		click? <=> test_make? null
 		sub /
-			<= Test_link* $mol_button_minor
-				title? <=> test_item_title*? \Новый тест
-				click? <= test_selected*? null
-			<= Test_options* $mol_pick
-				hint \Параметры теста
-				trigger_content /
-					<= Test_options_trigger_icon* $mol_icon_dots_vertical
-				bubble_content /
-					<= Test_options_content* $mol_list rows /
-						<= Test_delete* $mol_button_minor
-							click? <=> test_delete*? null
-							sub /
-								<= Delete_icon* $mol_icon_delete_outline
-								\Удалить
+			<= AddButtonIcon $mol_icon_plus
+			\Создать тест
+	-
+	Workspaces_list $mol_list
+		rows <= tests_list /
+	-
+	Search $mol_button_minor
+		sub / <= Search_icon $mol_icon_magnify
+	-
+	Access_link $mol_link
+		hint @ \Права доступа
+		arg *
+			access \
+			workspace null
+		sub /
+			<= Access_icon $mol_icon_security
+	-
+	Add_workspace $mol_button_minor
+		hint \Создать рабочее пространство
+		click? <=> workspace_make? null
+		sub / <= Add_icon $mol_icon_plus
