@@ -48,7 +48,42 @@
 }
 
 :root, [mol_theme="$mol_theme_dark"] {
-	--mol_theme_luma: 2;
+	--mol_theme_luma: -1;
+	--mol_theme_image: invert(1) hue-rotate(180deg);
+
+	--mol_theme_back: hsl( var(--mol_theme_hue), 5%, 10% );
+	--mol_theme_card: hsl( var(--mol_theme_hue), 5%, 20%, .25 );
+	--mol_theme_field: hsl( var(--mol_theme_hue), 5%, 8%, .25 );
+	--mol_theme_hover: hsl( var(--mol_theme_hue), 0%, 35%, .1 );
+	
+	--mol_theme_text: hsl( var(--mol_theme_hue), 5%, 80% );
+	--mol_theme_shade: hsl( var(--mol_theme_hue), 5%, 60%, 1 );
+	--mol_theme_line: hsl( var(--mol_theme_hue), 5%, 50%, .25 );
+	--mol_theme_focus: hsl( calc( var(--mol_theme_hue) + 180deg ), 50%, 65% );
+	
+	--mol_theme_control: hsl( var(--mol_theme_hue), 10%, 65% );
+	--mol_theme_current: hsl( calc( var(--mol_theme_hue) - var(--mol_theme_hue_spread) ), 10%, 65% );
+	--mol_theme_special: hsl( calc( var(--mol_theme_hue) + var(--mol_theme_hue_spread) ), 10%, 65% );
+}
+
+:root, [mol_theme="$mol_theme_light"] {
+	--mol_theme_luma: 1;
+	--mol_theme_image: none;
+
+	--mol_theme_back: hsl( var(--mol_theme_hue), 5%, 92% );
+	--mol_theme_card: hsl( var(--mol_theme_hue), 5%, 100%, .5 );
+	--mol_theme_field: hsl( var(--mol_theme_hue), 5%, 100%, .75 );
+	--mol_theme_hover: hsl( var(--mol_theme_hue), 5%, 50%, .1 );
+	
+	--mol_theme_text: hsl( var(--mol_theme_hue), 5%, 0% );
+	--mol_theme_shade: hsl( var(--mol_theme_hue), 5%, 40%, 1 );
+	--mol_theme_line: hsl( var(--mol_theme_hue), 5%, 50%, .5 );
+	--mol_theme_focus: hsl( calc( var(--mol_theme_hue) + 180deg ), 50%, 40% );
+	
+	--mol_theme_control: hsl( var(--mol_theme_hue), 10%, 10% );
+	--mol_theme_current: hsl( calc( var(--mol_theme_hue) - var(--mol_theme_hue_spread) ), 10%, 30% );
+	--mol_theme_special: hsl( calc( var(--mol_theme_hue) + var(--mol_theme_hue_spread) ), 10%, 30% );
+
 }
 
 [mol_book2] > *:not(:first-of-type):before,
