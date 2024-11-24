@@ -18,6 +18,7 @@ $mrtest $mol_book2_catalog
 						<= Profile_icon $mol_icon_account
 				<= Status $hyoo_crus_status
 				<= Lighter $mol_lights_toggle
+					Icon <= Lights_icon $mol_icon_brightness_4
 		<= Source_page $mol_page
 			Logo <= LogoSource $mol_icon_xml
 			title \
