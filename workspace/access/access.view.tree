@@ -1,0 +1,13 @@
+$mrtest_workspace_access $mol_page
+	title @ \Права доступа
+	workspace $mrtest_workspace
+		land => land
+	tools /
+		<= Close $mol_link
+			hint @ \Закрыть
+			arg <= close_arg *
+			sub /
+				<= Close_icon $mol_icon_close
+	body /
+		<= Rights $hyoo_crus_land_rights
+			land <= land

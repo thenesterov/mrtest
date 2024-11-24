@@ -18,7 +18,7 @@ namespace $.$$ {
 
 		@ $mol_mem
 		source_code(next?: string): string {
-			return this.current_test().Source(null)!.text(next) ?? ""
+			return this.current_test()?.Source(null)!.text(next) ?? ""
 		}
 
 		@ $mol_mem
@@ -35,13 +35,28 @@ namespace $.$$ {
 		}
 
 		@ $mol_mem
+		profile() {
+			const id = this.$.$mol_state_arg.value( "profile" )
+			if( !id ) return null!
+
+			return this.$.$hyoo_crus_glob.Node($hyoo_crus_ref(id), $mrtest_person)
+		}
+
+		@ $mol_mem
+		access() {
+			return this.$.$mol_state_arg.value( 'access' ) !== null
+		}
+
+		@ $mol_mem
 		pages(): readonly any[] {
 			return [
 				this.Menu(),
+				... this.profile() ? [ this.Profile_page( this.profile() ) ] : [],
+				... this.access() ? [ this.Access_page() ] : [],
 				this.Gap('left'),
 				this.Source_page(),
 				this.Output_page(),
-				this.Gap('right')
+				this.Gap('right'),
 			]
 		}
 
@@ -120,6 +135,23 @@ namespace $.$$ {
 		}
 
 		@ $mol_mem
+		menu_body(): readonly any[] {
+			return [
+				... this.test_creation_available() ? [this.Create_test_button()] : [],
+				this.Workspaces_list()
+			]
+		}
+
+		@ $mol_mem
+		menu_tools(): readonly any[] {
+			return [
+				this.Search(),
+				... this.workspace_editable() ? [this.Access_link()] : [],
+				this.Add_workspace()
+			]
+		}
+
+		@ $mol_mem
 		person() {
 			return this.$.$hyoo_crus_glob.home( $mrtest_person )
 		}
@@ -138,7 +170,7 @@ namespace $.$$ {
 		current_workspace() {
 			const workspace_id = this.$.$mol_state_arg.value("")
 			if (!workspace_id) {
-				throw Error("Рабочее пространство отсутствует");
+				return null;
 			}
 			return this.workspace(workspace_id)
 		}
@@ -157,28 +189,49 @@ namespace $.$$ {
 		current_test() {
 			const test_id = this.$.$mol_state_arg.value("test")
 			if (!test_id) {
-				throw Error("Тест не выбран");
+				return null;
 			}
 			return this.test(test_id)
 		}
 
+		test_creation_available(): boolean {
+			return this.current_workspace() && this.workspace_editable() ? true : false;
+		}
+
+		@ $mol_mem
+		workspace_editable() {
+			return this.current_workspace()?.can_change() ?? false;
+		}
+
+		@ $mol_mem
+		test_editable() {
+			return this.current_test()?.can_change() ?? false;
+		}
+
 		test_make() {
-			const test = this.current_workspace().test_make()
+			const test = this.current_workspace()!.test_make()
 			this.$.$mol_state_arg.go({ "test": test.ref().description! })
 		}
 
 		test_title( next?: string | undefined ): string {
-			return this.current_test().Title(null)!.val(next) ?? ""
+			return this.current_test()?.Title(null)!.val(next) ?? ""
+		}
+
+		test_item_sub( id: any ): readonly any[] {
+			return [
+				this.Test_item_link(id),
+				... this.test_editable() ? [this.Test_item_options(id)] : []
+			]
 		}
 
 		@ $mol_mem_key
 		test_item_title( id : string,) {
-			return this.test(id).Title(null)!.val() || `${ id }`;
+			return this.test(id).Title(null)!.val() || `${ id }`.slice(0, 17) + '...';
 		}
 
 		@ $mol_mem
 		tests_ids(): readonly string[] {
-			return this.current_workspace().test_list().map(test => test.ref().description!).reverse()
+			return this.current_workspace()?.test_list().map(test => test.ref().description!).reverse() ?? []
 		}
 
 		override tests_list(): readonly any[] {
@@ -188,7 +241,7 @@ namespace $.$$ {
 		}
 
 		test_delete( id: any, next?: any ) {
-			this.current_workspace().test_delete(id);
+			this.current_workspace()!.test_delete(id);
 		}
 
 		test_selected( id: any, next?: any ) {

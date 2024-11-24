@@ -6,21 +6,8 @@ $mrtest $mol_book2_catalog
 		<= Menu $mol_page
 			Logo <= LogoMenu $mol_icon_mustache
 			title \Мистер Тест
-			tools /
-				<= Search $mol_button_minor
-					sub / <= Search_icon $mol_icon_magnify
-				<= Add $mol_button_minor
-					hint \Создать рабочее пространство
-					click? <=> workspace_make? null
-					sub / <= Add_icon $mol_icon_plus
-			body /
-				<= Create_test $mrtest_ui_button
-					click? <=> test_make? null
-					sub /
-						<= AddButtonIcon $mol_icon_plus
-						\Создать тест
-				<= Workspaces $mol_list
-					rows <= tests_list /
+			tools <= menu_tools /
+			body <= menu_body /
 			foot /
 				<= Profile_link $mol_link
 					hint \Профиль
@@ -37,6 +24,7 @@ $mrtest $mol_book2_catalog
 			tools /
 				<= Test_title $mol_string_button
 					value? <=> test_title? \
+					enabled <= test_editable
 				<= Selected_language $mol_select
 					filter_hint \Выберите язык...
 					value? <=> selected_langauge? \mrtest
@@ -67,6 +55,7 @@ $mrtest $mol_book2_catalog
 	Source $mol_textarea
 		hint \Введите описание теста на языке MrTest
 		value? <=> source_code? \
+		enabled <= test_editable
 	Source_postman $mol_list
 		rows /
 			<= Validator_header $mol_text
@@ -94,18 +83,54 @@ $mrtest $mol_book2_catalog
 				value? <=> validator_source*? \
 	-
 	Test_item* $mol_row
+		sub <=> test_item_sub* /
+	-
+	Test_item_link* $mol_button_minor
+		title? <=> test_item_title*? \Новый тест
+		click? <= test_selected*? null
+	-
+	Test_item_options* $mol_pick
+		hint \Параметры теста
+		trigger_content /
+			<= Test_options_trigger_icon* $mol_icon_dots_vertical
+		bubble_content /
+			<= Test_options_content* $mol_list rows /
+				<= Test_delete* $mol_button_minor
+					click? <=> test_delete*? null
+					sub /
+						<= Delete_icon* $mol_icon_delete_outline
+						\Удалить
+	-
+	Profile_page* $mrtest_person_page
+		close_arg *
+			profile null
+		person <= profile* $mrtest_person
+	-
+	Access_page $mrtest_workspace_access
+		workspace <= current_workspace
+		close_arg * access null
+	-
+	Create_test_button $mrtest_ui_button
+		click? <=> test_make? null
 		sub /
-			<= Test_link* $mol_button_minor
-				title? <=> test_item_title*? \Новый тест
-				click? <= test_selected*? null
-			<= Test_options* $mol_pick
-				hint \Параметры теста
-				trigger_content /
-					<= Test_options_trigger_icon* $mol_icon_dots_vertical
-				bubble_content /
-					<= Test_options_content* $mol_list rows /
-						<= Test_delete* $mol_button_minor
-							click? <=> test_delete*? null
-							sub /
-								<= Delete_icon* $mol_icon_delete_outline
-								\Удалить
+			<= AddButtonIcon $mol_icon_plus
+			\Создать тест
+	-
+	Workspaces_list $mol_list
+		rows <= tests_list /
+	-
+	Search $mol_button_minor
+		sub / <= Search_icon $mol_icon_magnify
+	-
+	Access_link $mol_link
+		hint @ \Права доступа
+		arg *
+			access \
+			workspace null
+		sub /
+			<= Access_icon $mol_icon_security
+	-
+	Add_workspace $mol_button_minor
+		hint \Создать рабочее пространство
+		click? <=> workspace_make? null
+		sub / <= Add_icon $mol_icon_plus

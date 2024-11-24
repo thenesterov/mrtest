@@ -5,7 +5,9 @@
 	margin: 0 auto;
 }
 
-[mrtest_menu] {
+[mrtest_menu],
+[mrtest_profile_page],
+[mrtest_access_page] {
 	flex-grow: 0;
 	flex-basis: 320px;
 }
@@ -24,7 +26,7 @@
 	justify-content: space-between;
 }
 
-[mrtest_test_link] {
+[mrtest_test_item_link] {
 	flex-grow: 1;
 }
 
@@ -36,7 +38,7 @@
 	opacity: 1;
 }
 
-[mrtest_create_test] {
+[mrtest_create_test_button] {
 	margin-bottom: var(--mol_gap_block);
 }
 

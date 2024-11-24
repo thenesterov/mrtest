@@ -5,7 +5,7 @@ namespace $.$$ {
 	}) {
 		@ $mol_action
 		test_make() {
-			return this.Test(null)!.make({ '': $hyoo_crus_rank.get })
+			return this.Test(null)!.make(this.land())
 		}
 
 		@ $mol_mem
