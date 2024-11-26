@@ -20217,7 +20217,7 @@ var $;
                     return true;
                 }
                 else {
-                    this.search_filter(" ");
+                    this.search_filter("");
                     return false;
                 }
             }
