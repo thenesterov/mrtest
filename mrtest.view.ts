@@ -135,8 +135,28 @@ namespace $.$$ {
 		}
 
 		@ $mol_mem
+		search_enabled() {
+			if ($mol_state_arg.value("search") == "") {
+				return true;
+			}
+			else {
+				this.search_filter(" ");
+				return false;
+			}
+		}
+
+		@ $mol_mem
+		search_highlight() {
+			if (this.search_enabled()) {
+				return "var(--mol_theme_focus)"
+			}
+			return "var(--mol_theme_control)"
+		}
+
+		@ $mol_mem
 		menu_body(): readonly any[] {
 			return [
+				... this.search_enabled() ? [this.Search_input()] : [],
 				... this.test_creation_available() ? [this.Create_test_button()] : [],
 				this.Workspaces_list()
 			]
@@ -149,6 +169,18 @@ namespace $.$$ {
 				... this.workspace_editable() ? [this.Access_link()] : [],
 				this.Add_workspace()
 			]
+		}
+
+		@ $mol_mem
+		search_filter( next?: string | undefined ): string {
+			return next ?? ""
+		}
+
+		highlight_test_item_link( id: any ): string {
+			if (id == $mol_state_arg.value("test")) {
+				return "var(--mol_theme_focus)"
+			}
+			return "var(--mol_theme_control)"
 		}
 
 		@ $mol_mem
@@ -226,7 +258,7 @@ namespace $.$$ {
 
 		@ $mol_mem_key
 		test_item_title( id : string,) {
-			return this.test(id).Title(null)!.val() || `${ id }`.slice(0, 17) + '...';
+			return this.test(id).Title(null)!.val() || `${ id }`.slice(18);
 		}
 
 		@ $mol_mem
@@ -235,7 +267,14 @@ namespace $.$$ {
 		}
 
 		override tests_list(): readonly any[] {
-			return this.tests_ids().map( id => {
+			let tests = Object.fromEntries(this.tests_ids().map(id => [
+				id, this.test_item_title(id)
+			]))
+			let sorted = Object.entries(tests).sort((a, b) => a[1].localeCompare(b[1]));
+			let filtered = sorted.filter($mol_match_text(this.search_filter(), name => [name[1]]))
+			let tests_ids = Object.keys(Object.fromEntries(filtered))
+
+			return tests_ids.map( id => {
 				return this.Test_item( id )
 			} )
 		}

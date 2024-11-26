@@ -89,6 +89,12 @@ $mrtest $mol_book2_catalog
 	Test_item_link* $mol_button_minor
 		title? <=> test_item_title*? \Новый тест
 		click? <= test_selected*? null
+		style *
+			color <= highlight_test_item_link* \var(--mol_theme_control)
+		sub /
+			<= Test_item_title* $mol_dimmer
+				haystack <= test_item_title*? \Новый тест
+				needle <=> search_filter \
 	-
 	Test_item_options* $mol_pick
 		hint \Параметры теста
@@ -120,8 +126,15 @@ $mrtest $mol_book2_catalog
 	Workspaces_list $mol_list
 		rows <= tests_list /
 	-
-	Search $mol_button_minor
+	Search $mol_link
+		arg * search \
 		sub / <= Search_icon $mol_icon_magnify
+		style *
+			color <= search_highlight
+	-
+	Search_input $mol_string
+		hint \Поиск...
+		value? <=> search_filter? \
 	-
 	Access_link $mol_link
 		hint @ \Права доступа
