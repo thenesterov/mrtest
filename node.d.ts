@@ -9753,126 +9753,172 @@ declare namespace $ {
 		,
 		ReturnType< $mol_textarea['value'] >
 	>
-	type $mol_button_minor__click_mrtest_43 = $mol_type_enforce<
+	type $mol_dimmer__haystack_mrtest_43 = $mol_type_enforce<
+		ReturnType< $mrtest['test_item_title'] >
+		,
+		ReturnType< $mol_dimmer['haystack'] >
+	>
+	type $mol_dimmer__needle_mrtest_44 = $mol_type_enforce<
+		ReturnType< $mrtest['search_filter'] >
+		,
+		ReturnType< $mol_dimmer['needle'] >
+	>
+	type $mol_button_minor__click_mrtest_45 = $mol_type_enforce<
 		ReturnType< $mrtest['test_delete'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub_mrtest_44 = $mol_type_enforce<
+	type $mol_button_minor__sub_mrtest_46 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
 	>
-	type $mol_list__rows_mrtest_45 = $mol_type_enforce<
+	type $mol_list__rows_mrtest_47 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_textarea__hint_mrtest_46 = $mol_type_enforce<
+	type $mol_textarea__hint_mrtest_48 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_textarea['hint'] >
 	>
-	type $mol_textarea__value_mrtest_47 = $mol_type_enforce<
+	type $mol_textarea__value_mrtest_49 = $mol_type_enforce<
 		ReturnType< $mrtest['source_code'] >
 		,
 		ReturnType< $mol_textarea['value'] >
 	>
-	type $mol_textarea__enabled_mrtest_48 = $mol_type_enforce<
+	type $mol_textarea__enabled_mrtest_50 = $mol_type_enforce<
 		ReturnType< $mrtest['test_editable'] >
 		,
 		ReturnType< $mol_textarea['enabled'] >
 	>
-	type $mol_list__rows_mrtest_49 = $mol_type_enforce<
+	type $mol_list__rows_mrtest_51 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_list__sub_mrtest_50 = $mol_type_enforce<
+	type $mol_list__sub_mrtest_52 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_list['sub'] >
 	>
-	type $mol_row__sub_mrtest_51 = $mol_type_enforce<
+	type $mol_row__sub_mrtest_53 = $mol_type_enforce<
 		ReturnType< $mrtest['test_item_sub'] >
 		,
 		ReturnType< $mol_row['sub'] >
 	>
-	type $mol_button_minor__title_mrtest_52 = $mol_type_enforce<
+	type $mol_button_minor__title_mrtest_54 = $mol_type_enforce<
 		ReturnType< $mrtest['test_item_title'] >
 		,
 		ReturnType< $mol_button_minor['title'] >
 	>
-	type $mol_button_minor__click_mrtest_53 = $mol_type_enforce<
+	type $mol_button_minor__click_mrtest_55 = $mol_type_enforce<
 		ReturnType< $mrtest['test_selected'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_pick__hint_mrtest_54 = $mol_type_enforce<
+	type $mol_button_minor__style_mrtest_56 = $mol_type_enforce<
+		({ 
+			'color': ReturnType< $mrtest['highlight_test_item_link'] >,
+		}) 
+		,
+		ReturnType< $mol_button_minor['style'] >
+	>
+	type $mol_button_minor__sub_mrtest_57 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_pick__hint_mrtest_58 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_pick['hint'] >
 	>
-	type $mol_pick__trigger_content_mrtest_55 = $mol_type_enforce<
+	type $mol_pick__trigger_content_mrtest_59 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_pick['trigger_content'] >
 	>
-	type $mol_pick__bubble_content_mrtest_56 = $mol_type_enforce<
+	type $mol_pick__bubble_content_mrtest_60 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_pick['bubble_content'] >
 	>
-	type $mrtest_person_page__close_arg_mrtest_57 = $mol_type_enforce<
+	type $mrtest_person_page__close_arg_mrtest_61 = $mol_type_enforce<
 		({ 
 			'profile': any,
 		}) 
 		,
 		ReturnType< $mrtest_person_page['close_arg'] >
 	>
-	type $mrtest_person_page__person_mrtest_58 = $mol_type_enforce<
+	type $mrtest_person_page__person_mrtest_62 = $mol_type_enforce<
 		ReturnType< $mrtest['profile'] >
 		,
 		ReturnType< $mrtest_person_page['person'] >
 	>
-	type $mrtest_workspace_access__workspace_mrtest_59 = $mol_type_enforce<
+	type $mrtest_workspace_access__workspace_mrtest_63 = $mol_type_enforce<
 		ReturnType< $mrtest['current_workspace'] >
 		,
 		ReturnType< $mrtest_workspace_access['workspace'] >
 	>
-	type $mrtest_workspace_access__close_arg_mrtest_60 = $mol_type_enforce<
+	type $mrtest_workspace_access__close_arg_mrtest_64 = $mol_type_enforce<
 		({ 
 			'access': any,
 		}) 
 		,
 		ReturnType< $mrtest_workspace_access['close_arg'] >
 	>
-	type $mrtest_ui_button__click_mrtest_61 = $mol_type_enforce<
+	type $mrtest_ui_button__click_mrtest_65 = $mol_type_enforce<
 		ReturnType< $mrtest['test_make'] >
 		,
 		ReturnType< $mrtest_ui_button['click'] >
 	>
-	type $mrtest_ui_button__sub_mrtest_62 = $mol_type_enforce<
+	type $mrtest_ui_button__sub_mrtest_66 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mrtest_ui_button['sub'] >
 	>
-	type $mol_list__rows_mrtest_63 = $mol_type_enforce<
+	type $mol_list__rows_mrtest_67 = $mol_type_enforce<
 		ReturnType< $mrtest['tests_list'] >
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_button_minor__sub_mrtest_64 = $mol_type_enforce<
+	type $mol_link__arg_mrtest_68 = $mol_type_enforce<
+		({ 
+			'search': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__sub_mrtest_69 = $mol_type_enforce<
 		readonly(any)[]
 		,
-		ReturnType< $mol_button_minor['sub'] >
+		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_link__hint_mrtest_65 = $mol_type_enforce<
+	type $mol_link__style_mrtest_70 = $mol_type_enforce<
+		({ 
+			'color': ReturnType< $mrtest['search_highlight'] >,
+		}) 
+		,
+		ReturnType< $mol_link['style'] >
+	>
+	type $mol_string__hint_mrtest_71 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_string__value_mrtest_72 = $mol_type_enforce<
+		ReturnType< $mrtest['search_filter'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_link__hint_mrtest_73 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link['hint'] >
 	>
-	type $mol_link__arg_mrtest_66 = $mol_type_enforce<
+	type $mol_link__arg_mrtest_74 = $mol_type_enforce<
 		({ 
 			'access': string,
 			'workspace': any,
@@ -9880,22 +9926,22 @@ declare namespace $ {
 		,
 		ReturnType< $mol_link['arg'] >
 	>
-	type $mol_link__sub_mrtest_67 = $mol_type_enforce<
+	type $mol_link__sub_mrtest_75 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_button_minor__hint_mrtest_68 = $mol_type_enforce<
+	type $mol_button_minor__hint_mrtest_76 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_minor['hint'] >
 	>
-	type $mol_button_minor__click_mrtest_69 = $mol_type_enforce<
+	type $mol_button_minor__click_mrtest_77 = $mol_type_enforce<
 		ReturnType< $mrtest['workspace_make'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub_mrtest_70 = $mol_type_enforce<
+	type $mol_button_minor__sub_mrtest_78 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
@@ -9952,6 +9998,9 @@ declare namespace $ {
 		test_item_sub( id: any): readonly(any)[]
 		test_item_title( id: any, next?: string ): string
 		test_selected( id: any, next?: any ): any
+		highlight_test_item_link( id: any): string
+		search_filter( next?: string ): string
+		Test_item_title( id: any): $mol_dimmer
 		Test_options_trigger_icon( id: any): $mol_icon_dots_vertical
 		test_delete( id: any, next?: any ): any
 		Delete_icon( id: any): $mol_icon_delete_outline
@@ -9978,7 +10027,8 @@ declare namespace $ {
 		Access_page( ): $mrtest_workspace_access
 		Create_test_button( ): $mrtest_ui_button
 		Workspaces_list( ): $mol_list
-		Search( ): $mol_button_minor
+		Search( ): $mol_link
+		Search_input( ): $mol_string
 		Access_link( ): $mol_link
 		Add_workspace( ): $mol_button_minor
 	}
@@ -10008,8 +10058,12 @@ declare namespace $.$$ {
         validator_delete(id: number, next?: any): void;
         validator_title(id: any, next?: string | undefined): string;
         validator_source(id: any, next?: string | undefined): string;
+        search_enabled(): boolean;
+        search_highlight(): "var(--mol_theme_focus)" | "var(--mol_theme_control)";
         menu_body(): readonly any[];
         menu_tools(): readonly any[];
+        search_filter(next?: string | undefined): string;
+        highlight_test_item_link(id: any): string;
         person(): $hyoo_crus_home;
         person_id(): string;
         workspace(id: string): $hyoo_crus_node;

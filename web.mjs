@@ -17367,6 +17367,19 @@ var $;
 			if(next !== undefined) return next;
 			return null;
 		}
+		highlight_test_item_link(id){
+			return "var(--mol_theme_control)";
+		}
+		search_filter(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Test_item_title(id){
+			const obj = new this.$.$mol_dimmer();
+			(obj.haystack) = () => ((this.test_item_title(id)));
+			(obj.needle) = () => ((this.search_filter()));
+			return obj;
+		}
 		Test_options_trigger_icon(id){
 			const obj = new this.$.$mol_icon_dots_vertical();
 			return obj;
@@ -17464,6 +17477,8 @@ var $;
 			const obj = new this.$.$mol_button_minor();
 			(obj.title) = (next) => ((this.test_item_title(id, next)));
 			(obj.click) = (next) => ((this.test_selected(id)));
+			(obj.style) = () => ({"color": (this.highlight_test_item_link(id))});
+			(obj.sub) = () => ([(this.Test_item_title(id))]);
 			return obj;
 		}
 		Test_item_options(id){
@@ -17497,8 +17512,16 @@ var $;
 			return obj;
 		}
 		Search(){
-			const obj = new this.$.$mol_button_minor();
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({"search": ""});
 			(obj.sub) = () => ([(this.Search_icon())]);
+			(obj.style) = () => ({"color": (this.search_highlight())});
+			return obj;
+		}
+		Search_input(){
+			const obj = new this.$.$mol_string();
+			(obj.hint) = () => ("Поиск...");
+			(obj.value) = (next) => ((this.search_filter(next)));
 			return obj;
 		}
 		Access_link(){
@@ -17557,6 +17580,8 @@ var $;
 	($mol_mem_key(($.$mrtest.prototype), "Validator_source"));
 	($mol_mem_key(($.$mrtest.prototype), "test_item_title"));
 	($mol_mem_key(($.$mrtest.prototype), "test_selected"));
+	($mol_mem(($.$mrtest.prototype), "search_filter"));
+	($mol_mem_key(($.$mrtest.prototype), "Test_item_title"));
 	($mol_mem_key(($.$mrtest.prototype), "Test_options_trigger_icon"));
 	($mol_mem_key(($.$mrtest.prototype), "test_delete"));
 	($mol_mem_key(($.$mrtest.prototype), "Delete_icon"));
@@ -17580,6 +17605,7 @@ var $;
 	($mol_mem(($.$mrtest.prototype), "Create_test_button"));
 	($mol_mem(($.$mrtest.prototype), "Workspaces_list"));
 	($mol_mem(($.$mrtest.prototype), "Search"));
+	($mol_mem(($.$mrtest.prototype), "Search_input"));
 	($mol_mem(($.$mrtest.prototype), "Access_link"));
 	($mol_mem(($.$mrtest.prototype), "Add_workspace"));
 
@@ -20058,8 +20084,24 @@ var $;
                 this.$.$$.$mol_state_local.value(key, validator);
                 return validator.code ?? '';
             }
+            search_enabled() {
+                if ($mol_state_arg.value("search") == "") {
+                    return true;
+                }
+                else {
+                    this.search_filter(" ");
+                    return false;
+                }
+            }
+            search_highlight() {
+                if (this.search_enabled()) {
+                    return "var(--mol_theme_focus)";
+                }
+                return "var(--mol_theme_control)";
+            }
             menu_body() {
                 return [
+                    ...this.search_enabled() ? [this.Search_input()] : [],
                     ...this.test_creation_available() ? [this.Create_test_button()] : [],
                     this.Workspaces_list()
                 ];
@@ -20070,6 +20112,15 @@ var $;
                     ...this.workspace_editable() ? [this.Access_link()] : [],
                     this.Add_workspace()
                 ];
+            }
+            search_filter(next) {
+                return next ?? "";
+            }
+            highlight_test_item_link(id) {
+                if (id == $mol_state_arg.value("test")) {
+                    return "var(--mol_theme_focus)";
+                }
+                return "var(--mol_theme_control)";
             }
             person() {
                 return this.$.$hyoo_crus_glob.home($mrtest_person);
@@ -20124,13 +20175,19 @@ var $;
                 ];
             }
             test_item_title(id) {
-                return this.test(id).Title(null).val() || `${id}`.slice(0, 17) + '...';
+                return this.test(id).Title(null).val() || `${id}`.slice(18);
             }
             tests_ids() {
                 return this.current_workspace()?.test_list().map(test => test.ref().description).reverse() ?? [];
             }
             tests_list() {
-                return this.tests_ids().map(id => {
+                let tests = Object.fromEntries(this.tests_ids().map(id => [
+                    id, this.test_item_title(id)
+                ]));
+                let sorted = Object.entries(tests).sort((a, b) => a[1].localeCompare(b[1]));
+                let filtered = sorted.filter($mol_match_text(this.search_filter(), name => [name[1]]));
+                let tests_ids = Object.keys(Object.fromEntries(filtered));
+                return tests_ids.map(id => {
                     return this.Test_item(id);
                 });
             }
@@ -20182,10 +20239,19 @@ var $;
         ], $mrtest.prototype, "validator_source", null);
         __decorate([
             $mol_mem
+        ], $mrtest.prototype, "search_enabled", null);
+        __decorate([
+            $mol_mem
+        ], $mrtest.prototype, "search_highlight", null);
+        __decorate([
+            $mol_mem
         ], $mrtest.prototype, "menu_body", null);
         __decorate([
             $mol_mem
         ], $mrtest.prototype, "menu_tools", null);
+        __decorate([
+            $mol_mem
+        ], $mrtest.prototype, "search_filter", null);
         __decorate([
             $mol_mem
         ], $mrtest.prototype, "person", null);
@@ -20224,7 +20290,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("mrtest/mrtest.view.css", "[mrtest_output_page],\n[mrtest_source_page] {\n\tflex-grow: 0;\n\tflex-basis: 800px;\n\tmargin: 0 auto;\n}\n\n[mrtest_menu],\n[mrtest_profile_page],\n[mrtest_access_page] {\n\tflex-grow: 0;\n\tflex-basis: 320px;\n}\n\n[mrtest_validator] {\n\tmargin-bottom: var(--mol_gap_block);\n}\n\n[mrtest_validator_title_row] {\n\tpadding: 3px 0;\n\tgap: 3px;\n}\n\n[mrtest_test_item] {\n\tpadding: 0;\n\tjustify-content: space-between;\n}\n\n[mrtest_test_item_link] {\n\tflex-grow: 1;\n}\n\n[mrtest_test_edit] {\n\topacity: .5;\n}\n\n[mrtest_test_edit]:hover {\n\topacity: 1;\n}\n\n[mrtest_create_test_button] {\n\tmargin-bottom: var(--mol_gap_block);\n}\n\n:root {\n\t--mol_theme_hue: 195deg;\n\t--mol_theme_hue_spread: 90deg;\n}\n\n:root, [mol_theme=\"$mol_theme_dark\"] {\n\t--mol_theme_luma: -1;\n\t--mol_theme_image: invert(1) hue-rotate(180deg);\n\n\t--mol_theme_back: hsl( var(--mol_theme_hue), 5%, 10% );\n\t--mol_theme_card: hsl( var(--mol_theme_hue), 5%, 20%, .25 );\n\t--mol_theme_field: hsl( var(--mol_theme_hue), 5%, 8%, .25 );\n\t--mol_theme_hover: hsl( var(--mol_theme_hue), 0%, 35%, .1 );\n\t\n\t--mol_theme_text: hsl( var(--mol_theme_hue), 5%, 80% );\n\t--mol_theme_shade: hsl( var(--mol_theme_hue), 5%, 60%, 1 );\n\t--mol_theme_line: hsl( var(--mol_theme_hue), 5%, 50%, .25 );\n\t--mol_theme_focus: hsl( calc( var(--mol_theme_hue) + 180deg ), 50%, 65% );\n\t\n\t--mol_theme_control: hsl( var(--mol_theme_hue), 10%, 65% );\n\t--mol_theme_current: hsl( calc( var(--mol_theme_hue) - var(--mol_theme_hue_spread) ), 10%, 65% );\n\t--mol_theme_special: hsl( calc( var(--mol_theme_hue) + var(--mol_theme_hue_spread) ), 10%, 65% );\n}\n\n:root, [mol_theme=\"$mol_theme_light\"] {\n\t--mol_theme_luma: 1;\n\t--mol_theme_image: none;\n\n\t--mol_theme_back: hsl( var(--mol_theme_hue), 5%, 92% );\n\t--mol_theme_card: hsl( var(--mol_theme_hue), 5%, 100%, .5 );\n\t--mol_theme_field: hsl( var(--mol_theme_hue), 5%, 100%, .75 );\n\t--mol_theme_hover: hsl( var(--mol_theme_hue), 5%, 50%, .1 );\n\t\n\t--mol_theme_text: hsl( var(--mol_theme_hue), 5%, 0% );\n\t--mol_theme_shade: hsl( var(--mol_theme_hue), 5%, 40%, 1 );\n\t--mol_theme_line: hsl( var(--mol_theme_hue), 5%, 50%, .5 );\n\t--mol_theme_focus: hsl( calc( var(--mol_theme_hue) + 180deg ), 50%, 40% );\n\t\n\t--mol_theme_control: hsl( var(--mol_theme_hue), 10%, 10% );\n\t--mol_theme_current: hsl( calc( var(--mol_theme_hue) - var(--mol_theme_hue_spread) ), 10%, 30% );\n\t--mol_theme_special: hsl( calc( var(--mol_theme_hue) + var(--mol_theme_hue_spread) ), 10%, 30% );\n\n}\n\n[mol_book2] > *:not(:first-of-type):before,\n[mol_book2] > *:not(:last-of-type)::after {\n\tbackground: none;\n}\n\n\n[mol_view_error] {\n\tcolor: black !important;\n}\n");
+    $mol_style_attach("mrtest/mrtest.view.css", "[mrtest_output_page],\n[mrtest_source_page] {\n\tflex-grow: 0;\n\tflex-basis: 800px;\n\tmargin: 0 auto;\n}\n\n[mrtest_menu],\n[mrtest_profile_page],\n[mrtest_access_page] {\n\tflex-grow: 0;\n\tflex-basis: 320px;\n}\n\n[mrtest_validator] {\n\tmargin-bottom: var(--mol_gap_block);\n}\n\n[mrtest_validator_title_row] {\n\tpadding: 3px 0;\n\tgap: 3px;\n}\n\n[mrtest_test_item] {\n\tpadding: 0;\n\tjustify-content: space-between;\n}\n\n[mrtest_test_item_link] {\n\tflex-grow: 1;\n}\n\n[mrtest_test_item_options] {\n\topacity: .5;\n}\n\n[mrtest_test_item_options]:hover {\n\topacity: 1;\n}\n\n[mrtest_create_test_button],\n[mrtest_search_input] {\n\tmargin-bottom: var(--mol_gap_block);\n}\n\n:root {\n\t--mol_theme_hue: 195deg;\n\t--mol_theme_hue_spread: 90deg;\n}\n\n:root, [mol_theme=\"$mol_theme_dark\"] {\n\t--mol_theme_luma: -1;\n\t--mol_theme_image: invert(1) hue-rotate(180deg);\n\n\t--mol_theme_back: hsl( var(--mol_theme_hue), 5%, 10% );\n\t--mol_theme_card: hsl( var(--mol_theme_hue), 5%, 20%, .25 );\n\t--mol_theme_field: hsl( var(--mol_theme_hue), 5%, 8%, .25 );\n\t--mol_theme_hover: hsl( var(--mol_theme_hue), 0%, 35%, .1 );\n\n\t--mol_theme_text: hsl( var(--mol_theme_hue), 5%, 80% );\n\t--mol_theme_shade: hsl( var(--mol_theme_hue), 5%, 60%, 1 );\n\t--mol_theme_line: hsl( var(--mol_theme_hue), 5%, 50%, .25 );\n\t--mol_theme_focus: hsl( calc( var(--mol_theme_hue) + 180deg ), 50%, 65% );\n\n\t--mol_theme_control: hsl( var(--mol_theme_hue), 10%, 65% );\n\t--mol_theme_current: hsl( calc( var(--mol_theme_hue) - var(--mol_theme_hue_spread) ), 10%, 65% );\n\t--mol_theme_special: hsl( calc( var(--mol_theme_hue) + var(--mol_theme_hue_spread) ), 10%, 65% );\n}\n\n:root, [mol_theme=\"$mol_theme_light\"] {\n\t--mol_theme_luma: 1;\n\t--mol_theme_image: none;\n\n\t--mol_theme_back: hsl( var(--mol_theme_hue), 5%, 92% );\n\t--mol_theme_card: hsl( var(--mol_theme_hue), 5%, 100%, .5 );\n\t--mol_theme_field: hsl( var(--mol_theme_hue), 5%, 100%, .75 );\n\t--mol_theme_hover: hsl( var(--mol_theme_hue), 5%, 50%, .1 );\n\n\t--mol_theme_text: hsl( var(--mol_theme_hue), 5%, 0% );\n\t--mol_theme_shade: hsl( var(--mol_theme_hue), 5%, 40%, 1 );\n\t--mol_theme_line: hsl( var(--mol_theme_hue), 5%, 50%, .5 );\n\t--mol_theme_focus: hsl( calc( var(--mol_theme_hue) + 180deg ), 50%, 40% );\n\n\t--mol_theme_control: hsl( var(--mol_theme_hue), 10%, 10% );\n\t--mol_theme_current: hsl( calc( var(--mol_theme_hue) - var(--mol_theme_hue_spread) ), 10%, 30% );\n\t--mol_theme_special: hsl( calc( var(--mol_theme_hue) + var(--mol_theme_hue_spread) ), 10%, 30% );\n\n}\n\n[mol_book2] > *:not(:first-of-type):before,\n[mol_book2] > *:not(:last-of-type)::after {\n\tbackground: none;\n}\n\n\n[mol_view_error] {\n\tcolor: black !important;\n}\n");
 })($ || ($ = {}));
 
 ;
