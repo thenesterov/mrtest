@@ -199,7 +199,14 @@ namespace $.$$ {
 		}
 
 		@ $mol_mem
+		set_default_lang() {
+			$mol_locale.lang( 'ru' )
+		}
+		
+		@ $mol_mem
 		current_workspace() {
+			this.set_default_lang();
+
 			const workspace_id = this.$.$mol_state_arg.value("")
 			if (!workspace_id) {
 				return null;
