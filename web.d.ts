@@ -4523,7 +4523,7 @@ declare namespace $ {
             [x: symbol]: () => any[];
             remote_list(next?: Vals): Vals;
             remote_add(item: Vals[number]): void;
-            make(config?: null | $hyoo_crus_rank_preset | $hyoo_crus_land): Vals[number];
+            make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): Vals[number];
             remote_make(config: $hyoo_crus_rank_preset): Vals[number];
             local_make(idea?: number): Vals[number];
             items(next?: readonly ((symbol & {
@@ -6908,12 +6908,7 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    function $mol_wait_timeout_async(this: $, timeout: number): Promise<void> & {
-        done: (res: void | PromiseLike<void>) => void;
-        fail: (error?: any) => void;
-    } & {
-        destructor: () => void;
-    };
+    function $mol_wait_timeout_async(this: $, timeout: number): Promise<void>;
     function $mol_wait_timeout(this: $, timeout: number): void;
 }
 
@@ -7743,7 +7738,7 @@ declare namespace $.$$ {
             [x: symbol]: () => any[];
             remote_list(next?: readonly $mrtest_test[] | undefined): readonly $mrtest_test[];
             remote_add(item: $mrtest_test): void;
-            make(config?: null | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_test;
+            make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_test;
             remote_make(config: $hyoo_crus_rank_preset): $mrtest_test;
             local_make(idea?: number): $mrtest_test;
             items(next?: readonly ((symbol & {
@@ -7796,7 +7791,7 @@ declare namespace $.$$ {
                     [x: symbol]: () => any[];
                     remote_list(next?: readonly $mrtest_test[] | undefined): readonly $mrtest_test[];
                     remote_add(item: $mrtest_test): void;
-                    make(config?: null | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_test;
+                    make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_test;
                     remote_make(config: $hyoo_crus_rank_preset): $mrtest_test;
                     local_make(idea?: number): $mrtest_test;
                     items(next?: readonly ((symbol & {
@@ -7867,7 +7862,7 @@ declare namespace $.$$ {
             [x: symbol]: () => any[];
             remote_list(next?: readonly $mrtest_workspace[] | undefined): readonly $mrtest_workspace[];
             remote_add(item: $mrtest_workspace): void;
-            make(config?: null | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_workspace;
+            make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_workspace;
             remote_make(config: $hyoo_crus_rank_preset): $mrtest_workspace;
             local_make(idea?: number): $mrtest_workspace;
             items(next?: readonly ((symbol & {
@@ -7920,7 +7915,7 @@ declare namespace $.$$ {
                     [x: symbol]: () => any[];
                     remote_list(next?: readonly $mrtest_workspace[] | undefined): readonly $mrtest_workspace[];
                     remote_add(item: $mrtest_workspace): void;
-                    make(config?: null | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_workspace;
+                    make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_workspace;
                     remote_make(config: $hyoo_crus_rank_preset): $mrtest_workspace;
                     local_make(idea?: number): $mrtest_workspace;
                     items(next?: readonly ((symbol & {
@@ -8237,10 +8232,10 @@ declare namespace $ {
 		,
 		ReturnType< $mol_string['value'] >
 	>
-	type $mol_string__commit_hyoo_crus_land_rights_3 = $mol_type_enforce<
+	type $mol_string__submit_hyoo_crus_land_rights_3 = $mol_type_enforce<
 		ReturnType< $hyoo_crus_land_rights['add_commit'] >
 		,
-		ReturnType< $mol_string['commit'] >
+		ReturnType< $mol_string['submit'] >
 	>
 	type $mol_button_minor__click_hyoo_crus_land_rights_4 = $mol_type_enforce<
 		ReturnType< $hyoo_crus_land_rights['add_commit'] >
