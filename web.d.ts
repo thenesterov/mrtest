@@ -6594,6 +6594,480 @@ declare namespace $ {
 }
 
 declare namespace $ {
+
+	export class $mol_icon_delete extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=delete.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_row extends $mol_view {
+	}
+	
+}
+
+//# sourceMappingURL=row.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_plus extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=plus.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_delete_outline extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=outline.view.tree.d.ts.map
+declare namespace $ {
+    let $hyoo_crus_text_tokens: $mol_regexp<{
+        [x: string]: string;
+        readonly token: string;
+        readonly link: string;
+        readonly emoji: string;
+        readonly 'line-break': string;
+        readonly indents: string;
+        readonly Word: string;
+        readonly word: string;
+        readonly spaces: string;
+        readonly others: string;
+        readonly space: string;
+        readonly win_end: string;
+        readonly mac_end: string;
+    }>;
+}
+
+declare namespace $ {
+    class $hyoo_crus_text extends $hyoo_crus_node {
+        static tag: keyof typeof $hyoo_crus_sand_tag;
+        value(next?: string): string;
+        text(next?: string): string;
+        str(next?: string): string;
+        write(next: string, str_from?: number, str_to?: number): this;
+        point_by_offset(offset: number): readonly [string, number];
+        offset_by_point([self, offset]: readonly [string, number]): readonly [string, number];
+        selection(lord: $hyoo_crus_ref, next?: readonly [begin: number, end: number]): any;
+    }
+}
+
+declare namespace $ {
+    const $mrtest_test_base: Omit<typeof $hyoo_crus_dict, "prototype"> & (new (...args: any[]) => $mol_type_override<$hyoo_crus_dict, {
+        readonly Source: (auto?: any) => $hyoo_crus_text | null;
+    }>) & {
+        schema: {
+            [x: string]: typeof $hyoo_crus_node;
+        } & {
+            readonly Source: typeof $hyoo_crus_text;
+        };
+    };
+    export class $mrtest_test extends $mrtest_test_base {
+        source(next?: string): string | null;
+    }
+    export {};
+}
+
+declare namespace $ {
+    const $mrtest_validator_base: Omit<typeof $hyoo_crus_dict, "prototype"> & (new (...args: any[]) => $mol_type_override<$hyoo_crus_dict, {
+        readonly Source: (auto?: any) => $hyoo_crus_text | null;
+    }>) & {
+        schema: {
+            [x: string]: typeof $hyoo_crus_node;
+        } & {
+            readonly Source: typeof $hyoo_crus_text;
+        };
+    };
+    export class $mrtest_validator extends $mrtest_validator_base {
+        source(next?: string): string | null;
+    }
+    export {};
+}
+
+declare namespace $.$$ {
+    const $mrtest_workspace_base: Omit<typeof $hyoo_crus_dict, "prototype"> & (new (...args: any[]) => $mol_type_override<$hyoo_crus_dict, {
+        readonly Title: (auto?: any) => $hyoo_crus_atom_str | null;
+        readonly Test: (auto?: any) => {
+            [x: symbol]: () => any[];
+            remote_list(next?: readonly $mrtest_test[] | undefined): readonly $mrtest_test[];
+            remote_add(item: $mrtest_test): void;
+            make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_test;
+            remote_make(config: $hyoo_crus_rank_preset): $mrtest_test;
+            local_make(idea?: number): $mrtest_test;
+            items(next?: readonly ((symbol & {
+                $hyoo_crus_ref: symbol;
+            }) | null)[] | undefined): readonly ((symbol & {
+                $hyoo_crus_ref: symbol;
+            }) | null)[];
+            items_vary(next?: readonly $hyoo_crus_vary_type[], tag?: keyof typeof $hyoo_crus_sand_tag): readonly $hyoo_crus_vary_type[];
+            splice(next: readonly $hyoo_crus_vary_type[], from?: number, to?: number, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+            find(vary: $hyoo_crus_vary_type): $hyoo_crus_sand | null;
+            has(vary: $hyoo_crus_vary_type, next?: boolean, tag?: keyof typeof $hyoo_crus_sand_tag): boolean;
+            add(vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+            cut(vary: $hyoo_crus_vary_type): void;
+            move(from: number, to: number): void;
+            wipe(seat: number): void;
+            node_make<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1, vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): InstanceType<Node_1>;
+            land(): $hyoo_crus_land;
+            head(): string;
+            land_ref(): symbol & {
+                $hyoo_crus_ref: symbol;
+            };
+            ref(): symbol & {
+                $hyoo_crus_ref: symbol;
+            };
+            toJSON(): string | undefined;
+            cast<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1): InstanceType<Node_1>;
+            nodes<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1 | null): readonly InstanceType<Node_1>[];
+            units(): $hyoo_crus_sand[];
+            units_of(peer: string | null): $hyoo_crus_sand[];
+            filled(): boolean;
+            can_change(): boolean;
+            last_change(): $mol_time_moment | null;
+            author_peers(): string[];
+            author_lords(): (symbol & {
+                $hyoo_crus_ref: symbol;
+            })[];
+            $: $;
+            destructor(): void;
+            toString(): string;
+            [Symbol.toStringTag]: string;
+            [$mol_ambient_ref]: $;
+        } | null;
+        readonly Validator: (auto?: any) => {
+            [x: symbol]: () => any[];
+            remote_list(next?: readonly $mrtest_validator[] | undefined): readonly $mrtest_validator[];
+            remote_add(item: $mrtest_validator): void;
+            make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_validator;
+            remote_make(config: $hyoo_crus_rank_preset): $mrtest_validator;
+            local_make(idea?: number): $mrtest_validator;
+            items(next?: readonly ((symbol & {
+                $hyoo_crus_ref: symbol;
+            }) | null)[] | undefined): readonly ((symbol & {
+                $hyoo_crus_ref: symbol;
+            }) | null)[];
+            items_vary(next?: readonly $hyoo_crus_vary_type[], tag?: keyof typeof $hyoo_crus_sand_tag): readonly $hyoo_crus_vary_type[];
+            splice(next: readonly $hyoo_crus_vary_type[], from?: number, to?: number, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+            find(vary: $hyoo_crus_vary_type): $hyoo_crus_sand | null;
+            has(vary: $hyoo_crus_vary_type, next?: boolean, tag?: keyof typeof $hyoo_crus_sand_tag): boolean;
+            add(vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+            cut(vary: $hyoo_crus_vary_type): void;
+            move(from: number, to: number): void;
+            wipe(seat: number): void;
+            node_make<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1, vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): InstanceType<Node_1>;
+            land(): $hyoo_crus_land;
+            head(): string;
+            land_ref(): symbol & {
+                $hyoo_crus_ref: symbol;
+            };
+            ref(): symbol & {
+                $hyoo_crus_ref: symbol;
+            };
+            toJSON(): string | undefined;
+            cast<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1): InstanceType<Node_1>;
+            nodes<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1 | null): readonly InstanceType<Node_1>[];
+            units(): $hyoo_crus_sand[];
+            units_of(peer: string | null): $hyoo_crus_sand[];
+            filled(): boolean;
+            can_change(): boolean;
+            last_change(): $mol_time_moment | null;
+            author_peers(): string[];
+            author_lords(): (symbol & {
+                $hyoo_crus_ref: symbol;
+            })[];
+            $: $;
+            destructor(): void;
+            toString(): string;
+            [Symbol.toStringTag]: string;
+            [$mol_ambient_ref]: $;
+        } | null;
+    }>) & {
+        schema: {
+            [x: string]: typeof $hyoo_crus_node;
+        } & {
+            readonly Title: typeof $hyoo_crus_atom_str;
+            readonly Test: {
+                new (): {
+                    [x: symbol]: () => any[];
+                    remote_list(next?: readonly $mrtest_test[] | undefined): readonly $mrtest_test[];
+                    remote_add(item: $mrtest_test): void;
+                    make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_test;
+                    remote_make(config: $hyoo_crus_rank_preset): $mrtest_test;
+                    local_make(idea?: number): $mrtest_test;
+                    items(next?: readonly ((symbol & {
+                        $hyoo_crus_ref: symbol;
+                    }) | null)[] | undefined): readonly ((symbol & {
+                        $hyoo_crus_ref: symbol;
+                    }) | null)[];
+                    items_vary(next?: readonly $hyoo_crus_vary_type[], tag?: keyof typeof $hyoo_crus_sand_tag): readonly $hyoo_crus_vary_type[];
+                    splice(next: readonly $hyoo_crus_vary_type[], from?: number, to?: number, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+                    find(vary: $hyoo_crus_vary_type): $hyoo_crus_sand | null;
+                    has(vary: $hyoo_crus_vary_type, next?: boolean, tag?: keyof typeof $hyoo_crus_sand_tag): boolean;
+                    add(vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+                    cut(vary: $hyoo_crus_vary_type): void;
+                    move(from: number, to: number): void;
+                    wipe(seat: number): void;
+                    node_make<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1, vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): InstanceType<Node_1>;
+                    land(): $hyoo_crus_land;
+                    head(): string;
+                    land_ref(): symbol & {
+                        $hyoo_crus_ref: symbol;
+                    };
+                    ref(): symbol & {
+                        $hyoo_crus_ref: symbol;
+                    };
+                    toJSON(): string | undefined;
+                    cast<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1): InstanceType<Node_1>;
+                    nodes<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1 | null): readonly InstanceType<Node_1>[];
+                    units(): $hyoo_crus_sand[];
+                    units_of(peer: string | null): $hyoo_crus_sand[];
+                    filled(): boolean;
+                    can_change(): boolean;
+                    last_change(): $mol_time_moment | null;
+                    author_peers(): string[];
+                    author_lords(): (symbol & {
+                        $hyoo_crus_ref: symbol;
+                    })[];
+                    $: $;
+                    destructor(): void;
+                    toString(): string;
+                    [Symbol.toStringTag]: string;
+                    [$mol_ambient_ref]: $;
+                };
+                Value: Value;
+                toString(): any;
+                parse: typeof $hyoo_crus_vary_cast_ref;
+                tag: keyof typeof $hyoo_crus_sand_tag;
+                make<This extends typeof $mol_object>(this: This, config: Partial<InstanceType<This>>): InstanceType<This>;
+                $: $;
+                create<Instance>(this: new (init?: (instance: any) => void) => Instance, init?: (instance: $mol_type_writable<Instance>) => void): Instance;
+                toJSON(): any;
+                destructor(): void;
+                [Symbol.toPrimitive](): any;
+            };
+            readonly Validator: {
+                new (): {
+                    [x: symbol]: () => any[];
+                    remote_list(next?: readonly $mrtest_validator[] | undefined): readonly $mrtest_validator[];
+                    remote_add(item: $mrtest_validator): void;
+                    make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_validator;
+                    remote_make(config: $hyoo_crus_rank_preset): $mrtest_validator;
+                    local_make(idea?: number): $mrtest_validator;
+                    items(next?: readonly ((symbol & {
+                        $hyoo_crus_ref: symbol;
+                    }) | null)[] | undefined): readonly ((symbol & {
+                        $hyoo_crus_ref: symbol;
+                    }) | null)[];
+                    items_vary(next?: readonly $hyoo_crus_vary_type[], tag?: keyof typeof $hyoo_crus_sand_tag): readonly $hyoo_crus_vary_type[];
+                    splice(next: readonly $hyoo_crus_vary_type[], from?: number, to?: number, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+                    find(vary: $hyoo_crus_vary_type): $hyoo_crus_sand | null;
+                    has(vary: $hyoo_crus_vary_type, next?: boolean, tag?: keyof typeof $hyoo_crus_sand_tag): boolean;
+                    add(vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+                    cut(vary: $hyoo_crus_vary_type): void;
+                    move(from: number, to: number): void;
+                    wipe(seat: number): void;
+                    node_make<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1, vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): InstanceType<Node_1>;
+                    land(): $hyoo_crus_land;
+                    head(): string;
+                    land_ref(): symbol & {
+                        $hyoo_crus_ref: symbol;
+                    };
+                    ref(): symbol & {
+                        $hyoo_crus_ref: symbol;
+                    };
+                    toJSON(): string | undefined;
+                    cast<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1): InstanceType<Node_1>;
+                    nodes<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1 | null): readonly InstanceType<Node_1>[];
+                    units(): $hyoo_crus_sand[];
+                    units_of(peer: string | null): $hyoo_crus_sand[];
+                    filled(): boolean;
+                    can_change(): boolean;
+                    last_change(): $mol_time_moment | null;
+                    author_peers(): string[];
+                    author_lords(): (symbol & {
+                        $hyoo_crus_ref: symbol;
+                    })[];
+                    $: $;
+                    destructor(): void;
+                    toString(): string;
+                    [Symbol.toStringTag]: string;
+                    [$mol_ambient_ref]: $;
+                };
+                Value: Value;
+                toString(): any;
+                parse: typeof $hyoo_crus_vary_cast_ref;
+                tag: keyof typeof $hyoo_crus_sand_tag;
+                make<This extends typeof $mol_object>(this: This, config: Partial<InstanceType<This>>): InstanceType<This>;
+                $: $;
+                create<Instance>(this: new (init?: (instance: any) => void) => Instance, init?: (instance: $mol_type_writable<Instance>) => void): Instance;
+                toJSON(): any;
+                destructor(): void;
+                [Symbol.toPrimitive](): any;
+            };
+        };
+    };
+    export class $mrtest_workspace extends $mrtest_workspace_base {
+        test_make(): $mrtest_test;
+        test_list(): readonly $mrtest_test[];
+        test_delete(id: any): void;
+        validator_make(): $mrtest_validator;
+        validator_list(): readonly $mrtest_validator[];
+        validator_delete(id: any): void;
+    }
+    export {};
+}
+
+declare namespace $.$$ {
+    const $mrtest_person_base: Omit<typeof $hyoo_crus_dict, "prototype"> & (new (...args: any[]) => $mol_type_override<$hyoo_crus_dict, {
+        readonly Name: (auto?: any) => $hyoo_crus_atom_str | null;
+        readonly Workspace: (auto?: any) => {
+            [x: symbol]: () => any[];
+            remote_list(next?: readonly $mrtest_workspace[] | undefined): readonly $mrtest_workspace[];
+            remote_add(item: $mrtest_workspace): void;
+            make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_workspace;
+            remote_make(config: $hyoo_crus_rank_preset): $mrtest_workspace;
+            local_make(idea?: number): $mrtest_workspace;
+            items(next?: readonly ((symbol & {
+                $hyoo_crus_ref: symbol;
+            }) | null)[] | undefined): readonly ((symbol & {
+                $hyoo_crus_ref: symbol;
+            }) | null)[];
+            items_vary(next?: readonly $hyoo_crus_vary_type[], tag?: keyof typeof $hyoo_crus_sand_tag): readonly $hyoo_crus_vary_type[];
+            splice(next: readonly $hyoo_crus_vary_type[], from?: number, to?: number, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+            find(vary: $hyoo_crus_vary_type): $hyoo_crus_sand | null;
+            has(vary: $hyoo_crus_vary_type, next?: boolean, tag?: keyof typeof $hyoo_crus_sand_tag): boolean;
+            add(vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+            cut(vary: $hyoo_crus_vary_type): void;
+            move(from: number, to: number): void;
+            wipe(seat: number): void;
+            node_make<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1, vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): InstanceType<Node_1>;
+            land(): $hyoo_crus_land;
+            head(): string;
+            land_ref(): symbol & {
+                $hyoo_crus_ref: symbol;
+            };
+            ref(): symbol & {
+                $hyoo_crus_ref: symbol;
+            };
+            toJSON(): string | undefined;
+            cast<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1): InstanceType<Node_1>;
+            nodes<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1 | null): readonly InstanceType<Node_1>[];
+            units(): $hyoo_crus_sand[];
+            units_of(peer: string | null): $hyoo_crus_sand[];
+            filled(): boolean;
+            can_change(): boolean;
+            last_change(): $mol_time_moment | null;
+            author_peers(): string[];
+            author_lords(): (symbol & {
+                $hyoo_crus_ref: symbol;
+            })[];
+            $: $;
+            destructor(): void;
+            toString(): string;
+            [Symbol.toStringTag]: string;
+            [$mol_ambient_ref]: $;
+        } | null;
+    }>) & {
+        schema: {
+            [x: string]: typeof $hyoo_crus_node;
+        } & {
+            readonly Name: typeof $hyoo_crus_atom_str;
+            readonly Workspace: {
+                new (): {
+                    [x: symbol]: () => any[];
+                    remote_list(next?: readonly $mrtest_workspace[] | undefined): readonly $mrtest_workspace[];
+                    remote_add(item: $mrtest_workspace): void;
+                    make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_workspace;
+                    remote_make(config: $hyoo_crus_rank_preset): $mrtest_workspace;
+                    local_make(idea?: number): $mrtest_workspace;
+                    items(next?: readonly ((symbol & {
+                        $hyoo_crus_ref: symbol;
+                    }) | null)[] | undefined): readonly ((symbol & {
+                        $hyoo_crus_ref: symbol;
+                    }) | null)[];
+                    items_vary(next?: readonly $hyoo_crus_vary_type[], tag?: keyof typeof $hyoo_crus_sand_tag): readonly $hyoo_crus_vary_type[];
+                    splice(next: readonly $hyoo_crus_vary_type[], from?: number, to?: number, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+                    find(vary: $hyoo_crus_vary_type): $hyoo_crus_sand | null;
+                    has(vary: $hyoo_crus_vary_type, next?: boolean, tag?: keyof typeof $hyoo_crus_sand_tag): boolean;
+                    add(vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+                    cut(vary: $hyoo_crus_vary_type): void;
+                    move(from: number, to: number): void;
+                    wipe(seat: number): void;
+                    node_make<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1, vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): InstanceType<Node_1>;
+                    land(): $hyoo_crus_land;
+                    head(): string;
+                    land_ref(): symbol & {
+                        $hyoo_crus_ref: symbol;
+                    };
+                    ref(): symbol & {
+                        $hyoo_crus_ref: symbol;
+                    };
+                    toJSON(): string | undefined;
+                    cast<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1): InstanceType<Node_1>;
+                    nodes<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1 | null): readonly InstanceType<Node_1>[];
+                    units(): $hyoo_crus_sand[];
+                    units_of(peer: string | null): $hyoo_crus_sand[];
+                    filled(): boolean;
+                    can_change(): boolean;
+                    last_change(): $mol_time_moment | null;
+                    author_peers(): string[];
+                    author_lords(): (symbol & {
+                        $hyoo_crus_ref: symbol;
+                    })[];
+                    $: $;
+                    destructor(): void;
+                    toString(): string;
+                    [Symbol.toStringTag]: string;
+                    [$mol_ambient_ref]: $;
+                };
+                Value: Value;
+                toString(): any;
+                parse: typeof $hyoo_crus_vary_cast_ref;
+                tag: keyof typeof $hyoo_crus_sand_tag;
+                make<This extends typeof $mol_object>(this: This, config: Partial<InstanceType<This>>): InstanceType<This>;
+                $: $;
+                create<Instance>(this: new (init?: (instance: any) => void) => Instance, init?: (instance: $mol_type_writable<Instance>) => void): Instance;
+                toJSON(): any;
+                destructor(): void;
+                [Symbol.toPrimitive](): any;
+            };
+        };
+    };
+    export class $mrtest_person extends $mrtest_person_base {
+        workspace_make(): $mrtest_workspace;
+    }
+    export {};
+}
+
+declare namespace $ {
+
+	export class $mol_icon_magnify extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=magnify.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_security extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=security.view.tree.d.ts.map
+declare namespace $ {
 }
 
 declare namespace $ {
@@ -7646,355 +8120,6 @@ declare namespace $.$$ {
 declare namespace $ {
 }
 
-declare namespace $ {
-
-	export class $mol_icon_plus extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=plus.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_delete extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=delete.view.tree.d.ts.map
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_row extends $mol_view {
-	}
-	
-}
-
-//# sourceMappingURL=row.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_delete_outline extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=outline.view.tree.d.ts.map
-declare namespace $ {
-    let $hyoo_crus_text_tokens: $mol_regexp<{
-        [x: string]: string;
-        readonly token: string;
-        readonly link: string;
-        readonly emoji: string;
-        readonly 'line-break': string;
-        readonly indents: string;
-        readonly Word: string;
-        readonly word: string;
-        readonly spaces: string;
-        readonly others: string;
-        readonly space: string;
-        readonly win_end: string;
-        readonly mac_end: string;
-    }>;
-}
-
-declare namespace $ {
-    class $hyoo_crus_text extends $hyoo_crus_node {
-        static tag: keyof typeof $hyoo_crus_sand_tag;
-        value(next?: string): string;
-        text(next?: string): string;
-        str(next?: string): string;
-        write(next: string, str_from?: number, str_to?: number): this;
-        point_by_offset(offset: number): readonly [string, number];
-        offset_by_point([self, offset]: readonly [string, number]): readonly [string, number];
-        selection(lord: $hyoo_crus_ref, next?: readonly [begin: number, end: number]): any;
-    }
-}
-
-declare namespace $ {
-    const $mrtest_test_base: Omit<typeof $hyoo_crus_dict, "prototype"> & (new (...args: any[]) => $mol_type_override<$hyoo_crus_dict, {
-        readonly Source: (auto?: any) => $hyoo_crus_text | null;
-    }>) & {
-        schema: {
-            [x: string]: typeof $hyoo_crus_node;
-        } & {
-            readonly Source: typeof $hyoo_crus_text;
-        };
-    };
-    export class $mrtest_test extends $mrtest_test_base {
-        source(next?: string): string | null;
-    }
-    export {};
-}
-
-declare namespace $.$$ {
-    const $mrtest_workspace_base: Omit<typeof $hyoo_crus_dict, "prototype"> & (new (...args: any[]) => $mol_type_override<$hyoo_crus_dict, {
-        readonly Title: (auto?: any) => $hyoo_crus_atom_str | null;
-        readonly Test: (auto?: any) => {
-            [x: symbol]: () => any[];
-            remote_list(next?: readonly $mrtest_test[] | undefined): readonly $mrtest_test[];
-            remote_add(item: $mrtest_test): void;
-            make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_test;
-            remote_make(config: $hyoo_crus_rank_preset): $mrtest_test;
-            local_make(idea?: number): $mrtest_test;
-            items(next?: readonly ((symbol & {
-                $hyoo_crus_ref: symbol;
-            }) | null)[] | undefined): readonly ((symbol & {
-                $hyoo_crus_ref: symbol;
-            }) | null)[];
-            items_vary(next?: readonly $hyoo_crus_vary_type[], tag?: keyof typeof $hyoo_crus_sand_tag): readonly $hyoo_crus_vary_type[];
-            splice(next: readonly $hyoo_crus_vary_type[], from?: number, to?: number, tag?: keyof typeof $hyoo_crus_sand_tag): void;
-            find(vary: $hyoo_crus_vary_type): $hyoo_crus_sand | null;
-            has(vary: $hyoo_crus_vary_type, next?: boolean, tag?: keyof typeof $hyoo_crus_sand_tag): boolean;
-            add(vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): void;
-            cut(vary: $hyoo_crus_vary_type): void;
-            move(from: number, to: number): void;
-            wipe(seat: number): void;
-            node_make<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1, vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): InstanceType<Node_1>;
-            land(): $hyoo_crus_land;
-            head(): string;
-            land_ref(): symbol & {
-                $hyoo_crus_ref: symbol;
-            };
-            ref(): symbol & {
-                $hyoo_crus_ref: symbol;
-            };
-            toJSON(): string | undefined;
-            cast<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1): InstanceType<Node_1>;
-            nodes<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1 | null): readonly InstanceType<Node_1>[];
-            units(): $hyoo_crus_sand[];
-            units_of(peer: string | null): $hyoo_crus_sand[];
-            filled(): boolean;
-            can_change(): boolean;
-            last_change(): $mol_time_moment | null;
-            author_peers(): string[];
-            author_lords(): (symbol & {
-                $hyoo_crus_ref: symbol;
-            })[];
-            $: $;
-            destructor(): void;
-            toString(): string;
-            [Symbol.toStringTag]: string;
-            [$mol_ambient_ref]: $;
-        } | null;
-    }>) & {
-        schema: {
-            [x: string]: typeof $hyoo_crus_node;
-        } & {
-            readonly Title: typeof $hyoo_crus_atom_str;
-            readonly Test: {
-                new (): {
-                    [x: symbol]: () => any[];
-                    remote_list(next?: readonly $mrtest_test[] | undefined): readonly $mrtest_test[];
-                    remote_add(item: $mrtest_test): void;
-                    make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_test;
-                    remote_make(config: $hyoo_crus_rank_preset): $mrtest_test;
-                    local_make(idea?: number): $mrtest_test;
-                    items(next?: readonly ((symbol & {
-                        $hyoo_crus_ref: symbol;
-                    }) | null)[] | undefined): readonly ((symbol & {
-                        $hyoo_crus_ref: symbol;
-                    }) | null)[];
-                    items_vary(next?: readonly $hyoo_crus_vary_type[], tag?: keyof typeof $hyoo_crus_sand_tag): readonly $hyoo_crus_vary_type[];
-                    splice(next: readonly $hyoo_crus_vary_type[], from?: number, to?: number, tag?: keyof typeof $hyoo_crus_sand_tag): void;
-                    find(vary: $hyoo_crus_vary_type): $hyoo_crus_sand | null;
-                    has(vary: $hyoo_crus_vary_type, next?: boolean, tag?: keyof typeof $hyoo_crus_sand_tag): boolean;
-                    add(vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): void;
-                    cut(vary: $hyoo_crus_vary_type): void;
-                    move(from: number, to: number): void;
-                    wipe(seat: number): void;
-                    node_make<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1, vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): InstanceType<Node_1>;
-                    land(): $hyoo_crus_land;
-                    head(): string;
-                    land_ref(): symbol & {
-                        $hyoo_crus_ref: symbol;
-                    };
-                    ref(): symbol & {
-                        $hyoo_crus_ref: symbol;
-                    };
-                    toJSON(): string | undefined;
-                    cast<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1): InstanceType<Node_1>;
-                    nodes<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1 | null): readonly InstanceType<Node_1>[];
-                    units(): $hyoo_crus_sand[];
-                    units_of(peer: string | null): $hyoo_crus_sand[];
-                    filled(): boolean;
-                    can_change(): boolean;
-                    last_change(): $mol_time_moment | null;
-                    author_peers(): string[];
-                    author_lords(): (symbol & {
-                        $hyoo_crus_ref: symbol;
-                    })[];
-                    $: $;
-                    destructor(): void;
-                    toString(): string;
-                    [Symbol.toStringTag]: string;
-                    [$mol_ambient_ref]: $;
-                };
-                Value: Value;
-                toString(): any;
-                parse: typeof $hyoo_crus_vary_cast_ref;
-                tag: keyof typeof $hyoo_crus_sand_tag;
-                make<This extends typeof $mol_object>(this: This, config: Partial<InstanceType<This>>): InstanceType<This>;
-                $: $;
-                create<Instance>(this: new (init?: (instance: any) => void) => Instance, init?: (instance: $mol_type_writable<Instance>) => void): Instance;
-                toJSON(): any;
-                destructor(): void;
-                [Symbol.toPrimitive](): any;
-            };
-        };
-    };
-    export class $mrtest_workspace extends $mrtest_workspace_base {
-        test_make(): $mrtest_test;
-        test_list(): readonly $mrtest_test[];
-        test_delete(id: any): void;
-    }
-    export {};
-}
-
-declare namespace $.$$ {
-    const $mrtest_person_base: Omit<typeof $hyoo_crus_dict, "prototype"> & (new (...args: any[]) => $mol_type_override<$hyoo_crus_dict, {
-        readonly Name: (auto?: any) => $hyoo_crus_atom_str | null;
-        readonly Workspace: (auto?: any) => {
-            [x: symbol]: () => any[];
-            remote_list(next?: readonly $mrtest_workspace[] | undefined): readonly $mrtest_workspace[];
-            remote_add(item: $mrtest_workspace): void;
-            make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_workspace;
-            remote_make(config: $hyoo_crus_rank_preset): $mrtest_workspace;
-            local_make(idea?: number): $mrtest_workspace;
-            items(next?: readonly ((symbol & {
-                $hyoo_crus_ref: symbol;
-            }) | null)[] | undefined): readonly ((symbol & {
-                $hyoo_crus_ref: symbol;
-            }) | null)[];
-            items_vary(next?: readonly $hyoo_crus_vary_type[], tag?: keyof typeof $hyoo_crus_sand_tag): readonly $hyoo_crus_vary_type[];
-            splice(next: readonly $hyoo_crus_vary_type[], from?: number, to?: number, tag?: keyof typeof $hyoo_crus_sand_tag): void;
-            find(vary: $hyoo_crus_vary_type): $hyoo_crus_sand | null;
-            has(vary: $hyoo_crus_vary_type, next?: boolean, tag?: keyof typeof $hyoo_crus_sand_tag): boolean;
-            add(vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): void;
-            cut(vary: $hyoo_crus_vary_type): void;
-            move(from: number, to: number): void;
-            wipe(seat: number): void;
-            node_make<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1, vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): InstanceType<Node_1>;
-            land(): $hyoo_crus_land;
-            head(): string;
-            land_ref(): symbol & {
-                $hyoo_crus_ref: symbol;
-            };
-            ref(): symbol & {
-                $hyoo_crus_ref: symbol;
-            };
-            toJSON(): string | undefined;
-            cast<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1): InstanceType<Node_1>;
-            nodes<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1 | null): readonly InstanceType<Node_1>[];
-            units(): $hyoo_crus_sand[];
-            units_of(peer: string | null): $hyoo_crus_sand[];
-            filled(): boolean;
-            can_change(): boolean;
-            last_change(): $mol_time_moment | null;
-            author_peers(): string[];
-            author_lords(): (symbol & {
-                $hyoo_crus_ref: symbol;
-            })[];
-            $: $;
-            destructor(): void;
-            toString(): string;
-            [Symbol.toStringTag]: string;
-            [$mol_ambient_ref]: $;
-        } | null;
-    }>) & {
-        schema: {
-            [x: string]: typeof $hyoo_crus_node;
-        } & {
-            readonly Name: typeof $hyoo_crus_atom_str;
-            readonly Workspace: {
-                new (): {
-                    [x: symbol]: () => any[];
-                    remote_list(next?: readonly $mrtest_workspace[] | undefined): readonly $mrtest_workspace[];
-                    remote_add(item: $mrtest_workspace): void;
-                    make(config?: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $mrtest_workspace;
-                    remote_make(config: $hyoo_crus_rank_preset): $mrtest_workspace;
-                    local_make(idea?: number): $mrtest_workspace;
-                    items(next?: readonly ((symbol & {
-                        $hyoo_crus_ref: symbol;
-                    }) | null)[] | undefined): readonly ((symbol & {
-                        $hyoo_crus_ref: symbol;
-                    }) | null)[];
-                    items_vary(next?: readonly $hyoo_crus_vary_type[], tag?: keyof typeof $hyoo_crus_sand_tag): readonly $hyoo_crus_vary_type[];
-                    splice(next: readonly $hyoo_crus_vary_type[], from?: number, to?: number, tag?: keyof typeof $hyoo_crus_sand_tag): void;
-                    find(vary: $hyoo_crus_vary_type): $hyoo_crus_sand | null;
-                    has(vary: $hyoo_crus_vary_type, next?: boolean, tag?: keyof typeof $hyoo_crus_sand_tag): boolean;
-                    add(vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): void;
-                    cut(vary: $hyoo_crus_vary_type): void;
-                    move(from: number, to: number): void;
-                    wipe(seat: number): void;
-                    node_make<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1, vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): InstanceType<Node_1>;
-                    land(): $hyoo_crus_land;
-                    head(): string;
-                    land_ref(): symbol & {
-                        $hyoo_crus_ref: symbol;
-                    };
-                    ref(): symbol & {
-                        $hyoo_crus_ref: symbol;
-                    };
-                    toJSON(): string | undefined;
-                    cast<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1): InstanceType<Node_1>;
-                    nodes<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1 | null): readonly InstanceType<Node_1>[];
-                    units(): $hyoo_crus_sand[];
-                    units_of(peer: string | null): $hyoo_crus_sand[];
-                    filled(): boolean;
-                    can_change(): boolean;
-                    last_change(): $mol_time_moment | null;
-                    author_peers(): string[];
-                    author_lords(): (symbol & {
-                        $hyoo_crus_ref: symbol;
-                    })[];
-                    $: $;
-                    destructor(): void;
-                    toString(): string;
-                    [Symbol.toStringTag]: string;
-                    [$mol_ambient_ref]: $;
-                };
-                Value: Value;
-                toString(): any;
-                parse: typeof $hyoo_crus_vary_cast_ref;
-                tag: keyof typeof $hyoo_crus_sand_tag;
-                make<This extends typeof $mol_object>(this: This, config: Partial<InstanceType<This>>): InstanceType<This>;
-                $: $;
-                create<Instance>(this: new (init?: (instance: any) => void) => Instance, init?: (instance: $mol_type_writable<Instance>) => void): Instance;
-                toJSON(): any;
-                destructor(): void;
-                [Symbol.toPrimitive](): any;
-            };
-        };
-    };
-    export class $mrtest_person extends $mrtest_person_base {
-        workspace_make(): $mrtest_workspace;
-    }
-    export {};
-}
-
-declare namespace $ {
-
-	export class $mol_icon_magnify extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=magnify.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_security extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=security.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $mol_chip extends $mol_view {
@@ -9523,6 +9648,7 @@ declare namespace $.$$ {
         variables: {};
         compile(source: string): string;
         extract_validators(source: string): string[];
+        current_workspace(): $hyoo_crus_node | null;
         get_validators(target_name: string): Record<string, string>;
         parse(tree: $mol_tree2, visitor: $mrtest_dsl_visitor): string;
         is_expression(tree: $mol_tree2): boolean;
@@ -9712,227 +9838,237 @@ declare namespace $ {
 		,
 		ReturnType< $mol_page['body'] >
 	>
-	type $mol_text__text_mrtest_32 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_list__sub_mrtest_33 = $mol_type_enforce<
-		ReturnType< $mrtest['validators_list'] >
-		,
-		ReturnType< $mol_list['sub'] >
-	>
-	type $mol_button_minor__click_mrtest_34 = $mol_type_enforce<
-		ReturnType< $mrtest['add_validator'] >
-		,
-		ReturnType< $mol_button_minor['click'] >
-	>
-	type $mol_button_minor__sub_mrtest_35 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_button_minor['sub'] >
-	>
-	type $mol_string_button__hint_mrtest_36 = $mol_type_enforce<
+	type $mol_string_button__hint_mrtest_32 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_string_button['hint'] >
 	>
-	type $mol_string_button__value_mrtest_37 = $mol_type_enforce<
+	type $mol_string_button__value_mrtest_33 = $mol_type_enforce<
 		ReturnType< $mrtest['validator_title'] >
 		,
 		ReturnType< $mol_string_button['value'] >
 	>
-	type $mol_button_minor__click_mrtest_38 = $mol_type_enforce<
+	type $mol_string_button__enabled_mrtest_34 = $mol_type_enforce<
+		ReturnType< $mrtest['workspace_editable'] >
+		,
+		ReturnType< $mol_string_button['enabled'] >
+	>
+	type $mol_button_minor__click_mrtest_35 = $mol_type_enforce<
 		ReturnType< $mrtest['validator_delete'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub_mrtest_39 = $mol_type_enforce<
+	type $mol_button_minor__sub_mrtest_36 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
 	>
-	type $mol_row__sub_mrtest_40 = $mol_type_enforce<
+	type $mol_row__sub_mrtest_37 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_row['sub'] >
 	>
-	type $mol_textarea__hint_mrtest_41 = $mol_type_enforce<
+	type $mol_textarea__hint_mrtest_38 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_textarea['hint'] >
 	>
-	type $mol_textarea__value_mrtest_42 = $mol_type_enforce<
+	type $mol_textarea__value_mrtest_39 = $mol_type_enforce<
 		ReturnType< $mrtest['validator_source'] >
 		,
 		ReturnType< $mol_textarea['value'] >
 	>
-	type $mol_dimmer__haystack_mrtest_43 = $mol_type_enforce<
+	type $mol_textarea__enabled_mrtest_40 = $mol_type_enforce<
+		ReturnType< $mrtest['workspace_editable'] >
+		,
+		ReturnType< $mol_textarea['enabled'] >
+	>
+	type $mol_dimmer__haystack_mrtest_41 = $mol_type_enforce<
 		ReturnType< $mrtest['test_item_title'] >
 		,
 		ReturnType< $mol_dimmer['haystack'] >
 	>
-	type $mol_dimmer__needle_mrtest_44 = $mol_type_enforce<
+	type $mol_dimmer__needle_mrtest_42 = $mol_type_enforce<
 		ReturnType< $mrtest['search_filter'] >
 		,
 		ReturnType< $mol_dimmer['needle'] >
 	>
-	type $mol_button_minor__click_mrtest_45 = $mol_type_enforce<
+	type $mol_button_minor__click_mrtest_43 = $mol_type_enforce<
 		ReturnType< $mrtest['test_delete'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub_mrtest_46 = $mol_type_enforce<
+	type $mol_button_minor__sub_mrtest_44 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
 	>
-	type $mol_list__rows_mrtest_47 = $mol_type_enforce<
+	type $mol_list__rows_mrtest_45 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_textarea__hint_mrtest_48 = $mol_type_enforce<
+	type $mol_textarea__hint_mrtest_46 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_textarea['hint'] >
 	>
-	type $mol_textarea__value_mrtest_49 = $mol_type_enforce<
+	type $mol_textarea__value_mrtest_47 = $mol_type_enforce<
 		ReturnType< $mrtest['source_code'] >
 		,
 		ReturnType< $mol_textarea['value'] >
 	>
-	type $mol_textarea__enabled_mrtest_50 = $mol_type_enforce<
+	type $mol_textarea__enabled_mrtest_48 = $mol_type_enforce<
 		ReturnType< $mrtest['test_editable'] >
 		,
 		ReturnType< $mol_textarea['enabled'] >
 	>
-	type $mol_list__rows_mrtest_51 = $mol_type_enforce<
-		readonly(any)[]
+	type $mol_list__rows_mrtest_49 = $mol_type_enforce<
+		ReturnType< $mrtest['validators_items'] >
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_list__sub_mrtest_52 = $mol_type_enforce<
+	type $mol_list__sub_mrtest_50 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_list['sub'] >
 	>
-	type $mol_row__sub_mrtest_53 = $mol_type_enforce<
+	type $mol_text__text_mrtest_51 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_list__sub_mrtest_52 = $mol_type_enforce<
+		ReturnType< $mrtest['validators_list'] >
+		,
+		ReturnType< $mol_list['sub'] >
+	>
+	type $mol_button_minor__click_mrtest_53 = $mol_type_enforce<
+		ReturnType< $mrtest['add_validator'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__sub_mrtest_54 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_row__sub_mrtest_55 = $mol_type_enforce<
 		ReturnType< $mrtest['test_item_sub'] >
 		,
 		ReturnType< $mol_row['sub'] >
 	>
-	type $mol_button_minor__title_mrtest_54 = $mol_type_enforce<
+	type $mol_button_minor__title_mrtest_56 = $mol_type_enforce<
 		ReturnType< $mrtest['test_item_title'] >
 		,
 		ReturnType< $mol_button_minor['title'] >
 	>
-	type $mol_button_minor__click_mrtest_55 = $mol_type_enforce<
+	type $mol_button_minor__click_mrtest_57 = $mol_type_enforce<
 		ReturnType< $mrtest['test_selected'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__style_mrtest_56 = $mol_type_enforce<
+	type $mol_button_minor__style_mrtest_58 = $mol_type_enforce<
 		({ 
 			'color': ReturnType< $mrtest['highlight_test_item_link'] >,
 		}) 
 		,
 		ReturnType< $mol_button_minor['style'] >
 	>
-	type $mol_button_minor__sub_mrtest_57 = $mol_type_enforce<
+	type $mol_button_minor__sub_mrtest_59 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
 	>
-	type $mol_pick__hint_mrtest_58 = $mol_type_enforce<
+	type $mol_pick__hint_mrtest_60 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_pick['hint'] >
 	>
-	type $mol_pick__trigger_content_mrtest_59 = $mol_type_enforce<
+	type $mol_pick__trigger_content_mrtest_61 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_pick['trigger_content'] >
 	>
-	type $mol_pick__bubble_content_mrtest_60 = $mol_type_enforce<
+	type $mol_pick__bubble_content_mrtest_62 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_pick['bubble_content'] >
 	>
-	type $mrtest_person_page__close_arg_mrtest_61 = $mol_type_enforce<
+	type $mrtest_person_page__close_arg_mrtest_63 = $mol_type_enforce<
 		({ 
 			'profile': any,
 		}) 
 		,
 		ReturnType< $mrtest_person_page['close_arg'] >
 	>
-	type $mrtest_person_page__person_mrtest_62 = $mol_type_enforce<
+	type $mrtest_person_page__person_mrtest_64 = $mol_type_enforce<
 		ReturnType< $mrtest['profile'] >
 		,
 		ReturnType< $mrtest_person_page['person'] >
 	>
-	type $mrtest_workspace_access__workspace_mrtest_63 = $mol_type_enforce<
+	type $mrtest_workspace_access__workspace_mrtest_65 = $mol_type_enforce<
 		ReturnType< $mrtest['current_workspace'] >
 		,
 		ReturnType< $mrtest_workspace_access['workspace'] >
 	>
-	type $mrtest_workspace_access__close_arg_mrtest_64 = $mol_type_enforce<
+	type $mrtest_workspace_access__close_arg_mrtest_66 = $mol_type_enforce<
 		({ 
 			'access': any,
 		}) 
 		,
 		ReturnType< $mrtest_workspace_access['close_arg'] >
 	>
-	type $mrtest_ui_button__click_mrtest_65 = $mol_type_enforce<
+	type $mrtest_ui_button__click_mrtest_67 = $mol_type_enforce<
 		ReturnType< $mrtest['test_make'] >
 		,
 		ReturnType< $mrtest_ui_button['click'] >
 	>
-	type $mrtest_ui_button__sub_mrtest_66 = $mol_type_enforce<
+	type $mrtest_ui_button__sub_mrtest_68 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mrtest_ui_button['sub'] >
 	>
-	type $mol_list__rows_mrtest_67 = $mol_type_enforce<
+	type $mol_list__rows_mrtest_69 = $mol_type_enforce<
 		ReturnType< $mrtest['tests_list'] >
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_link__arg_mrtest_68 = $mol_type_enforce<
+	type $mol_link__arg_mrtest_70 = $mol_type_enforce<
 		({ 
 			'search': string,
 		}) 
 		,
 		ReturnType< $mol_link['arg'] >
 	>
-	type $mol_link__sub_mrtest_69 = $mol_type_enforce<
+	type $mol_link__sub_mrtest_71 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_link__style_mrtest_70 = $mol_type_enforce<
+	type $mol_link__style_mrtest_72 = $mol_type_enforce<
 		({ 
 			'color': ReturnType< $mrtest['search_highlight'] >,
 		}) 
 		,
 		ReturnType< $mol_link['style'] >
 	>
-	type $mol_string__hint_mrtest_71 = $mol_type_enforce<
+	type $mol_string__hint_mrtest_73 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_string['hint'] >
 	>
-	type $mol_string__value_mrtest_72 = $mol_type_enforce<
+	type $mol_string__value_mrtest_74 = $mol_type_enforce<
 		ReturnType< $mrtest['search_filter'] >
 		,
 		ReturnType< $mol_string['value'] >
 	>
-	type $mol_link__hint_mrtest_73 = $mol_type_enforce<
+	type $mol_link__hint_mrtest_75 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link['hint'] >
 	>
-	type $mol_link__arg_mrtest_74 = $mol_type_enforce<
+	type $mol_link__arg_mrtest_76 = $mol_type_enforce<
 		({ 
 			'access': string,
 			'workspace': any,
@@ -9940,22 +10076,22 @@ declare namespace $ {
 		,
 		ReturnType< $mol_link['arg'] >
 	>
-	type $mol_link__sub_mrtest_75 = $mol_type_enforce<
+	type $mol_link__sub_mrtest_77 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_button_minor__hint_mrtest_76 = $mol_type_enforce<
+	type $mol_button_minor__hint_mrtest_78 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_minor['hint'] >
 	>
-	type $mol_button_minor__click_mrtest_77 = $mol_type_enforce<
+	type $mol_button_minor__click_mrtest_79 = $mol_type_enforce<
 		ReturnType< $mrtest['workspace_make'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub_mrtest_78 = $mol_type_enforce<
+	type $mol_button_minor__sub_mrtest_80 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
@@ -9995,20 +10131,19 @@ declare namespace $ {
 		Output( ): $mol_textarea
 		Output_page( ): $mol_page
 		source_code( next?: string ): string
-		Validator_header( ): $mol_text
-		validators_list( ): readonly($mol_view)[]
-		Validators_list( ): $mol_list
-		add_validator( next?: any ): any
-		Add_validator_icon( ): $mol_icon_plus
-		Add_validator( ): $mol_button_minor
+		validators_items( ): readonly(any)[]
 		validator_title( id: any, next?: string ): string
 		Validator_title( id: any): $mol_string_button
 		validator_delete( id: any, next?: any ): any
 		Validator_delete_icon( id: any): $mol_icon_delete
 		Validator_delete( id: any): $mol_button_minor
+		validator_delete_button( id: any): readonly(any)[]
 		Validator_title_row( id: any): $mol_row
 		validator_source( id: any, next?: string ): string
 		Validator_source( id: any): $mol_textarea
+		validators_list( ): readonly($mol_view)[]
+		add_validator( next?: any ): any
+		Add_validator_icon( ): $mol_icon_plus
 		test_item_sub( id: any): readonly(any)[]
 		test_item_title( id: any, next?: string ): string
 		test_selected( id: any, next?: any ): any
@@ -10034,6 +10169,9 @@ declare namespace $ {
 		Source( ): $mol_textarea
 		Source_postman( ): $mol_list
 		Validator( id: any): $mol_list
+		Validator_header( ): $mol_text
+		Validators_list( ): $mol_list
+		Add_validator( ): $mol_button_minor
 		Test_item( id: any): $mol_row
 		Test_item_link( id: any): $mol_button_minor
 		Test_item_options( id: any): $mol_pick
@@ -10064,14 +10202,15 @@ declare namespace $.$$ {
         access(): boolean;
         pages(): readonly any[];
         need_print_source(next?: boolean | undefined): boolean;
-        new_id(): number;
+        validator(id: string): $hyoo_crus_node;
         add_validator(next?: any): void;
         validators_list(): readonly $mol_view[];
-        validator(id: number, next?: $mrtest_validator | null): $mrtest_validator | null;
-        validators_ids(next?: number[]): number[];
-        validator_delete(id: number, next?: any): void;
+        validators_ids(next?: number[]): string[];
+        validator_delete(id: string, next?: any): void;
         validator_title(id: any, next?: string | undefined): string;
         validator_source(id: any, next?: string | undefined): string;
+        validators_items(): ($.$mol_list | $mol_button_minor)[];
+        validator_delete_button(id: any): readonly any[];
         search_enabled(): boolean;
         search_highlight(): "var(--mol_theme_focus)" | "var(--mol_theme_control)";
         menu_body(): readonly any[];

@@ -14556,6 +14556,409 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_icon_delete) = class $mol_icon_delete extends ($.$mol_icon) {
+		path(){
+			return "M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_row) = class $mol_row extends ($.$mol_view) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/row/row.view.css", "[mol_row] {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\talign-items: flex-start;\n\talign-content: flex-start;\n\tjustify-content: flex-start;\n\tpadding: var(--mol_gap_block);\n\tgap: var(--mol_gap_block);\n\tflex: 0 0 auto;\n\tbox-sizing: border-box;\n\tmax-width: 100%;\n}\n\n[mol_row] > * {\n\tmax-width: 100%;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_icon_plus) = class $mol_icon_plus extends ($.$mol_icon) {
+		path(){
+			return "M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_delete_outline) = class $mol_icon_delete_outline extends ($.$mol_icon) {
+		path(){
+			return "M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    const { unicode_only, line_end, tab, repeat_greedy, optional, forbid_after, force_after, char_only, char_except } = $mol_regexp;
+    $.$hyoo_crus_text_tokens = $mol_regexp.from({
+        token: {
+            'line-break': line_end,
+            'indents': repeat_greedy(tab, 1),
+            'emoji': [
+                unicode_only('Extended_Pictographic'),
+                optional(unicode_only('Emoji_Modifier')),
+                repeat_greedy([
+                    unicode_only('Emoji_Component'),
+                    unicode_only('Extended_Pictographic'),
+                    optional(unicode_only('Emoji_Modifier')),
+                ]),
+            ],
+            'link': /\b(https?:\/\/[^\s,.;:!?")]+(?:[,.;:!?")][^\s,.;:!?")]+)+)/,
+            'Word': [
+                repeat_greedy(char_only([
+                    unicode_only('General_Category', 'Uppercase_Letter'),
+                    unicode_only('Diacritic'),
+                    unicode_only('General_Category', 'Number'),
+                    0xA0,
+                ]), 1),
+                repeat_greedy(char_only([
+                    unicode_only('General_Category', 'Lowercase_Letter'),
+                    unicode_only('Diacritic'),
+                    unicode_only('General_Category', 'Number'),
+                    0xA0,
+                ])),
+                [char_only(' ')],
+            ],
+            'word': [
+                repeat_greedy(char_only([
+                    unicode_only('General_Category', 'Lowercase_Letter'),
+                    unicode_only('Diacritic'),
+                    unicode_only('General_Category', 'Number'),
+                    0xA0,
+                ]), 1),
+                [char_only(' ')],
+            ],
+            'spaces': [
+                forbid_after(line_end),
+                repeat_greedy(unicode_only('White_Space'), 1),
+                force_after(unicode_only('White_Space')),
+            ],
+            'space': [
+                forbid_after(line_end),
+                unicode_only('White_Space'),
+                forbid_after([
+                    unicode_only('White_Space'),
+                    unicode_only('General_Category', 'Uppercase_Letter'),
+                    unicode_only('General_Category', 'Lowercase_Letter'),
+                    unicode_only('Diacritic'),
+                    unicode_only('General_Category', 'Number'),
+                ]),
+            ],
+            'others': [
+                repeat_greedy(char_except([
+                    unicode_only('General_Category', 'Uppercase_Letter'),
+                    unicode_only('General_Category', 'Lowercase_Letter'),
+                    unicode_only('Diacritic'),
+                    unicode_only('General_Category', 'Number'),
+                    unicode_only('White_Space'),
+                ]), 1),
+                [char_only(' ')],
+            ],
+        },
+    });
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    class $hyoo_crus_text extends $hyoo_crus_node {
+        static tag = $hyoo_crus_sand_tag[$hyoo_crus_sand_tag.vals];
+        value(next) {
+            return this.text(next);
+        }
+        text(next) {
+            if (next !== undefined) {
+                const land = this.land();
+                const prev = this.units();
+                const lines = next.match(/.*\n|.+$/g) ?? [];
+                $mol_reconcile({
+                    prev,
+                    from: 0,
+                    to: prev.length,
+                    next: lines,
+                    equal: (next, prev) => {
+                        return land.Node($hyoo_crus_text).Item(prev.self()).str() === next;
+                    },
+                    drop: (prev, lead) => this.land().post(lead?.self() ?? '', prev.head(), prev.self(), null),
+                    insert: (next, lead) => {
+                        const sand = this.land().post(lead?.self() ?? '', this.head(), land.self_make(), 'p', 'vals');
+                        land.Node($hyoo_crus_text).Item(sand.self()).str(next);
+                        return sand;
+                    },
+                    update: (next, prev, lead) => {
+                        land.Node($hyoo_crus_text).Item(prev.self()).str(next);
+                        return prev;
+                    },
+                });
+            }
+            return this.str();
+        }
+        str(next) {
+            if (next === undefined) {
+                let str = '';
+                const land = this.land();
+                for (const unit of this.units()) {
+                    if (unit.tag() === 'term')
+                        str += $hyoo_crus_vary_cast_str(land.sand_decode(unit)) ?? '';
+                    else
+                        str += land.Node($hyoo_crus_text).Item(unit.self()).str();
+                }
+                return str;
+            }
+            else {
+                this.write(next, 0, -1);
+                return this.str();
+            }
+        }
+        write(next, str_from = -1, str_to = str_from) {
+            const land = this.land();
+            const list = this.units();
+            let from = str_from < 0 ? list.length : 0;
+            let word = '';
+            while (from < list.length) {
+                word = $hyoo_crus_vary_cast_str(land.sand_decode(list[from])) ?? '';
+                if (str_from <= word.length) {
+                    next = word.slice(0, str_from) + next;
+                    break;
+                }
+                str_from -= word.length;
+                if (str_to > 0)
+                    str_to -= word.length;
+                from++;
+            }
+            let to = str_to < 0 ? list.length : from;
+            while (to < list.length) {
+                word = $hyoo_crus_vary_cast_str(land.sand_decode(list[to])) ?? '';
+                to++;
+                if (str_to < word.length) {
+                    next = next + word.slice(str_to);
+                    break;
+                }
+                str_to -= word.length;
+            }
+            if (from && from === list.length) {
+                --from;
+                next = ($hyoo_crus_vary_cast_str(land.sand_decode(list[from])) ?? '') + next;
+            }
+            const words = next.match($hyoo_crus_text_tokens) ?? [];
+            this.cast($hyoo_crus_list_vary).splice(words, from, to);
+            return this;
+        }
+        point_by_offset(offset) {
+            const land = this.land();
+            let off = offset;
+            for (const unit of this.units()) {
+                if (unit.tag() === 'term') {
+                    const len = $hyoo_crus_vary_cast_str(land.sand_decode(unit))?.length ?? 0;
+                    if (off <= len)
+                        return [unit.self(), off];
+                    else
+                        off -= len;
+                }
+                else {
+                    const found = land.Node($hyoo_crus_text).Item(unit.self()).point_by_offset(off);
+                    if (found[0])
+                        return found;
+                    off = found[1];
+                }
+            }
+            return ['', off];
+        }
+        offset_by_point([self, offset]) {
+            const land = this.land();
+            for (const unit of this.units()) {
+                if (unit.self() === self)
+                    return [self, offset];
+                if (unit.tag() === 'term') {
+                    offset += $hyoo_crus_vary_cast_str(land.sand_decode(unit))?.length ?? 0;
+                }
+                else {
+                    const found = land.Node($hyoo_crus_text).Item(unit.self()).offset_by_point([self, offset]);
+                    if (found[0])
+                        return [self, found[1]];
+                    offset = found[1];
+                }
+            }
+            return ['', offset];
+        }
+        selection(lord, next) {
+            const base = this.$.$hyoo_crus_glob.Land(lord).Data($hyoo_crus_home);
+            if (next) {
+                base.Selection(null)?.val(next.map(offset => this.point_by_offset(offset).join(':')).join('|'));
+                return next;
+            }
+            else {
+                this.text();
+                return base.Selection()?.val()?.split('|').map(point => {
+                    const chunks = point.split(':');
+                    return this.offset_by_point([chunks[0], Number(chunks[1]) || 0])[1];
+                }) ?? [0, 0];
+            }
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $hyoo_crus_text.prototype, "text", null);
+    __decorate([
+        $mol_mem
+    ], $hyoo_crus_text.prototype, "str", null);
+    __decorate([
+        $mol_action
+    ], $hyoo_crus_text.prototype, "write", null);
+    __decorate([
+        $mol_action
+    ], $hyoo_crus_text.prototype, "point_by_offset", null);
+    __decorate([
+        $mol_action
+    ], $hyoo_crus_text.prototype, "offset_by_point", null);
+    __decorate([
+        $mol_mem_key
+    ], $hyoo_crus_text.prototype, "selection", null);
+    $.$hyoo_crus_text = $hyoo_crus_text;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    class $mrtest_test extends $hyoo_crus_entity.with({
+        Source: $hyoo_crus_text
+    }) {
+        source(next) {
+            return this.Source(next)?.value(next) ?? null;
+        }
+    }
+    $.$mrtest_test = $mrtest_test;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    class $mrtest_validator extends $hyoo_crus_entity.with({
+        Source: $hyoo_crus_text
+    }) {
+        source(next) {
+            return this.Source(next)?.value(next) ?? null;
+        }
+    }
+    $.$mrtest_validator = $mrtest_validator;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mrtest_workspace extends $hyoo_crus_entity.with({
+            Title: $hyoo_crus_atom_str,
+            Test: $hyoo_crus_list_ref_to(() => $mrtest_test),
+            Validator: $hyoo_crus_list_ref_to(() => $mrtest_validator)
+        }) {
+            test_make() {
+                return this.Test(null).make(this.land());
+            }
+            test_list() {
+                return this.Test()?.remote_list() ?? [];
+            }
+            test_delete(id) {
+                this.Test()?.has($hyoo_crus_ref(id), false);
+            }
+            validator_make() {
+                return this.Validator(null).make(this.land());
+            }
+            validator_list() {
+                return this.Validator()?.remote_list() ?? [];
+            }
+            validator_delete(id) {
+                this.Validator()?.has($hyoo_crus_ref(id), false);
+            }
+        }
+        __decorate([
+            $mol_action
+        ], $mrtest_workspace.prototype, "test_make", null);
+        __decorate([
+            $mol_mem
+        ], $mrtest_workspace.prototype, "test_list", null);
+        __decorate([
+            $mol_action
+        ], $mrtest_workspace.prototype, "test_delete", null);
+        __decorate([
+            $mol_action
+        ], $mrtest_workspace.prototype, "validator_make", null);
+        __decorate([
+            $mol_mem
+        ], $mrtest_workspace.prototype, "validator_list", null);
+        __decorate([
+            $mol_action
+        ], $mrtest_workspace.prototype, "validator_delete", null);
+        $$.$mrtest_workspace = $mrtest_workspace;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mrtest_person extends $hyoo_crus_home.with({
+            Name: $hyoo_crus_atom_str,
+            Workspace: $hyoo_crus_list_ref_to(() => $mrtest_workspace)
+        }) {
+            workspace_make() {
+                return this.Workspace(null).make({ '': $hyoo_crus_rank.get });
+            }
+        }
+        __decorate([
+            $mol_action
+        ], $mrtest_person.prototype, "workspace_make", null);
+        $$.$mrtest_person = $mrtest_person;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_magnify) = class $mol_icon_magnify extends ($.$mol_icon) {
+		path(){
+			return "M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_security) = class $mol_icon_security extends ($.$mol_icon) {
+		path(){
+			return "M12,12H19C18.47,16.11 15.72,19.78 12,20.92V12H5V6.3L12,3.19M12,1L3,5V11C3,16.55 6.84,21.73 12,23C17.16,21.73 21,16.55 21,11V5L12,1Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
 	($.$mol_float) = class $mol_float extends ($.$mol_view) {
 		style(){
 			return {...(super.style()), "minHeight": "auto"};
@@ -16395,376 +16798,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$mol_icon_plus) = class $mol_icon_plus extends ($.$mol_icon) {
-		path(){
-			return "M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_icon_delete) = class $mol_icon_delete extends ($.$mol_icon) {
-		path(){
-			return "M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_row) = class $mol_row extends ($.$mol_view) {};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/row/row.view.css", "[mol_row] {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\talign-items: flex-start;\n\talign-content: flex-start;\n\tjustify-content: flex-start;\n\tpadding: var(--mol_gap_block);\n\tgap: var(--mol_gap_block);\n\tflex: 0 0 auto;\n\tbox-sizing: border-box;\n\tmax-width: 100%;\n}\n\n[mol_row] > * {\n\tmax-width: 100%;\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-	($.$mol_icon_delete_outline) = class $mol_icon_delete_outline extends ($.$mol_icon) {
-		path(){
-			return "M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    const { unicode_only, line_end, tab, repeat_greedy, optional, forbid_after, force_after, char_only, char_except } = $mol_regexp;
-    $.$hyoo_crus_text_tokens = $mol_regexp.from({
-        token: {
-            'line-break': line_end,
-            'indents': repeat_greedy(tab, 1),
-            'emoji': [
-                unicode_only('Extended_Pictographic'),
-                optional(unicode_only('Emoji_Modifier')),
-                repeat_greedy([
-                    unicode_only('Emoji_Component'),
-                    unicode_only('Extended_Pictographic'),
-                    optional(unicode_only('Emoji_Modifier')),
-                ]),
-            ],
-            'link': /\b(https?:\/\/[^\s,.;:!?")]+(?:[,.;:!?")][^\s,.;:!?")]+)+)/,
-            'Word': [
-                repeat_greedy(char_only([
-                    unicode_only('General_Category', 'Uppercase_Letter'),
-                    unicode_only('Diacritic'),
-                    unicode_only('General_Category', 'Number'),
-                    0xA0,
-                ]), 1),
-                repeat_greedy(char_only([
-                    unicode_only('General_Category', 'Lowercase_Letter'),
-                    unicode_only('Diacritic'),
-                    unicode_only('General_Category', 'Number'),
-                    0xA0,
-                ])),
-                [char_only(' ')],
-            ],
-            'word': [
-                repeat_greedy(char_only([
-                    unicode_only('General_Category', 'Lowercase_Letter'),
-                    unicode_only('Diacritic'),
-                    unicode_only('General_Category', 'Number'),
-                    0xA0,
-                ]), 1),
-                [char_only(' ')],
-            ],
-            'spaces': [
-                forbid_after(line_end),
-                repeat_greedy(unicode_only('White_Space'), 1),
-                force_after(unicode_only('White_Space')),
-            ],
-            'space': [
-                forbid_after(line_end),
-                unicode_only('White_Space'),
-                forbid_after([
-                    unicode_only('White_Space'),
-                    unicode_only('General_Category', 'Uppercase_Letter'),
-                    unicode_only('General_Category', 'Lowercase_Letter'),
-                    unicode_only('Diacritic'),
-                    unicode_only('General_Category', 'Number'),
-                ]),
-            ],
-            'others': [
-                repeat_greedy(char_except([
-                    unicode_only('General_Category', 'Uppercase_Letter'),
-                    unicode_only('General_Category', 'Lowercase_Letter'),
-                    unicode_only('Diacritic'),
-                    unicode_only('General_Category', 'Number'),
-                    unicode_only('White_Space'),
-                ]), 1),
-                [char_only(' ')],
-            ],
-        },
-    });
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    class $hyoo_crus_text extends $hyoo_crus_node {
-        static tag = $hyoo_crus_sand_tag[$hyoo_crus_sand_tag.vals];
-        value(next) {
-            return this.text(next);
-        }
-        text(next) {
-            if (next !== undefined) {
-                const land = this.land();
-                const prev = this.units();
-                const lines = next.match(/.*\n|.+$/g) ?? [];
-                $mol_reconcile({
-                    prev,
-                    from: 0,
-                    to: prev.length,
-                    next: lines,
-                    equal: (next, prev) => {
-                        return land.Node($hyoo_crus_text).Item(prev.self()).str() === next;
-                    },
-                    drop: (prev, lead) => this.land().post(lead?.self() ?? '', prev.head(), prev.self(), null),
-                    insert: (next, lead) => {
-                        const sand = this.land().post(lead?.self() ?? '', this.head(), land.self_make(), 'p', 'vals');
-                        land.Node($hyoo_crus_text).Item(sand.self()).str(next);
-                        return sand;
-                    },
-                    update: (next, prev, lead) => {
-                        land.Node($hyoo_crus_text).Item(prev.self()).str(next);
-                        return prev;
-                    },
-                });
-            }
-            return this.str();
-        }
-        str(next) {
-            if (next === undefined) {
-                let str = '';
-                const land = this.land();
-                for (const unit of this.units()) {
-                    if (unit.tag() === 'term')
-                        str += $hyoo_crus_vary_cast_str(land.sand_decode(unit)) ?? '';
-                    else
-                        str += land.Node($hyoo_crus_text).Item(unit.self()).str();
-                }
-                return str;
-            }
-            else {
-                this.write(next, 0, -1);
-                return this.str();
-            }
-        }
-        write(next, str_from = -1, str_to = str_from) {
-            const land = this.land();
-            const list = this.units();
-            let from = str_from < 0 ? list.length : 0;
-            let word = '';
-            while (from < list.length) {
-                word = $hyoo_crus_vary_cast_str(land.sand_decode(list[from])) ?? '';
-                if (str_from <= word.length) {
-                    next = word.slice(0, str_from) + next;
-                    break;
-                }
-                str_from -= word.length;
-                if (str_to > 0)
-                    str_to -= word.length;
-                from++;
-            }
-            let to = str_to < 0 ? list.length : from;
-            while (to < list.length) {
-                word = $hyoo_crus_vary_cast_str(land.sand_decode(list[to])) ?? '';
-                to++;
-                if (str_to < word.length) {
-                    next = next + word.slice(str_to);
-                    break;
-                }
-                str_to -= word.length;
-            }
-            if (from && from === list.length) {
-                --from;
-                next = ($hyoo_crus_vary_cast_str(land.sand_decode(list[from])) ?? '') + next;
-            }
-            const words = next.match($hyoo_crus_text_tokens) ?? [];
-            this.cast($hyoo_crus_list_vary).splice(words, from, to);
-            return this;
-        }
-        point_by_offset(offset) {
-            const land = this.land();
-            let off = offset;
-            for (const unit of this.units()) {
-                if (unit.tag() === 'term') {
-                    const len = $hyoo_crus_vary_cast_str(land.sand_decode(unit))?.length ?? 0;
-                    if (off <= len)
-                        return [unit.self(), off];
-                    else
-                        off -= len;
-                }
-                else {
-                    const found = land.Node($hyoo_crus_text).Item(unit.self()).point_by_offset(off);
-                    if (found[0])
-                        return found;
-                    off = found[1];
-                }
-            }
-            return ['', off];
-        }
-        offset_by_point([self, offset]) {
-            const land = this.land();
-            for (const unit of this.units()) {
-                if (unit.self() === self)
-                    return [self, offset];
-                if (unit.tag() === 'term') {
-                    offset += $hyoo_crus_vary_cast_str(land.sand_decode(unit))?.length ?? 0;
-                }
-                else {
-                    const found = land.Node($hyoo_crus_text).Item(unit.self()).offset_by_point([self, offset]);
-                    if (found[0])
-                        return [self, found[1]];
-                    offset = found[1];
-                }
-            }
-            return ['', offset];
-        }
-        selection(lord, next) {
-            const base = this.$.$hyoo_crus_glob.Land(lord).Data($hyoo_crus_home);
-            if (next) {
-                base.Selection(null)?.val(next.map(offset => this.point_by_offset(offset).join(':')).join('|'));
-                return next;
-            }
-            else {
-                this.text();
-                return base.Selection()?.val()?.split('|').map(point => {
-                    const chunks = point.split(':');
-                    return this.offset_by_point([chunks[0], Number(chunks[1]) || 0])[1];
-                }) ?? [0, 0];
-            }
-        }
-    }
-    __decorate([
-        $mol_mem
-    ], $hyoo_crus_text.prototype, "text", null);
-    __decorate([
-        $mol_mem
-    ], $hyoo_crus_text.prototype, "str", null);
-    __decorate([
-        $mol_action
-    ], $hyoo_crus_text.prototype, "write", null);
-    __decorate([
-        $mol_action
-    ], $hyoo_crus_text.prototype, "point_by_offset", null);
-    __decorate([
-        $mol_action
-    ], $hyoo_crus_text.prototype, "offset_by_point", null);
-    __decorate([
-        $mol_mem_key
-    ], $hyoo_crus_text.prototype, "selection", null);
-    $.$hyoo_crus_text = $hyoo_crus_text;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    class $mrtest_test extends $hyoo_crus_entity.with({
-        Source: $hyoo_crus_text
-    }) {
-        source(next) {
-            return this.Source(next)?.value(next) ?? null;
-        }
-    }
-    $.$mrtest_test = $mrtest_test;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mrtest_workspace extends $hyoo_crus_entity.with({
-            Title: $hyoo_crus_atom_str,
-            Test: $hyoo_crus_list_ref_to(() => $mrtest_test)
-        }) {
-            test_make() {
-                return this.Test(null).make(this.land());
-            }
-            test_list() {
-                return this.Test()?.remote_list() ?? [];
-            }
-            test_delete(id) {
-                this.Test()?.has($hyoo_crus_ref(id), false);
-            }
-        }
-        __decorate([
-            $mol_action
-        ], $mrtest_workspace.prototype, "test_make", null);
-        __decorate([
-            $mol_mem
-        ], $mrtest_workspace.prototype, "test_list", null);
-        __decorate([
-            $mol_action
-        ], $mrtest_workspace.prototype, "test_delete", null);
-        $$.$mrtest_workspace = $mrtest_workspace;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mrtest_person extends $hyoo_crus_home.with({
-            Name: $hyoo_crus_atom_str,
-            Workspace: $hyoo_crus_list_ref_to(() => $mrtest_workspace)
-        }) {
-            workspace_make() {
-                return this.Workspace(null).make({ '': $hyoo_crus_rank.get });
-            }
-        }
-        __decorate([
-            $mol_action
-        ], $mrtest_person.prototype, "workspace_make", null);
-        $$.$mrtest_person = $mrtest_person;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-	($.$mol_icon_magnify) = class $mol_icon_magnify extends ($.$mol_icon) {
-		path(){
-			return "M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_icon_security) = class $mol_icon_security extends ($.$mol_icon) {
-		path(){
-			return "M12,12H19C18.47,16.11 15.72,19.78 12,20.92V12H5V6.3L12,3.19M12,1L3,5V11C3,16.55 6.84,21.73 12,23C17.16,21.73 21,16.55 21,11V5L12,1Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
 	($.$mol_chip) = class $mol_chip extends ($.$mol_view) {
 		sub(){
 			return [(this.title())];
@@ -17497,32 +17530,8 @@ var $;
 			if(next !== undefined) return next;
 			return "";
 		}
-		Validator_header(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ("**Валидаторы**");
-			return obj;
-		}
-		validators_list(){
+		validators_items(){
 			return [];
-		}
-		Validators_list(){
-			const obj = new this.$.$mol_list();
-			(obj.sub) = () => ((this.validators_list()));
-			return obj;
-		}
-		add_validator(next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		Add_validator_icon(){
-			const obj = new this.$.$mol_icon_plus();
-			return obj;
-		}
-		Add_validator(){
-			const obj = new this.$.$mol_button_minor();
-			(obj.click) = (next) => ((this.add_validator(next)));
-			(obj.sub) = () => ([(this.Add_validator_icon()), "Добавить валидатор"]);
-			return obj;
 		}
 		validator_title(id, next){
 			if(next !== undefined) return next;
@@ -17532,6 +17541,7 @@ var $;
 			const obj = new this.$.$mol_string_button();
 			(obj.hint) = () => ("Введите название валидатора...");
 			(obj.value) = (next) => ((this.validator_title(id, next)));
+			(obj.enabled) = (next) => ((this.workspace_editable()));
 			return obj;
 		}
 		validator_delete(id, next){
@@ -17548,9 +17558,12 @@ var $;
 			(obj.sub) = () => ([(this.Validator_delete_icon(id))]);
 			return obj;
 		}
+		validator_delete_button(id){
+			return [(this.Validator_delete(id))];
+		}
 		Validator_title_row(id){
 			const obj = new this.$.$mol_row();
-			(obj.sub) = () => ([(this.Validator_title(id)), (this.Validator_delete(id))]);
+			(obj.sub) = () => ([(this.Validator_title(id)), ...(this.validator_delete_button(id))]);
 			return obj;
 		}
 		validator_source(id, next){
@@ -17561,6 +17574,18 @@ var $;
 			const obj = new this.$.$mol_textarea();
 			(obj.hint) = () => ("Введите код валидатора по аналогии с другими...");
 			(obj.value) = (next) => ((this.validator_source(id, next)));
+			(obj.enabled) = (next) => ((this.workspace_editable()));
+			return obj;
+		}
+		validators_list(){
+			return [];
+		}
+		add_validator(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Add_validator_icon(){
+			const obj = new this.$.$mol_icon_plus();
 			return obj;
 		}
 		test_item_sub(id){
@@ -17663,16 +17688,28 @@ var $;
 		}
 		Source_postman(){
 			const obj = new this.$.$mol_list();
-			(obj.rows) = () => ([
-				(this.Validator_header()), 
-				(this.Validators_list()), 
-				(this.Add_validator())
-			]);
+			(obj.rows) = () => ((this.validators_items()));
 			return obj;
 		}
 		Validator(id){
 			const obj = new this.$.$mol_list();
 			(obj.sub) = () => ([(this.Validator_title_row(id)), (this.Validator_source(id))]);
+			return obj;
+		}
+		Validator_header(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ("**Валидаторы**");
+			return obj;
+		}
+		Validators_list(){
+			const obj = new this.$.$mol_list();
+			(obj.sub) = () => ((this.validators_list()));
+			return obj;
+		}
+		Add_validator(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.click) = (next) => ((this.add_validator(next)));
+			(obj.sub) = () => ([(this.Add_validator_icon()), "Добавить валидатор"]);
 			return obj;
 		}
 		Test_item(id){
@@ -17772,11 +17809,6 @@ var $;
 	($mol_mem(($.$mrtest.prototype), "Output"));
 	($mol_mem(($.$mrtest.prototype), "Output_page"));
 	($mol_mem(($.$mrtest.prototype), "source_code"));
-	($mol_mem(($.$mrtest.prototype), "Validator_header"));
-	($mol_mem(($.$mrtest.prototype), "Validators_list"));
-	($mol_mem(($.$mrtest.prototype), "add_validator"));
-	($mol_mem(($.$mrtest.prototype), "Add_validator_icon"));
-	($mol_mem(($.$mrtest.prototype), "Add_validator"));
 	($mol_mem_key(($.$mrtest.prototype), "validator_title"));
 	($mol_mem_key(($.$mrtest.prototype), "Validator_title"));
 	($mol_mem_key(($.$mrtest.prototype), "validator_delete"));
@@ -17785,6 +17817,8 @@ var $;
 	($mol_mem_key(($.$mrtest.prototype), "Validator_title_row"));
 	($mol_mem_key(($.$mrtest.prototype), "validator_source"));
 	($mol_mem_key(($.$mrtest.prototype), "Validator_source"));
+	($mol_mem(($.$mrtest.prototype), "add_validator"));
+	($mol_mem(($.$mrtest.prototype), "Add_validator_icon"));
 	($mol_mem_key(($.$mrtest.prototype), "test_item_title"));
 	($mol_mem_key(($.$mrtest.prototype), "test_selected"));
 	($mol_mem(($.$mrtest.prototype), "search_filter"));
@@ -17804,6 +17838,9 @@ var $;
 	($mol_mem(($.$mrtest.prototype), "Source"));
 	($mol_mem(($.$mrtest.prototype), "Source_postman"));
 	($mol_mem_key(($.$mrtest.prototype), "Validator"));
+	($mol_mem(($.$mrtest.prototype), "Validator_header"));
+	($mol_mem(($.$mrtest.prototype), "Validators_list"));
+	($mol_mem(($.$mrtest.prototype), "Add_validator"));
 	($mol_mem_key(($.$mrtest.prototype), "Test_item"));
 	($mol_mem_key(($.$mrtest.prototype), "Test_item_link"));
 	($mol_mem_key(($.$mrtest.prototype), "Test_item_options"));
@@ -19804,16 +19841,19 @@ var $;
                 });
                 return [...validators];
             }
+            current_workspace() {
+                const workspace_id = $mol_state_arg.value("");
+                if (!workspace_id) {
+                    return null;
+                }
+                return $hyoo_crus_glob.Node($hyoo_crus_ref(workspace_id), $mrtest_workspace);
+            }
             get_validators(target_name) {
                 let validators = {};
-                const key = `${target_name}-validators`;
-                let validators_ids = $.$$.$mol_state_local.value(key) ?? [];
-                for (const validator_id of validators_ids) {
-                    const validator_key = `${target_name}-validators-${validator_id}`;
-                    let validator = $.$$.$mol_state_local.value(validator_key);
-                    if (validator && validator.title && validator.code) {
-                        validators[validator.title] = validator.code + (validator.code ? '\n\n' : '');
-                    }
+                for (const validator of this.current_workspace()?.validator_list() ?? []) {
+                    let title = validator.Title(null)?.val(undefined);
+                    let source = validator.Source(null)?.text(undefined);
+                    validators[title] = source + (source ? '\n\n' : '');
                 }
                 return validators;
             }
@@ -20082,6 +20122,9 @@ var $;
                 }
             }
         }
+        __decorate([
+            $mol_mem
+        ], $mrtest_dsl.prototype, "current_workspace", null);
         $$.$mrtest_dsl = $mrtest_dsl;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -20164,52 +20207,38 @@ var $;
             need_print_source(next) {
                 return this.$.$$.$mol_state_local.value("print_source", next) ?? true;
             }
-            new_id() {
-                return Math.max(1, 1 + Math.max(...this.validators_ids()));
+            validator(id) {
+                return this.$.$hyoo_crus_glob.Node($hyoo_crus_ref(id), $mrtest_validator);
             }
             add_validator(next) {
-                var title = '';
-                var id = this.new_id();
-                var task = { title, code: '' };
-                this.validator(id, task);
-                this.validators_ids([...this.validators_ids(), id]);
+                this.current_workspace().validator_make();
             }
             validators_list() {
-                return this.validators_ids().map(id => this.Validator(id));
-            }
-            validator(id, next) {
-                const key = this.state_key(`${this.selected_langauge()}-validators-${id}`);
-                if (next === void 0) {
-                    return this.$.$mol_state_local.value(key) || { title: '', code: '' };
-                }
-                this.$.$mol_state_local.value(key, next);
-                return next || null;
+                return this.validators_ids().map(id => {
+                    return this.Validator(id);
+                });
             }
             validators_ids(next) {
-                return this.$.$mol_state_local.value(this.state_key(`${this.selected_langauge()}-validators`), next) || [];
+                return this.current_workspace()?.validator_list().map(validator => validator.ref().description).reverse() ?? [];
             }
             validator_delete(id, next) {
-                const key = this.state_key(`${this.selected_langauge()}-validators-${id}`);
-                this.$.$mol_state_local.value(key, null);
-                let validators = this.$.$mol_state_local.value(this.state_key(`${this.selected_langauge()}-validators`)) || [];
-                validators = validators.filter((obj) => obj != id);
-                this.$.$mol_state_local.value(this.state_key(`${this.selected_langauge()}-validators`), validators);
+                this.current_workspace()?.validator_delete(id);
             }
             validator_title(id, next) {
-                this.$.$$.$mol_state_local.value('called', next);
-                const key = this.state_key(`${this.selected_langauge()}-validators-${id}`);
-                let validator = this.$.$$.$mol_state_local.value(key);
-                validator.title = next ?? validator.title;
-                this.$.$$.$mol_state_local.value(key, validator);
-                return validator.title ?? '';
+                return this.validator(id)?.Title(null).val(next) ?? "";
             }
             validator_source(id, next) {
-                this.$.$$.$mol_state_local.value('called', next);
-                const key = this.state_key(`${this.selected_langauge()}-validators-${id}`);
-                let validator = this.$.$$.$mol_state_local.value(key);
-                validator.code = next ?? validator.code;
-                this.$.$$.$mol_state_local.value(key, validator);
-                return validator.code ?? '';
+                return this.validator(id)?.Source(null).text(next) ?? "";
+            }
+            validators_items() {
+                return [
+                    this.Validator_header(),
+                    this.Validators_list(),
+                    ...this.workspace_editable() ? [this.Add_validator()] : []
+                ];
+            }
+            validator_delete_button(id) {
+                return this.workspace_editable() ? super.validator_delete_button(id) : [];
             }
             search_enabled() {
                 if ($mol_state_arg.value("search") == "") {
@@ -20354,8 +20383,8 @@ var $;
             $mol_mem
         ], $mrtest.prototype, "need_print_source", null);
         __decorate([
-            $mol_mem
-        ], $mrtest.prototype, "new_id", null);
+            $mol_mem_key
+        ], $mrtest.prototype, "validator", null);
         __decorate([
             $mol_mem
         ], $mrtest.prototype, "add_validator", null);
@@ -20368,6 +20397,12 @@ var $;
         __decorate([
             $mol_mem_key
         ], $mrtest.prototype, "validator_source", null);
+        __decorate([
+            $mol_mem
+        ], $mrtest.prototype, "validators_items", null);
+        __decorate([
+            $mol_mem
+        ], $mrtest.prototype, "validator_delete_button", null);
         __decorate([
             $mol_mem
         ], $mrtest.prototype, "search_enabled", null);
@@ -20427,7 +20462,7 @@ var $node = $node || {} ; $node[ "/mrtest/mrtest_old.svg" ] = "data:image/svg+xm
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("mrtest/mrtest.view.css", "[mrtest_output_page],\n[mrtest_source_page] {\n\tflex-grow: 0;\n\tflex-basis: 800px;\n\tmargin: 0 auto;\n}\n\n[mrtest_menu],\n[mrtest_profile_page],\n[mrtest_access_page] {\n\tflex-grow: 0;\n\tflex-basis: 320px;\n}\n\n[mrtest_validator] {\n\tmargin-bottom: var(--mol_gap_block);\n}\n\n[mrtest_validator_title_row] {\n\tpadding: 3px 0;\n\tgap: 3px;\n}\n\n[mrtest_test_item] {\n\tpadding: 0;\n\tjustify-content: space-between;\n}\n\n[mrtest_test_item_link] {\n\tflex-grow: 1;\n}\n\n[mrtest_test_item_options] {\n\topacity: .5;\n}\n\n[mrtest_test_item_options]:hover {\n\topacity: 1;\n}\n\n[mrtest_create_test_button],\n[mrtest_search_input] {\n\tmargin-bottom: var(--mol_gap_block);\n}\n\n:root {\n\t--mol_theme_hue: 195deg;\n\t--mol_theme_hue_spread: 90deg;\n}\n\n:root, [mol_theme=\"$mol_theme_dark\"] {\n\t--mol_theme_luma: -1;\n\t--mol_theme_image: invert(1) hue-rotate(180deg);\n\n\t--mol_theme_back: hsl( var(--mol_theme_hue), 5%, 10% );\n\t--mol_theme_card: hsl( var(--mol_theme_hue), 5%, 20%, .25 );\n\t--mol_theme_field: hsl( var(--mol_theme_hue), 5%, 8%, .25 );\n\t--mol_theme_hover: hsl( var(--mol_theme_hue), 0%, 35%, .1 );\n\n\t--mol_theme_text: hsl( var(--mol_theme_hue), 5%, 80% );\n\t--mol_theme_shade: hsl( var(--mol_theme_hue), 5%, 60%, 1 );\n\t--mol_theme_line: hsl( var(--mol_theme_hue), 5%, 50%, .25 );\n\t--mol_theme_focus: hsl( calc( var(--mol_theme_hue) + 180deg ), 50%, 65% );\n\n\t--mol_theme_control: hsl( var(--mol_theme_hue), 10%, 65% );\n\t--mol_theme_current: hsl( calc( var(--mol_theme_hue) - var(--mol_theme_hue_spread) ), 10%, 65% );\n\t--mol_theme_special: hsl( calc( var(--mol_theme_hue) + var(--mol_theme_hue_spread) ), 10%, 65% );\n}\n\n:root, [mol_theme=\"$mol_theme_light\"] {\n\t--mol_theme_luma: 1;\n\t--mol_theme_image: none;\n\n\t--mol_theme_back: hsl( var(--mol_theme_hue), 5%, 92% );\n\t--mol_theme_card: hsl( var(--mol_theme_hue), 5%, 100%, .5 );\n\t--mol_theme_field: hsl( var(--mol_theme_hue), 5%, 100%, .75 );\n\t--mol_theme_hover: hsl( var(--mol_theme_hue), 5%, 50%, .1 );\n\n\t--mol_theme_text: hsl( var(--mol_theme_hue), 5%, 0% );\n\t--mol_theme_shade: hsl( var(--mol_theme_hue), 5%, 40%, 1 );\n\t--mol_theme_line: hsl( var(--mol_theme_hue), 5%, 50%, .5 );\n\t--mol_theme_focus: hsl( calc( var(--mol_theme_hue) + 180deg ), 50%, 40% );\n\n\t--mol_theme_control: hsl( var(--mol_theme_hue), 10%, 10% );\n\t--mol_theme_current: hsl( calc( var(--mol_theme_hue) - var(--mol_theme_hue_spread) ), 10%, 30% );\n\t--mol_theme_special: hsl( calc( var(--mol_theme_hue) + var(--mol_theme_hue_spread) ), 10%, 30% );\n\n}\n\n[mol_book2] > *:not(:first-of-type):before,\n[mol_book2] > *:not(:last-of-type)::after {\n\tbackground: none;\n}\n\n\n[mol_view_error] {\n\tcolor: black !important;\n}\n");
+    $mol_style_attach("mrtest/mrtest.view.css", "[mrtest_output_page],\n[mrtest_source_page] {\n\tflex-grow: 0;\n\tflex-basis: 800px;\n\tmargin: 0 auto;\n}\n\n[mrtest_menu],\n[mrtest_profile_page],\n[mrtest_access_page] {\n\tflex-grow: 0;\n\tflex-basis: 320px;\n}\n\n[mrtest_validator] {\n\tmargin-bottom: var(--mol_gap_block);\n}\n\n[mrtest_validator_title_row] {\n\tpadding: 3px 0;\n\tgap: 3px;\n}\n\n[mrtest_test_item] {\n\tpadding: 0;\n\tjustify-content: space-between;\n}\n\n[mrtest_test_item_link] {\n\tflex-grow: 1;\n}\n\n[mrtest_test_item_options] {\n\topacity: .5;\n}\n\n[mrtest_test_item_options]:hover {\n\topacity: 1;\n}\n\n[mrtest_create_test_button],\n[mrtest_search_input] {\n\tmargin-bottom: var(--mol_gap_block);\n}\n\n[mrtest_validator_source_edit][disabled] {\n\tbackground: var(--mol_theme_field) !important;\n}\n\n:root {\n\t--mol_theme_hue: 195deg;\n\t--mol_theme_hue_spread: 90deg;\n}\n\n:root, [mol_theme=\"$mol_theme_dark\"] {\n\t--mol_theme_luma: -1;\n\t--mol_theme_image: invert(1) hue-rotate(180deg);\n\n\t--mol_theme_back: hsl( var(--mol_theme_hue), 5%, 10% );\n\t--mol_theme_card: hsl( var(--mol_theme_hue), 5%, 20%, .25 );\n\t--mol_theme_field: hsl( var(--mol_theme_hue), 5%, 8%, .25 );\n\t--mol_theme_hover: hsl( var(--mol_theme_hue), 0%, 35%, .1 );\n\n\t--mol_theme_text: hsl( var(--mol_theme_hue), 5%, 80% );\n\t--mol_theme_shade: hsl( var(--mol_theme_hue), 5%, 60%, 1 );\n\t--mol_theme_line: hsl( var(--mol_theme_hue), 5%, 50%, .25 );\n\t--mol_theme_focus: hsl( calc( var(--mol_theme_hue) + 180deg ), 50%, 65% );\n\n\t--mol_theme_control: hsl( var(--mol_theme_hue), 10%, 65% );\n\t--mol_theme_current: hsl( calc( var(--mol_theme_hue) - var(--mol_theme_hue_spread) ), 10%, 65% );\n\t--mol_theme_special: hsl( calc( var(--mol_theme_hue) + var(--mol_theme_hue_spread) ), 10%, 65% );\n}\n\n:root, [mol_theme=\"$mol_theme_light\"] {\n\t--mol_theme_luma: 1;\n\t--mol_theme_image: none;\n\n\t--mol_theme_back: hsl( var(--mol_theme_hue), 5%, 92% );\n\t--mol_theme_card: hsl( var(--mol_theme_hue), 5%, 100%, .5 );\n\t--mol_theme_field: hsl( var(--mol_theme_hue), 5%, 100%, .75 );\n\t--mol_theme_hover: hsl( var(--mol_theme_hue), 5%, 50%, .1 );\n\n\t--mol_theme_text: hsl( var(--mol_theme_hue), 5%, 0% );\n\t--mol_theme_shade: hsl( var(--mol_theme_hue), 5%, 40%, 1 );\n\t--mol_theme_line: hsl( var(--mol_theme_hue), 5%, 50%, .5 );\n\t--mol_theme_focus: hsl( calc( var(--mol_theme_hue) + 180deg ), 50%, 40% );\n\n\t--mol_theme_control: hsl( var(--mol_theme_hue), 10%, 10% );\n\t--mol_theme_current: hsl( calc( var(--mol_theme_hue) - var(--mol_theme_hue_spread) ), 10%, 30% );\n\t--mol_theme_special: hsl( calc( var(--mol_theme_hue) + var(--mol_theme_hue_spread) ), 10%, 30% );\n\n}\n\n[mol_book2] > *:not(:first-of-type):before,\n[mol_book2] > *:not(:last-of-type)::after {\n\tbackground: none;\n}\n\n\n[mol_view_error] {\n\tcolor: black !important;\n}\n");
 })($ || ($ = {}));
 
 ;

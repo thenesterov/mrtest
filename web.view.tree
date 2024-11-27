@@ -596,6 +596,18 @@ $mol_textarea_edit $mol_string
 		^
 		scrollTop 0
 
+$mol_icon_delete $mol_icon path \M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z
+
+$mol_row $mol_view
+
+$mol_icon_plus $mol_icon path \M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z
+
+$mol_icon_delete_outline $mol_icon path \M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z
+
+$mol_icon_magnify $mol_icon path \M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z
+
+$mol_icon_security $mol_icon path \M12,12H19C18.47,16.11 15.72,19.78 12,20.92V12H5V6.3L12,3.19M12,1L3,5V11C3,16.55 6.84,21.73 12,23C17.16,21.73 21,16.55 21,11V5L12,1Z
+
 $mol_float $mol_view
 	style *
 		^
@@ -875,18 +887,6 @@ $mol_text_span $mol_paragraph
 		^
 		mol_text_type <= type \
 
-$mol_icon_plus $mol_icon path \M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z
-
-$mol_icon_delete $mol_icon path \M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z
-
-$mol_row $mol_view
-
-$mol_icon_delete_outline $mol_icon path \M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z
-
-$mol_icon_magnify $mol_icon path \M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z
-
-$mol_icon_security $mol_icon path \M12,12H19C18.47,16.11 15.72,19.78 12,20.92V12H5V6.3L12,3.19M12,1L3,5V11C3,16.55 6.84,21.73 12,23C17.16,21.73 21,16.55 21,11V5L12,1Z
-
 $mol_chip $mol_view
 	sub /
 		<= title
@@ -1063,16 +1063,7 @@ $mrtest $mol_book2_catalog
 		value? <=> source_code? \
 		enabled <= test_editable
 	Source_postman $mol_list
-		rows /
-			<= Validator_header $mol_text
-				text \**Валидаторы**
-			<= Validators_list $mol_list
-				sub <= validators_list /$mol_view
-			<= Add_validator $mol_button_minor
-				click? <=> add_validator? null
-				sub /
-					<= Add_validator_icon $mol_icon_plus
-					\Добавить валидатор
+		rows <= validators_items /
 	Validator* $mol_list
 		sub /
 			<= Validator_title_row* $mol_row
@@ -1080,13 +1071,27 @@ $mrtest $mol_book2_catalog
 					<= Validator_title* $mol_string_button
 						hint \Введите название валидатора...
 						value? <=> validator_title*? \
-					<= Validator_delete* $mol_button_minor
+						enabled? <= workspace_editable?
+					^ validator_delete_button* / <= Validator_delete* $mol_button_minor
 						click? <=> validator_delete*? null
 						sub /
 							<= Validator_delete_icon* $mol_icon_delete
 			<= Validator_source* $mol_textarea
 				hint \Введите код валидатора по аналогии с другими...
 				value? <=> validator_source*? \
+				enabled? <= workspace_editable?
+	-
+	Validator_header $mol_text
+		text \**Валидаторы**
+	-
+	Validators_list $mol_list
+		sub <= validators_list /$mol_view
+	-
+	Add_validator $mol_button_minor
+		click? <=> add_validator? null
+		sub /
+			<= Add_validator_icon $mol_icon_plus
+			\Добавить валидатор
 	-
 	Test_item* $mol_row
 		sub <=> test_item_sub* /
