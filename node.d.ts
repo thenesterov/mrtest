@@ -10062,6 +10062,7 @@ declare namespace $.$$ {
         person(): $hyoo_crus_home;
         person_id(): string;
         workspace(id: string): $hyoo_crus_node;
+        set_default_lang(): void;
         current_workspace(): $hyoo_crus_node | null;
         workspace_make(): void;
         test(id: string): $hyoo_crus_node;
