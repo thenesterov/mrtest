@@ -43,6 +43,10 @@
 	margin-bottom: var(--mol_gap_block);
 }
 
+[mrtest_validator_source_edit][disabled] {
+	background: var(--mol_theme_field) !important;
+}
+
 :root {
 	--mol_theme_hue: 195deg;
 	--mol_theme_hue_spread: 90deg;

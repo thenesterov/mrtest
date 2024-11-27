@@ -58,16 +58,7 @@ $mrtest $mol_book2_catalog
 		value? <=> source_code? \
 		enabled <= test_editable
 	Source_postman $mol_list
-		rows /
-			<= Validator_header $mol_text
-				text \**Валидаторы**
-			<= Validators_list $mol_list
-				sub <= validators_list /$mol_view
-			<= Add_validator $mol_button_minor
-				click? <=> add_validator? null
-				sub /
-					<= Add_validator_icon $mol_icon_plus
-					\Добавить валидатор
+		rows <= validators_items /
 	Validator* $mol_list
 		sub /
 			<= Validator_title_row* $mol_row
@@ -75,13 +66,27 @@ $mrtest $mol_book2_catalog
 					<= Validator_title* $mol_string_button
 						hint \Введите название валидатора...
 						value? <=> validator_title*? \
-					<= Validator_delete* $mol_button_minor
+						enabled? <= workspace_editable?
+					^ validator_delete_button* / <= Validator_delete* $mol_button_minor
 						click? <=> validator_delete*? null
 						sub /
 							<= Validator_delete_icon* $mol_icon_delete
 			<= Validator_source* $mol_textarea
 				hint \Введите код валидатора по аналогии с другими...
 				value? <=> validator_source*? \
+				enabled? <= workspace_editable?
+	-
+	Validator_header $mol_text
+		text \**Валидаторы**
+	-
+	Validators_list $mol_list
+		sub <= validators_list /$mol_view
+	-
+	Add_validator $mol_button_minor
+		click? <=> add_validator? null
+		sub /
+			<= Add_validator_icon $mol_icon_plus
+			\Добавить валидатор
 	-
 	Test_item* $mol_row
 		sub <=> test_item_sub* /

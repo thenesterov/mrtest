@@ -371,20 +371,23 @@ namespace $.$$ {
 			return [...validators]
 		}
 
+		@ $mol_mem
+		current_workspace() {
+			const workspace_id = $mol_state_arg.value("")
+			if (!workspace_id) {
+				return null;
+			}
+			return $hyoo_crus_glob.Node($hyoo_crus_ref(workspace_id), $mrtest_workspace)
+		}
+
 		get_validators(target_name: string): Record<string, string> {
 			let validators: Record<string, string> = {}
 
-			const key = `${target_name}-validators`
-			let validators_ids = $.$$.$mol_state_local.value(key) as [] ?? []
-
-			for(const validator_id of validators_ids) {
-				const validator_key = `${target_name}-validators-${validator_id}`
-
-				let validator: $mrtest_validator | null = $.$$.$mol_state_local.value(validator_key)
-				if (validator && validator.title && validator.code) {
-					validators[validator.title] = validator.code + (validator.code ? '\n\n' : '')
+			for(const validator of this.current_workspace()?.validator_list() ?? []) {
+					let title = validator.Title(null)?.val(undefined)!
+					let source = validator.Source(null)?.text(undefined)!
+					validators[title] = source + (source ? '\n\n' : '')
 				}
-			}
 
 			return validators
 		}
