@@ -18829,6 +18829,54 @@ var $;
             }
         }
         $$.$mrtest_dsl_test_get_array_is_variable_validator = $mrtest_dsl_test_get_array_is_variable_validator;
+        class $mrtest_dsl_test_get_array_contains_number extends $mrtest_dsl_test {
+            accept(v) {
+                return v.get_array_contains_number(this);
+            }
+        }
+        $$.$mrtest_dsl_test_get_array_contains_number = $mrtest_dsl_test_get_array_contains_number;
+        class $mrtest_dsl_test_get_array_contains_variable_number extends $mrtest_dsl_test {
+            accept(v) {
+                return v.get_array_contains_variable_number(this);
+            }
+        }
+        $$.$mrtest_dsl_test_get_array_contains_variable_number = $mrtest_dsl_test_get_array_contains_variable_number;
+        class $mrtest_dsl_test_get_array_contains_string extends $mrtest_dsl_test {
+            accept(v) {
+                return v.get_array_contains_string(this);
+            }
+        }
+        $$.$mrtest_dsl_test_get_array_contains_string = $mrtest_dsl_test_get_array_contains_string;
+        class $mrtest_dsl_test_get_array_contains_variable_string extends $mrtest_dsl_test {
+            accept(v) {
+                return v.get_array_contains_variable_string(this);
+            }
+        }
+        $$.$mrtest_dsl_test_get_array_contains_variable_string = $mrtest_dsl_test_get_array_contains_variable_string;
+        class $mrtest_dsl_test_get_array_contains_bool extends $mrtest_dsl_test {
+            accept(v) {
+                return v.get_array_contains_bool(this);
+            }
+        }
+        $$.$mrtest_dsl_test_get_array_contains_bool = $mrtest_dsl_test_get_array_contains_bool;
+        class $mrtest_dsl_test_get_array_contains_variable_bool extends $mrtest_dsl_test {
+            accept(v) {
+                return v.get_array_contains_variable_bool(this);
+            }
+        }
+        $$.$mrtest_dsl_test_get_array_contains_variable_bool = $mrtest_dsl_test_get_array_contains_variable_bool;
+        class $mrtest_dsl_test_get_array_contains_null extends $mrtest_dsl_test {
+            accept(v) {
+                return v.get_array_contains_null(this);
+            }
+        }
+        $$.$mrtest_dsl_test_get_array_contains_null = $mrtest_dsl_test_get_array_contains_null;
+        class $mrtest_dsl_test_get_array_contains_variable_null extends $mrtest_dsl_test {
+            accept(v) {
+                return v.get_array_contains_variable_null(this);
+            }
+        }
+        $$.$mrtest_dsl_test_get_array_contains_variable_null = $mrtest_dsl_test_get_array_contains_variable_null;
         class $mrtest_dsl_test_get_array_contains_array extends $mrtest_dsl_test {
             accept(v) {
                 return v.get_array_contains_array(this);
@@ -18841,6 +18889,30 @@ var $;
             }
         }
         $$.$mrtest_dsl_test_get_array_contains_variable_array = $mrtest_dsl_test_get_array_contains_variable_array;
+        class $mrtest_dsl_test_get_array_contains_object extends $mrtest_dsl_test {
+            accept(v) {
+                return v.get_array_contains_object(this);
+            }
+        }
+        $$.$mrtest_dsl_test_get_array_contains_object = $mrtest_dsl_test_get_array_contains_object;
+        class $mrtest_dsl_test_get_array_contains_variable_object extends $mrtest_dsl_test {
+            accept(v) {
+                return v.get_array_contains_variable_object(this);
+            }
+        }
+        $$.$mrtest_dsl_test_get_array_contains_variable_object = $mrtest_dsl_test_get_array_contains_variable_object;
+        class $mrtest_dsl_test_get_array_contains_env extends $mrtest_dsl_test {
+            accept(v) {
+                return v.get_array_contains_env(this);
+            }
+        }
+        $$.$mrtest_dsl_test_get_array_contains_env = $mrtest_dsl_test_get_array_contains_env;
+        class $mrtest_dsl_test_get_array_contains_variable_env extends $mrtest_dsl_test {
+            accept(v) {
+                return v.get_array_contains_variable_env(this);
+            }
+        }
+        $$.$mrtest_dsl_test_get_array_contains_variable_env = $mrtest_dsl_test_get_array_contains_variable_env;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -19460,11 +19532,47 @@ var $;
             get_array_is_variable_validator(test) {
                 return `${test.value}.validator(test, ${test.value}.args)\n`;
             }
+            get_array_contains_number(test) {
+                return `pm.expect(test).to.deep.include(${test.value});\n`;
+            }
+            get_array_contains_variable_number(test) {
+                return `pm.expect(test).to.deep.include(${test.value});\n`;
+            }
+            get_array_contains_string(test) {
+                return `pm.expect(test).to.deep.include("${test.value}");\n`;
+            }
+            get_array_contains_variable_string(test) {
+                return `pm.expect(test).to.deep.include(${test.value});\n`;
+            }
+            get_array_contains_bool(test) {
+                return `pm.expect(test).to.deep.include(${test.value});\n`;
+            }
+            get_array_contains_variable_bool(test) {
+                return `pm.expect(test).to.deep.include(${test.value});\n`;
+            }
+            get_array_contains_null(test) {
+                return `pm.expect(test).to.deep.include(${test.value});\n`;
+            }
+            get_array_contains_variable_null(test) {
+                return `pm.expect(test).to.deep.include(${test.value});\n`;
+            }
             get_array_contains_array(test) {
-                return `pm.expect(test).to.have.members(${this.custom_stringify(test.value)});\n`;
+                return `pm.expect(test).to.deep.include(${this.custom_stringify(test.value)});\n`;
             }
             get_array_contains_variable_array(test) {
-                return `pm.expect(test).to.have.members(${test.value});\n`;
+                return `pm.expect(test).to.deep.include(${test.value});\n`;
+            }
+            get_array_contains_object(test) {
+                return `pm.expect(test).to.deep.include(${this.custom_stringify(test.value)});\n`;
+            }
+            get_array_contains_variable_object(test) {
+                return `pm.expect(test).to.deep.include(${test.value});\n`;
+            }
+            get_array_contains_env(test) {
+                return `pm.expect(test).to.deep.include(\n\t\tpm.environment.get("${test.value}")\n\t);\n`;
+            }
+            get_array_contains_variable_env(test) {
+                return `pm.expect(test).to.deep.include(${test.value});\n`;
             }
         }
         $$.$mrtest_dsl_visitor_postman = $mrtest_dsl_visitor_postman;
@@ -19749,9 +19857,21 @@ var $;
                         }
                     },
                     "$mrtest_operator_contains": {
+                        "$mrtest_type_number": $mrtest_dsl_test_get_array_contains_number,
+                        "$mrtest_type_string": $mrtest_dsl_test_get_array_contains_string,
+                        "$mrtest_type_bool": $mrtest_dsl_test_get_array_contains_bool,
+                        "$mrtest_type_null": $mrtest_dsl_test_get_array_contains_null,
                         "$mrtest_type_array": $mrtest_dsl_test_get_array_contains_array,
+                        "$mrtest_type_object": $mrtest_dsl_test_get_array_contains_object,
+                        "$mrtest_type_env": $mrtest_dsl_test_get_array_contains_env,
                         "variables": {
+                            "$mrtest_type_number": $mrtest_dsl_test_get_array_contains_variable_number,
+                            "$mrtest_type_string": $mrtest_dsl_test_get_array_contains_variable_string,
+                            "$mrtest_type_bool": $mrtest_dsl_test_get_array_contains_variable_bool,
+                            "$mrtest_type_null": $mrtest_dsl_test_get_array_contains_variable_null,
                             "$mrtest_type_array": $mrtest_dsl_test_get_array_contains_variable_array,
+                            "$mrtest_type_object": $mrtest_dsl_test_get_array_contains_variable_object,
+                            "$mrtest_type_env": $mrtest_dsl_test_get_array_contains_variable_env,
                         }
                     }
                 },
@@ -21117,6 +21237,15 @@ var $;
             }
         }
         $$.$mrtest_type_bool = $mrtest_type_bool;
+        class $mrtest_type_null extends $mrtest_type {
+            is_type(value) {
+                return value[0].type == "null";
+            }
+            parse(value) {
+                return null;
+            }
+        }
+        $$.$mrtest_type_null = $mrtest_type_null;
         class $mrtest_type_object extends $mrtest_type {
             is_type(value) {
                 return value[0].type == "*";
@@ -21171,6 +21300,7 @@ var $;
             $mrtest_type_array,
             $mrtest_type_array_check,
             $mrtest_type_bool,
+            $mrtest_type_null,
             $mrtest_type_string,
         ];
     })($$ = $.$$ || ($.$$ = {}));

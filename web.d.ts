@@ -8679,8 +8679,20 @@ declare namespace $.$$ {
         abstract get_array_noteql_variable_array(test: $mrtest_dsl_test_get_array_noteql_variable_array): string;
         abstract get_array_is_validator(test: $mrtest_dsl_test_get_array_is_validator): string;
         abstract get_array_is_variable_validator(test: $mrtest_dsl_test_get_array_is_variable_validator): string;
+        abstract get_array_contains_number(test: $mrtest_dsl_test_get_array_contains_number): string;
+        abstract get_array_contains_variable_number(test: $mrtest_dsl_test_get_array_contains_variable_number): string;
+        abstract get_array_contains_string(test: $mrtest_dsl_test_get_array_contains_string): string;
+        abstract get_array_contains_variable_string(test: $mrtest_dsl_test_get_array_contains_variable_string): string;
+        abstract get_array_contains_bool(test: $mrtest_dsl_test_get_array_contains_bool): string;
+        abstract get_array_contains_variable_bool(test: $mrtest_dsl_test_get_array_contains_variable_bool): string;
+        abstract get_array_contains_null(test: $mrtest_dsl_test_get_array_contains_null): string;
+        abstract get_array_contains_variable_null(test: $mrtest_dsl_test_get_array_contains_variable_null): string;
         abstract get_array_contains_array(test: $mrtest_dsl_test_get_array_contains_array): string;
         abstract get_array_contains_variable_array(test: $mrtest_dsl_test_get_array_contains_variable_array): string;
+        abstract get_array_contains_object(test: $mrtest_dsl_test_get_array_contains_object): string;
+        abstract get_array_contains_variable_object(test: $mrtest_dsl_test_get_array_contains_variable_object): string;
+        abstract get_array_contains_env(test: $mrtest_dsl_test_get_array_contains_env): string;
+        abstract get_array_contains_variable_env(test: $mrtest_dsl_test_get_array_contains_variable_env): string;
     }
 }
 
@@ -9155,10 +9167,46 @@ declare namespace $.$$ {
     class $mrtest_dsl_test_get_array_is_variable_validator extends $mrtest_dsl_test {
         accept(v: $mrtest_dsl_visitor): string;
     }
+    class $mrtest_dsl_test_get_array_contains_number extends $mrtest_dsl_test {
+        accept(v: $mrtest_dsl_visitor): string;
+    }
+    class $mrtest_dsl_test_get_array_contains_variable_number extends $mrtest_dsl_test {
+        accept(v: $mrtest_dsl_visitor): string;
+    }
+    class $mrtest_dsl_test_get_array_contains_string extends $mrtest_dsl_test {
+        accept(v: $mrtest_dsl_visitor): string;
+    }
+    class $mrtest_dsl_test_get_array_contains_variable_string extends $mrtest_dsl_test {
+        accept(v: $mrtest_dsl_visitor): string;
+    }
+    class $mrtest_dsl_test_get_array_contains_bool extends $mrtest_dsl_test {
+        accept(v: $mrtest_dsl_visitor): string;
+    }
+    class $mrtest_dsl_test_get_array_contains_variable_bool extends $mrtest_dsl_test {
+        accept(v: $mrtest_dsl_visitor): string;
+    }
+    class $mrtest_dsl_test_get_array_contains_null extends $mrtest_dsl_test {
+        accept(v: $mrtest_dsl_visitor): string;
+    }
+    class $mrtest_dsl_test_get_array_contains_variable_null extends $mrtest_dsl_test {
+        accept(v: $mrtest_dsl_visitor): string;
+    }
     class $mrtest_dsl_test_get_array_contains_array extends $mrtest_dsl_test {
         accept(v: $mrtest_dsl_visitor): string;
     }
     class $mrtest_dsl_test_get_array_contains_variable_array extends $mrtest_dsl_test {
+        accept(v: $mrtest_dsl_visitor): string;
+    }
+    class $mrtest_dsl_test_get_array_contains_object extends $mrtest_dsl_test {
+        accept(v: $mrtest_dsl_visitor): string;
+    }
+    class $mrtest_dsl_test_get_array_contains_variable_object extends $mrtest_dsl_test {
+        accept(v: $mrtest_dsl_visitor): string;
+    }
+    class $mrtest_dsl_test_get_array_contains_env extends $mrtest_dsl_test {
+        accept(v: $mrtest_dsl_visitor): string;
+    }
+    class $mrtest_dsl_test_get_array_contains_variable_env extends $mrtest_dsl_test {
         accept(v: $mrtest_dsl_visitor): string;
     }
 }
@@ -9323,8 +9371,20 @@ declare namespace $.$$ {
         get_array_noteql_variable_array(test: $mrtest_dsl_test_get_array_noteql_variable_array): string;
         get_array_is_validator(test: $mrtest_dsl_test_get_array_is_validator): string;
         get_array_is_variable_validator(test: $mrtest_dsl_test_get_array_is_variable_validator): string;
+        get_array_contains_number(test: $mrtest_dsl_test_get_array_contains_number): string;
+        get_array_contains_variable_number(test: $mrtest_dsl_test_get_array_contains_variable_number): string;
+        get_array_contains_string(test: $mrtest_dsl_test_get_array_contains_string): string;
+        get_array_contains_variable_string(test: $mrtest_dsl_test_get_array_contains_variable_string): string;
+        get_array_contains_bool(test: $mrtest_dsl_test_get_array_contains_bool): string;
+        get_array_contains_variable_bool(test: $mrtest_dsl_test_get_array_contains_variable_bool): string;
+        get_array_contains_null(test: $mrtest_dsl_test_get_array_contains_null): string;
+        get_array_contains_variable_null(test: $mrtest_dsl_test_get_array_contains_variable_null): string;
         get_array_contains_array(test: $mrtest_dsl_test_get_array_contains_array): string;
         get_array_contains_variable_array(test: $mrtest_dsl_test_get_array_contains_variable_array): string;
+        get_array_contains_object(test: $mrtest_dsl_test_get_array_contains_object): string;
+        get_array_contains_variable_object(test: $mrtest_dsl_test_get_array_contains_variable_object): string;
+        get_array_contains_env(test: $mrtest_dsl_test_get_array_contains_env): string;
+        get_array_contains_variable_env(test: $mrtest_dsl_test_get_array_contains_variable_env): string;
     }
 }
 
@@ -9592,9 +9652,21 @@ declare namespace $.$$ {
                     };
                 };
                 $mrtest_operator_contains: {
+                    $mrtest_type_number: typeof $mrtest_dsl_test_get_array_contains_number;
+                    $mrtest_type_string: typeof $mrtest_dsl_test_get_array_contains_string;
+                    $mrtest_type_bool: typeof $mrtest_dsl_test_get_array_contains_bool;
+                    $mrtest_type_null: typeof $mrtest_dsl_test_get_array_contains_null;
                     $mrtest_type_array: typeof $mrtest_dsl_test_get_array_contains_array;
+                    $mrtest_type_object: typeof $mrtest_dsl_test_get_array_contains_object;
+                    $mrtest_type_env: typeof $mrtest_dsl_test_get_array_contains_env;
                     variables: {
+                        $mrtest_type_number: typeof $mrtest_dsl_test_get_array_contains_variable_number;
+                        $mrtest_type_string: typeof $mrtest_dsl_test_get_array_contains_variable_string;
+                        $mrtest_type_bool: typeof $mrtest_dsl_test_get_array_contains_variable_bool;
+                        $mrtest_type_null: typeof $mrtest_dsl_test_get_array_contains_variable_null;
                         $mrtest_type_array: typeof $mrtest_dsl_test_get_array_contains_variable_array;
+                        $mrtest_type_object: typeof $mrtest_dsl_test_get_array_contains_variable_object;
+                        $mrtest_type_env: typeof $mrtest_dsl_test_get_array_contains_variable_env;
                     };
                 };
             };
@@ -10384,6 +10456,10 @@ declare namespace $.$$ {
     export class $mrtest_type_bool extends $mrtest_type {
         is_type(value: $mol_tree2[]): boolean;
         parse(value: $mol_tree2[]): boolean;
+    }
+    export class $mrtest_type_null extends $mrtest_type {
+        is_type(value: $mol_tree2[]): boolean;
+        parse(value: $mol_tree2[]): null;
     }
     export class $mrtest_type_object extends $mrtest_type {
         is_type(value: $mol_tree2[]): boolean;
