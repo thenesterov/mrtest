@@ -179,7 +179,19 @@ namespace $.$$ {
 		abstract get_array_noteql_variable_array(test: $mrtest_dsl_test_get_array_noteql_variable_array): string
 		abstract get_array_is_validator(test: $mrtest_dsl_test_get_array_is_validator): string
 		abstract get_array_is_variable_validator(test: $mrtest_dsl_test_get_array_is_variable_validator): string
+		abstract get_array_contains_number(test: $mrtest_dsl_test_get_array_contains_number): string
+		abstract get_array_contains_variable_number(test: $mrtest_dsl_test_get_array_contains_variable_number): string
+		abstract get_array_contains_string(test: $mrtest_dsl_test_get_array_contains_string): string
+		abstract get_array_contains_variable_string(test: $mrtest_dsl_test_get_array_contains_variable_string): string
+		abstract get_array_contains_bool(test: $mrtest_dsl_test_get_array_contains_bool): string
+		abstract get_array_contains_variable_bool(test: $mrtest_dsl_test_get_array_contains_variable_bool): string
+		abstract get_array_contains_null(test: $mrtest_dsl_test_get_array_contains_null): string
+		abstract get_array_contains_variable_null(test: $mrtest_dsl_test_get_array_contains_variable_null): string
 		abstract get_array_contains_array(test: $mrtest_dsl_test_get_array_contains_array): string
 		abstract get_array_contains_variable_array(test: $mrtest_dsl_test_get_array_contains_variable_array): string
+		abstract get_array_contains_object(test: $mrtest_dsl_test_get_array_contains_object): string
+		abstract get_array_contains_variable_object(test: $mrtest_dsl_test_get_array_contains_variable_object): string
+		abstract get_array_contains_env(test: $mrtest_dsl_test_get_array_contains_env): string
+		abstract get_array_contains_variable_env(test: $mrtest_dsl_test_get_array_contains_variable_env): string
 	}
 }

@@ -939,6 +939,54 @@ namespace $.$$ {
 		}
 	}
 
+	export class $mrtest_dsl_test_get_array_contains_number extends $mrtest_dsl_test {
+		accept( v: $mrtest_dsl_visitor ): string {
+			return v.get_array_contains_number(this)
+		}
+	}
+
+	export class $mrtest_dsl_test_get_array_contains_variable_number extends $mrtest_dsl_test {
+		accept( v: $mrtest_dsl_visitor ): string {
+			return v.get_array_contains_variable_number(this)
+		}
+	}
+
+	export class $mrtest_dsl_test_get_array_contains_string extends $mrtest_dsl_test {
+		accept( v: $mrtest_dsl_visitor ): string {
+			return v.get_array_contains_string(this)
+		}
+	}
+
+	export class $mrtest_dsl_test_get_array_contains_variable_string extends $mrtest_dsl_test {
+		accept( v: $mrtest_dsl_visitor ): string {
+			return v.get_array_contains_variable_string(this)
+		}
+	}
+
+	export class $mrtest_dsl_test_get_array_contains_bool extends $mrtest_dsl_test {
+		accept( v: $mrtest_dsl_visitor ): string {
+			return v.get_array_contains_bool(this)
+		}
+	}
+
+	export class $mrtest_dsl_test_get_array_contains_variable_bool extends $mrtest_dsl_test {
+		accept( v: $mrtest_dsl_visitor ): string {
+			return v.get_array_contains_variable_bool(this)
+		}
+	}
+
+	export class $mrtest_dsl_test_get_array_contains_null extends $mrtest_dsl_test {
+		accept( v: $mrtest_dsl_visitor ): string {
+			return v.get_array_contains_null(this)
+		}
+	}
+
+	export class $mrtest_dsl_test_get_array_contains_variable_null extends $mrtest_dsl_test {
+		accept( v: $mrtest_dsl_visitor ): string {
+			return v.get_array_contains_variable_null(this)
+		}
+	}
+
 	export class $mrtest_dsl_test_get_array_contains_array extends $mrtest_dsl_test {
 		accept( v: $mrtest_dsl_visitor ): string {
 			return v.get_array_contains_array(this)
@@ -948,6 +996,30 @@ namespace $.$$ {
 	export class $mrtest_dsl_test_get_array_contains_variable_array extends $mrtest_dsl_test {
 		accept( v: $mrtest_dsl_visitor ): string {
 			return v.get_array_contains_variable_array(this)
+		}
+	}
+
+	export class $mrtest_dsl_test_get_array_contains_object extends $mrtest_dsl_test {
+		accept( v: $mrtest_dsl_visitor ): string {
+			return v.get_array_contains_object(this)
+		}
+	}
+
+	export class $mrtest_dsl_test_get_array_contains_variable_object extends $mrtest_dsl_test {
+		accept( v: $mrtest_dsl_visitor ): string {
+			return v.get_array_contains_variable_object(this)
+		}
+	}
+
+	export class $mrtest_dsl_test_get_array_contains_env extends $mrtest_dsl_test {
+		accept( v: $mrtest_dsl_visitor ): string {
+			return v.get_array_contains_env(this)
+		}
+	}
+
+	export class $mrtest_dsl_test_get_array_contains_variable_env extends $mrtest_dsl_test {
+		accept( v: $mrtest_dsl_visitor ): string {
+			return v.get_array_contains_variable_env(this)
 		}
 	}
 }

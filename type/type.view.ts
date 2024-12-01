@@ -380,6 +380,16 @@ namespace $.$$ {
 		}
 	}
 
+	export class $mrtest_type_null extends $mrtest_type {
+		is_type( value: $mol_tree2[] ): boolean {
+			return value[0].type == "null"
+		}
+
+		parse( value: $mol_tree2[] ) {
+			return null;
+		}
+	}
+
 	export class $mrtest_type_object extends $mrtest_type {
 		is_type( value: $mol_tree2[] ): boolean {
 			return value[0].type == "*"
@@ -438,6 +448,7 @@ namespace $.$$ {
 			$mrtest_type_array,
 			$mrtest_type_array_check,
 			$mrtest_type_bool,
+			$mrtest_type_null,
 			$mrtest_type_string,
 		]
 }

@@ -272,9 +272,21 @@ namespace $.$$ {
 					}
 				},
 				"$mrtest_operator_contains": {
+					"$mrtest_type_number": $mrtest_dsl_test_get_array_contains_number,
+					"$mrtest_type_string": $mrtest_dsl_test_get_array_contains_string,
+					"$mrtest_type_bool": $mrtest_dsl_test_get_array_contains_bool,
+					"$mrtest_type_null": $mrtest_dsl_test_get_array_contains_null,
 					"$mrtest_type_array": $mrtest_dsl_test_get_array_contains_array,
+					"$mrtest_type_object": $mrtest_dsl_test_get_array_contains_object,
+					"$mrtest_type_env": $mrtest_dsl_test_get_array_contains_env,
 					"variables": {
+						"$mrtest_type_number": $mrtest_dsl_test_get_array_contains_variable_number,
+						"$mrtest_type_string": $mrtest_dsl_test_get_array_contains_variable_string,
+						"$mrtest_type_bool": $mrtest_dsl_test_get_array_contains_variable_bool,
+						"$mrtest_type_null": $mrtest_dsl_test_get_array_contains_variable_null,
 						"$mrtest_type_array": $mrtest_dsl_test_get_array_contains_variable_array,
+						"$mrtest_type_object": $mrtest_dsl_test_get_array_contains_variable_object,
+						"$mrtest_type_env": $mrtest_dsl_test_get_array_contains_variable_env,
 					}
 				}
 			},

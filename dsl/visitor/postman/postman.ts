@@ -826,12 +826,60 @@ namespace $.$$ {
 			return `${test.value}.validator(test, ${test.value}.args)\n`
 		}
 
+		get_array_contains_number( test: $mrtest_dsl_test_get_array_contains_number ): string {
+			return `pm.expect(test).to.deep.include(${test.value});\n`
+		}
+
+		get_array_contains_variable_number( test: $mrtest_dsl_test_get_array_contains_variable_number ): string {
+			return `pm.expect(test).to.deep.include(${test.value});\n`
+		}
+
+		get_array_contains_string( test: $mrtest_dsl_test_get_array_contains_string ): string {
+			return `pm.expect(test).to.deep.include("${test.value}");\n`
+		}
+
+		get_array_contains_variable_string( test: $mrtest_dsl_test_get_array_contains_variable_string ): string {
+			return `pm.expect(test).to.deep.include(${test.value});\n`
+		}
+
+		get_array_contains_bool( test: $mrtest_dsl_test_get_array_contains_bool ): string {
+			return `pm.expect(test).to.deep.include(${test.value});\n`
+		}
+
+		get_array_contains_variable_bool( test: $mrtest_dsl_test_get_array_contains_variable_bool ): string {
+			return `pm.expect(test).to.deep.include(${test.value});\n`
+		}
+
+		get_array_contains_null( test: $mrtest_dsl_test_get_array_contains_null ): string {
+			return `pm.expect(test).to.deep.include(${test.value});\n`
+		}
+
+		get_array_contains_variable_null( test: $mrtest_dsl_test_get_array_contains_variable_null ): string {
+			return `pm.expect(test).to.deep.include(${test.value});\n`
+		}
+
 		get_array_contains_array( test: $mrtest_dsl_test_get_array_contains_array ): string {
-			return `pm.expect(test).to.have.members(${this.custom_stringify(test.value)});\n`
+			return `pm.expect(test).to.deep.include(${this.custom_stringify(test.value)});\n`
 		}
 
 		get_array_contains_variable_array( test: $mrtest_dsl_test_get_array_contains_variable_array ): string {
-			return `pm.expect(test).to.have.members(${test.value});\n`
+			return `pm.expect(test).to.deep.include(${test.value});\n`
+		}
+
+		get_array_contains_object( test: $mrtest_dsl_test_get_array_contains_object ): string {
+			return `pm.expect(test).to.deep.include(${this.custom_stringify(test.value)});\n`
+		}
+
+		get_array_contains_variable_object( test: $mrtest_dsl_test_get_array_contains_variable_object ): string {
+			return `pm.expect(test).to.deep.include(${test.value});\n`
+		}
+
+		get_array_contains_env( test: $mrtest_dsl_test_get_array_contains_env ): string {
+			return `pm.expect(test).to.deep.include(\n\t\tpm.environment.get("${test.value}")\n\t);\n`
+		}
+
+		get_array_contains_variable_env( test: $mrtest_dsl_test_get_array_contains_variable_env ): string {
+			return `pm.expect(test).to.deep.include(${test.value});\n`
 		}
 	}
 }
