@@ -20843,7 +20843,7 @@ var $;
                             pluses_count++;
                         }
                         items.push(meta_items);
-                        result.items = items;
+                        result.items = items.length > 1 ? items : items[0];
                     }
                     result = { ...result, ...meta };
                     return $mol_tree2_from_json(result);
@@ -20910,8 +20910,10 @@ var $;
                                 nested_node = $mrtest_tql_get(">" + "+".repeat(pluses_count), tree);
                                 pluses_count++;
                             }
-                            items.push(meta_items);
-                            result[property].items = items;
+                            if (Object.keys(meta_items).length != 0) {
+                                items.push(meta_items);
+                            }
+                            result[property].items = items.length > 1 ? items : items[0];
                             result[property] = { ...result[property], ...meta };
                         }
                     }
