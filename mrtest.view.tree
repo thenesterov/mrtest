@@ -25,7 +25,7 @@ $mrtest $mol_book2_catalog
 			tools /
 				<= Test_title $mol_string_button
 					value? <=> test_title? \
-					enabled <= test_editable
+					enabled <= test_editable false
 				<= Selected_language $mol_select
 					filter_hint \Выберите язык...
 					value? <=> selected_langauge? \mrtest
@@ -66,7 +66,7 @@ $mrtest $mol_book2_catalog
 					<= Validator_title* $mol_string_button
 						hint \Введите название валидатора...
 						value? <=> validator_title*? \
-						enabled? <= workspace_editable?
+						enabled? <= workspace_editable? false
 					^ validator_delete_button* / <= Validator_delete* $mol_button_minor
 						click? <=> validator_delete*? null
 						sub /
@@ -116,10 +116,10 @@ $mrtest $mol_book2_catalog
 	Profile_page* $mrtest_person_page
 		close_arg *
 			profile null
-		person <= profile* $mrtest_person
+		person <= profile* null
 	-
 	Access_page $mrtest_workspace_access
-		workspace <= current_workspace
+		workspace <= current_workspace null
 		close_arg * access null
 	-
 	Create_test_button $mrtest_ui_button
@@ -135,7 +135,7 @@ $mrtest $mol_book2_catalog
 		arg * search \
 		sub / <= Search_icon $mol_icon_magnify
 		style *
-			color <= search_highlight
+			color <= search_highlight \
 	-
 	Search_input $mol_string
 		hint \Поиск...

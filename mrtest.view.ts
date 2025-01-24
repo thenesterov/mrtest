@@ -35,7 +35,7 @@ namespace $.$$ {
 		}
 
 		@ $mol_mem
-		profile() {
+		profile(id_?: undefined): $mrtest_person {
 			const id = this.$.$mol_state_arg.value( "profile" )
 			if( !id ) return null!
 

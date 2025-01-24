@@ -1,4 +1,4 @@
-namespace $.$$ {
+namespace $ {
 	export class $mrtest_workspace extends $hyoo_crus_entity.with({
 		Title: $hyoo_crus_atom_str,
 		Test: $hyoo_crus_list_ref_to(() => $mrtest_test ),
