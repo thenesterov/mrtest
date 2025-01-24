@@ -5,6 +5,14 @@
 	margin: 0 auto;
 }
 
+[mrtest_source_page_title] {
+	flex-grow: 0;
+}
+
+[mrtest_source_page_tools] {
+	flex-grow: 1;
+}
+
 [mrtest_menu],
 [mrtest_profile_page],
 [mrtest_access_page] {
