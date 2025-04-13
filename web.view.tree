@@ -896,6 +896,9 @@ $mol_text_span $mol_paragraph
 		mol_text_type <= type \
 
 $mol_chip $mol_view
+	attr *
+		^
+		title <= hint \
 	sub /
 		<= title
 
