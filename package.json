@@ -333,6 +333,8 @@
     "$mol_chip",
     "$mol_form_field",
     "$mol_form",
+    "$mol_button_major",
+    "$mol_status",
     "$mol_labeler",
     "$mrtest_workspace_access",
     "$hyoo_crus_land_rights",
