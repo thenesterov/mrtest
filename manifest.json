@@ -1,0 +1,10 @@
+{
+	"name": "mrtest",
+	"short_name": "mrtest",
+	"description": "",
+	"id": "mrtest",
+	"start_url": ".",
+	"display": "standalone",
+	"background_color": "#000000",
+	"theme_color": "#000000"
+}
